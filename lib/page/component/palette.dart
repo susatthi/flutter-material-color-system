@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'layout.dart';
 
-class Palette extends StatelessWidget {
+class Palette extends StatefulWidget {
   const Palette({
     super.key,
     required this.item,
@@ -12,7 +13,14 @@ class Palette extends StatelessWidget {
   final PaletteItem item;
   final EdgeInsets padding;
 
-  Color get textColor => item.backgroundColor.computeLuminance() < 0.5
+  @override
+  State<Palette> createState() => _PaletteState();
+}
+
+class _PaletteState extends State<Palette> {
+  bool isHover = false;
+
+  Color get textColor => widget.item.backgroundColor.computeLuminance() < 0.5
       ? Colors.white
       : Colors.black;
 
@@ -22,12 +30,12 @@ class Palette extends StatelessWidget {
       );
 
   Widget get foreground {
-    final text = item.text;
+    final text = widget.item.text;
     if (text == null) {
       return const SizedBox();
     }
 
-    final subText = item.subText;
+    final subText = widget.item.subText;
     if (subText == null) {
       return Center(
         child: Text(
@@ -60,13 +68,74 @@ class Palette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: item.backgroundColor,
-      child: SizedBox(
-        height: paletteHeight,
-        child: Padding(
-          padding: padding,
-          child: foreground,
+    return MouseRegion(
+      onEnter: (_) {
+        setState(() {
+          isHover = true;
+        });
+      },
+      onExit: (_) {
+        setState(() {
+          isHover = false;
+        });
+      },
+      child: ColoredBox(
+        color: widget.item.backgroundColor,
+        child: SizedBox(
+          height: paletteHeight,
+          child: Padding(
+            padding: widget.padding,
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: [
+                foreground,
+                if (isHover)
+                  _CopyButton(
+                    backgroundColor: widget.item.backgroundColor,
+                    iconColor: textColor,
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CopyButton extends StatefulWidget {
+  const _CopyButton({
+    required this.backgroundColor,
+    required this.iconColor,
+  });
+
+  final Color backgroundColor;
+  final Color iconColor;
+
+  @override
+  State<_CopyButton> createState() => _CopyButtonState();
+}
+
+class _CopyButtonState extends State<_CopyButton> {
+  bool copied = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () async {
+        await Clipboard.setData(
+          ClipboardData(text: widget.backgroundColor.toHexString()),
+        );
+        setState(() {
+          copied = true;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: Icon(
+          copied ? Icons.check : Icons.copy,
+          color: widget.iconColor,
+          size: 18,
         ),
       ),
     );
@@ -83,4 +152,19 @@ class PaletteItem {
   final Color backgroundColor;
   final String? text;
   final String? subText;
+}
+
+extension on Color {
+  /// HEX型の文字列に変換する
+  String toHexString() {
+    return '#${alpha.toHexString()}'
+        '${red.toHexString()}'
+        '${green.toHexString()}'
+        '${blue.toHexString()}';
+  }
+}
+
+extension on int {
+  /// 大文字、2桁の16進数の文字列に変換する
+  String toHexString() => toRadixString(16).padLeft(2, '0').toUpperCase();
 }
