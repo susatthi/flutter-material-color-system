@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../util/material_x.dart';
-import 'layout.dart';
+import 'palette.dart';
 
 class TonalPalettes extends StatelessWidget {
   const TonalPalettes({super.key});
@@ -48,48 +48,48 @@ class _TonalPalette extends StatelessWidget {
   final String title;
   final MaterialColor materialColor;
 
-  List<_PaletteItem> get _paletteItems => [
-        _PaletteItem(
+  List<PaletteItem> get _paletteItems => [
+        PaletteItem(
           backgroundColor: materialColor.shade1,
           text: '1',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade50,
           text: '50',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade100,
           text: '100',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade200,
           text: '200',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade300,
           text: '300',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade400,
           text: '400',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade500,
           text: '500',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade600,
           text: '600',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade700,
           text: '700',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade800,
           text: '800',
         ),
-        _PaletteItem(
+        PaletteItem(
           backgroundColor: materialColor.shade900,
           text: '900',
         ),
@@ -111,7 +111,7 @@ class _TonalPalette extends StatelessWidget {
           const SizedBox(width: 24),
           ..._paletteItems.map(
             (e) => Expanded(
-              child: _Palette(item: e),
+              child: Palette(item: e),
             ),
           )
         ],
@@ -154,44 +154,4 @@ class _PrimaryCircleColor extends StatelessWidget {
       backgroundColor: materialColor.shade600,
     );
   }
-}
-
-class _Palette extends StatelessWidget {
-  const _Palette({
-    required this.item,
-  });
-
-  final _PaletteItem item;
-
-  Color get textColor => item.backgroundColor.computeLuminance() < 0.5
-      ? Colors.white
-      : Colors.black;
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: item.backgroundColor,
-      child: SizedBox(
-        height: paletteHeight,
-        child: Center(
-          child: Text(
-            item.text,
-            style: TextStyle(
-              color: textColor,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PaletteItem {
-  const _PaletteItem({
-    required this.backgroundColor,
-    required this.text,
-  });
-
-  final Color backgroundColor;
-  final String text;
 }
