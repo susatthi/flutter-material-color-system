@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
@@ -28,12 +27,12 @@ extension MaterialColorX on MaterialColor {
   /// ほぼ白色だがほんの少しだけ色がついている色
   Color get shade1 => this[1]!;
 
-  static MaterialColor get primary => fromSeed(0xFF006877);
-  static MaterialColor get secondary => fromSeed(0xFF4B6268);
-  static MaterialColor get tertiary => fromSeed(0xFF545D7E);
+  static MaterialColor get primary => fromSeed(0xFF6750A4);
+  static MaterialColor get secondary => fromSeed(0xFF958DA5);
+  static MaterialColor get tertiary => fromSeed(0xFFB58392);
   static MaterialColor get error => fromSeed(0xFFBA1A1A);
-  static MaterialColor get neutral => fromSeed(0xFF90918B);
-  static MaterialColor get neutralVariant => fromSeed(0xFF8D9387);
+  static MaterialColor get neutral => fromSeed(0xFF939094);
+  static MaterialColor get neutralVariant => fromSeed(0xFF625D66);
 }
 
 extension ColorSchemeX on ColorScheme {
@@ -135,12 +134,12 @@ extension ColorSchemeX on ColorScheme {
         background: neutral.shade900,
         onBackground: neutral.shade100,
         surface: neutral.shade900,
-        onSurface: neutral.shade200,
+        onSurface: neutral.shade100,
         surfaceVariant: neutralVariant?.shade700,
         onSurfaceVariant: neutralVariant?.shade200,
         outline: neutralVariant?.shade400,
         outlineVariant: neutralVariant?.shade800,
-        inverseSurface: neutral.shade200,
+        inverseSurface: neutral.shade1,
         onInverseSurface: neutral.shade900,
       );
 }

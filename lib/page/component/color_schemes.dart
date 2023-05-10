@@ -122,20 +122,10 @@ class ColorSchemes extends StatelessWidget {
           _PaletteItem(
             backgroundColor: colorScheme.onSurface,
             text: 'On Surface',
-            subText: _isDark ? 'Neutral200' : 'Neutral900',
+            subText: _isDark ? 'Neutral100' : 'Neutral900',
           ),
         ],
         [
-          _PaletteItem(
-            backgroundColor: colorScheme.surfaceVariant,
-            text: 'Surface Variant',
-            subText: _isDark ? 'Neutral-Variant1700' : 'Neutral-Variant100',
-          ),
-          _PaletteItem(
-            backgroundColor: colorScheme.onSurfaceVariant,
-            text: 'On Surface Variant',
-            subText: _isDark ? 'Neutral-Variant200' : 'Neutral-Variant700',
-          ),
           _PaletteItem(
             backgroundColor: colorScheme.outline,
             text: 'Outline',
@@ -146,17 +136,37 @@ class ColorSchemes extends StatelessWidget {
             text: 'Outline Variant',
             subText: _isDark ? 'Neutral-Variant800' : 'Neutral-Variant200',
           ),
+          _PaletteItem(
+            backgroundColor: colorScheme.surfaceVariant,
+            text: 'Surface Variant',
+            subText: _isDark ? 'Neutral-Variant1700' : 'Neutral-Variant100',
+          ),
+          _PaletteItem(
+            backgroundColor: colorScheme.onSurfaceVariant,
+            text: 'On Surface Variant',
+            subText: _isDark ? 'Neutral-Variant200' : 'Neutral-Variant700',
+          ),
         ],
         [
           _PaletteItem(
             backgroundColor: colorScheme.inverseSurface,
             text: 'Inverse Surface',
-            subText: _isDark ? 'Neutral200' : 'Neutral800',
+            subText: _isDark ? 'Neutral1' : 'Neutral800',
           ),
           _PaletteItem(
             backgroundColor: colorScheme.onInverseSurface,
             text: 'On Inverse Surface',
             subText: _isDark ? 'Neutral900' : 'Neutral50',
+          ),
+          const _PaletteItem(
+            backgroundColor: Colors.transparent,
+            text: '',
+            subText: '',
+          ),
+          const _PaletteItem(
+            backgroundColor: Colors.transparent,
+            text: '',
+            subText: '',
           ),
         ],
       ];
