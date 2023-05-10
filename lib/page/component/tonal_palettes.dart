@@ -1,20 +1,52 @@
 import 'package:flutter/material.dart';
 
-import '../../util/material_color_x.dart';
-
-const _paletteHeight = 64.0;
+import '../../util/material_x.dart';
+import 'layout.dart';
 
 class TonalPalettes extends StatelessWidget {
-  const TonalPalettes({
-    super.key,
+  const TonalPalettes({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _TonalPalette(
+          title: 'Primary',
+          materialColor: MaterialColorX.primary,
+        ),
+        _TonalPalette(
+          title: 'Secondary',
+          materialColor: MaterialColorX.secondary,
+        ),
+        _TonalPalette(
+          title: 'Tertiary',
+          materialColor: MaterialColorX.tertiary,
+        ),
+        _TonalPalette(
+          title: 'Error',
+          materialColor: MaterialColorX.error,
+        ),
+        _TonalPalette(
+          title: 'Neutral',
+          materialColor: MaterialColorX.neutral,
+        ),
+        _TonalPalette(
+          title: 'Neutral Variant',
+          materialColor: MaterialColorX.neutralVariant,
+        ),
+      ],
+    );
+  }
+}
+
+class _TonalPalette extends StatelessWidget {
+  const _TonalPalette({
     required this.title,
     required this.materialColor,
-    this.padding = const EdgeInsets.all(8),
   });
 
   final String title;
   final MaterialColor materialColor;
-  final EdgeInsets padding;
 
   List<_PaletteItem> get _paletteItems => [
         _PaletteItem(
@@ -66,7 +98,7 @@ class TonalPalettes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding,
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: [
           _TitleText(
@@ -119,7 +151,7 @@ class _PrimaryCircleColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundColor: materialColor.shade400,
+      backgroundColor: materialColor.shade600,
     );
   }
 }
@@ -140,7 +172,7 @@ class _Palette extends StatelessWidget {
     return ColoredBox(
       color: item.backgroundColor,
       child: SizedBox(
-        height: _paletteHeight,
+        height: paletteHeight,
         child: Center(
           child: Text(
             item.text,

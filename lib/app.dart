@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Material Color Tonal Palettes',
+      title: 'MD3 Color System',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
