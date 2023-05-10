@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../util/material_color_x.dart';
+
 const _paletteHeight = 64.0;
 
 class TonalPalettes extends StatelessWidget {
@@ -15,6 +17,10 @@ class TonalPalettes extends StatelessWidget {
   final EdgeInsets padding;
 
   List<_PaletteItem> get _paletteItems => [
+        _PaletteItem(
+          backgroundColor: materialColor.shade1,
+          text: '1',
+        ),
         _PaletteItem(
           backgroundColor: materialColor.shade50,
           text: '50',
@@ -92,7 +98,7 @@ class _TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 96,
+      width: 160,
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium,

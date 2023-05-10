@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../util/material_color_x.dart';
 import 'component/tonal_palettes.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,10 +14,14 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: const [
+          children: [
             TonalPalettes(
-              title: 'Blue',
-              materialColor: Colors.blue,
+              title: 'Neutral',
+              materialColor: MaterialColorX.neutral,
+            ),
+            TonalPalettes(
+              title: 'Neutral Variant',
+              materialColor: MaterialColorX.neutralVariant,
             ),
           ],
         ),
