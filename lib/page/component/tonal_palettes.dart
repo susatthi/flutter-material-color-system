@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../theme.dart';
 import '../../util/material_x.dart';
 import 'palette.dart';
 
@@ -12,27 +13,27 @@ class TonalPalettes extends StatelessWidget {
       children: [
         _TonalPalette(
           title: 'Primary',
-          materialColor: MaterialColorX.primary,
+          materialColor: primary,
         ),
         _TonalPalette(
           title: 'Secondary',
-          materialColor: MaterialColorX.secondary,
+          materialColor: secondary,
         ),
         _TonalPalette(
           title: 'Tertiary',
-          materialColor: MaterialColorX.tertiary,
+          materialColor: tertiary,
         ),
         _TonalPalette(
           title: 'Error',
-          materialColor: MaterialColorX.error,
+          materialColor: error,
         ),
         _TonalPalette(
           title: 'Neutral',
-          materialColor: MaterialColorX.neutral,
+          materialColor: neutral,
         ),
         _TonalPalette(
           title: 'Neutral Variant',
-          materialColor: MaterialColorX.neutralVariant,
+          materialColor: neutralVariant,
         ),
       ],
     );

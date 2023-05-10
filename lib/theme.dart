@@ -2,22 +2,29 @@ import 'package:flutter/material.dart';
 
 import 'util/material_x.dart';
 
-final lightColorScheme = ColorSchemeX.fromMaterialColors(
+final primary = MaterialColorX(0xFF6750A4);
+final secondary = MaterialColorX(0xFF958DA5);
+final tertiary = MaterialColorX(0xFFB58392);
+final error = MaterialColorX(0xFFBA1A1A);
+final neutral = MaterialColorX(0xFF939094);
+final neutralVariant = MaterialColorX(0xFF625D66);
+
+final lightColorScheme = ColorSchemeX(
   brightness: Brightness.light,
-  primary: MaterialColorX.primary,
-  secondary: MaterialColorX.secondary,
-  tertiary: MaterialColorX.tertiary,
-  error: MaterialColorX.error,
-  neutral: MaterialColorX.neutral,
-  neutralVariant: MaterialColorX.neutralVariant,
+  primary: primary,
+  secondary: secondary,
+  tertiary: tertiary,
+  error: error,
+  neutral: neutral,
+  neutralVariant: neutralVariant,
 );
 
-final darkColorScheme = ColorSchemeX.fromMaterialColors(
+final darkColorScheme = ColorSchemeX(
   brightness: Brightness.dark,
-  primary: MaterialColorX.primary,
-  secondary: MaterialColorX.secondary,
-  tertiary: MaterialColorX.tertiary,
-  error: MaterialColorX.error,
-  neutral: MaterialColorX.neutral,
-  neutralVariant: MaterialColorX.neutralVariant,
+  primary: primary,
+  secondary: secondary,
+  tertiary: tertiary,
+  error: error,
+  neutral: neutral,
+  neutralVariant: neutralVariant,
 );
