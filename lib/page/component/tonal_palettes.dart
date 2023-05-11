@@ -8,41 +8,46 @@ class MaterialColorPalettes extends StatelessWidget {
   const MaterialColorPalettes({
     super.key,
     required this.seedColor,
+    this.padding = const EdgeInsets.all(8),
   });
 
   final Color seedColor;
+  final EdgeInsets padding;
 
   CorePalette get _palette => CorePalette.of(seedColor.value);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _PaletteRow(
-          title: 'Primary',
-          materialColor: _palette.materialPrimary,
-        ),
-        _PaletteRow(
-          title: 'Secondary',
-          materialColor: _palette.materialSecondary,
-        ),
-        _PaletteRow(
-          title: 'Tertiary',
-          materialColor: _palette.materialTertiary,
-        ),
-        _PaletteRow(
-          title: 'Error',
-          materialColor: _palette.materialError,
-        ),
-        _PaletteRow(
-          title: 'Neutral',
-          materialColor: _palette.materialNeutral,
-        ),
-        _PaletteRow(
-          title: 'Neutral Variant',
-          materialColor: _palette.materialNeutralVariant,
-        ),
-      ],
+    return Padding(
+      padding: padding,
+      child: Column(
+        children: [
+          _PaletteRow(
+            title: 'Primary',
+            materialColor: _palette.materialPrimary,
+          ),
+          _PaletteRow(
+            title: 'Secondary',
+            materialColor: _palette.materialSecondary,
+          ),
+          _PaletteRow(
+            title: 'Tertiary',
+            materialColor: _palette.materialTertiary,
+          ),
+          _PaletteRow(
+            title: 'Error',
+            materialColor: _palette.materialError,
+          ),
+          _PaletteRow(
+            title: 'Neutral',
+            materialColor: _palette.materialNeutral,
+          ),
+          _PaletteRow(
+            title: 'Neutral Variant',
+            materialColor: _palette.materialNeutralVariant,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -106,7 +111,7 @@ class _PaletteRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(4),
       child: Row(
         children: [
           _TitleText(

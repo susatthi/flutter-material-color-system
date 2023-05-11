@@ -34,18 +34,22 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SingleChildScrollView(
+        SingleChildScrollView(
           child: _SeedColorPickerPanel(),
         ),
-        const VerticalDivider(),
+        VerticalDivider(
+          indent: 8,
+          endIndent: 8,
+        ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-              children: const [
+              children: [
                 _MaterialColorPalettesPanel(),
-                Divider(),
+                Divider(endIndent: 8),
                 _ColorSchemesPanel(),
               ],
             ),
@@ -61,16 +65,11 @@ class _SeedColorPickerPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          SizedBox(
-            width: pickerPanelWidth,
-            child: SeedColorPicker(),
-          ),
-        ],
+    return const Padding(
+      padding: EdgeInsets.all(8),
+      child: SizedBox(
+        width: pickerPanelWidth,
+        child: SeedColorPicker(),
       ),
     );
   }

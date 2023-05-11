@@ -174,20 +174,6 @@ class ColorSchemes extends StatelessWidget {
             subText: _isLight ? 'Neutral50' : 'Neutral800',
           ),
         ],
-        [
-          PaletteItem(
-            backgroundColor: _colorScheme.shadow,
-            text: 'Shadow',
-            subText: _isLight ? 'Black' : 'White',
-          ),
-          PaletteItem(
-            backgroundColor: _colorScheme.scrim,
-            text: 'Scrim',
-            subText: _isLight ? 'Black' : 'White',
-          ),
-          const PaletteItem(),
-          const PaletteItem(),
-        ],
       ];
 
   bool get _isLight => brightness == Brightness.light;
@@ -200,7 +186,7 @@ class ColorSchemes extends StatelessWidget {
         children: _palettes
             .map(
               (row) => Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(4),
                 child: Row(
                   children: row
                       .map((item) => Expanded(child: Palette(item: item)))
