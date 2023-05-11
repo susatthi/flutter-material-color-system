@@ -2,7 +2,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../theme.dart';
+import '../../state/current_seed_color.dart';
 
 class SeedColorPicker extends ConsumerWidget {
   const SeedColorPicker({super.key});
@@ -12,9 +12,9 @@ class SeedColorPicker extends ConsumerWidget {
     return Card(
       elevation: 2,
       child: ColorPicker(
-        color: ref.watch(seedColorProvider),
+        color: ref.watch(currentSeedColorProvider),
         onColorChanged: (color) {
-          ref.read(seedColorProvider.notifier).state = color;
+          ref.read(currentSeedColorProvider.notifier).state = color;
         },
         width: 48,
         height: 48,

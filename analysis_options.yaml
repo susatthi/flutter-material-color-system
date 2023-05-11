@@ -11,6 +11,7 @@ linter:
     one_member_abstracts: false
     prefer_relative_imports: true
     use_build_context_synchronously: false
+    lines_longer_than_80_chars: false
 
 # see: https://github.com/rrousselGit/freezed/issues/488#issuecomment-894358980
 analyzer:

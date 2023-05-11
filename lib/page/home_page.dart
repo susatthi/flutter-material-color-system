@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../theme.dart';
+import '../state/current_seed_color.dart';
+import '../state/current_theme_mode.dart';
 import 'component/color_schemes.dart';
+import 'component/layout.dart';
 import 'component/panel.dart';
 import 'component/seed_color_picker.dart';
+import 'component/theme_mode.dart';
 import 'component/tonal_palettes.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,6 +18,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Material Color System'),
+        actions: const [
+          ToggleThemeModeButton(),
+        ],
       ),
       body: Row(
         children: [
@@ -28,9 +34,7 @@ class HomePage extends StatelessWidget {
                 children: const [
                   _MaterialColorPalettesPanel(),
                   Divider(),
-                  _LightSchemePanel(),
-                  Divider(),
-                  _DarkSchemePanel(),
+                  _SchemePanel(),
                 ],
               ),
             ),
@@ -52,7 +56,7 @@ class _SeedColorPickerPanel extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           SizedBox(
-            width: 320,
+            width: pickerPanelWidth,
             child: SeedColorPicker(),
           ),
         ],
@@ -66,7 +70,7 @@ class _MaterialColorPalettesPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final seedColor = ref.watch(seedColorProvider);
+    final seedColor = ref.watch(currentSeedColorProvider);
     return Panel(
       title: 'Material Color Palettes',
       child: MaterialColorPalettes(
@@ -76,32 +80,18 @@ class _MaterialColorPalettesPanel extends ConsumerWidget {
   }
 }
 
-class _LightSchemePanel extends ConsumerWidget {
-  const _LightSchemePanel();
+class _SchemePanel extends ConsumerWidget {
+  const _SchemePanel();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final seedColor = ref.watch(seedColorProvider);
+    final seedColor = ref.watch(currentSeedColorProvider);
+    final themeMode = ref.watch(currentThemeModeProvider);
+    final isLight = themeMode == ThemeMode.light;
     return Panel(
-      title: 'Light Scheme',
+      title: isLight ? 'Light Scheme' : 'Dark Scheme',
       child: ColorSchemes(
-        brightness: Brightness.light,
-        seedColor: seedColor,
-      ),
-    );
-  }
-}
-
-class _DarkSchemePanel extends ConsumerWidget {
-  const _DarkSchemePanel();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final seedColor = ref.watch(seedColorProvider);
-    return Panel(
-      title: 'Dark Scheme',
-      child: ColorSchemes(
-        brightness: Brightness.dark,
+        brightness: isLight ? Brightness.light : Brightness.dark,
         seedColor: seedColor,
       ),
     );
