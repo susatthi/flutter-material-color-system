@@ -1,5 +1,5 @@
-name: flutter_material_color_tonal_palettes
-description: A new Flutter project.
+name: flutter_material_color_system
+description: Flutter Material Color System
 publish_to: 'none'
 version: 1.0.0+1
 environment:
