@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MD3 Color System'),
+        title: const Text('Material Color System'),
       ),
       body: SingleChildScrollView(
         child: Column(
