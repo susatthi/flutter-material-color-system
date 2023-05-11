@@ -6,164 +6,191 @@ class ColorSchemes extends StatelessWidget {
   const ColorSchemes({
     super.key,
     required this.brightness,
-    required this.colorScheme,
+    required this.seedColor,
     this.padding = const EdgeInsets.all(8),
   });
 
   final Brightness brightness;
-  final ColorScheme colorScheme;
+  final Color seedColor;
   final EdgeInsets padding;
+
+  ColorScheme get _colorScheme => ColorScheme.fromSeed(
+        seedColor: seedColor,
+        brightness: brightness,
+      );
 
   List<List<PaletteItem>> get _palettes => [
         [
           PaletteItem(
-            backgroundColor: colorScheme.primary,
+            backgroundColor: _colorScheme.primary,
             text: 'Primary',
-            subText: _isDark ? 'Primary200' : 'Primary600',
+            subText: _isLight ? 'Primary600' : 'Primary200',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onPrimary,
+            backgroundColor: _colorScheme.onPrimary,
             text: 'On Primary',
-            subText: _isDark ? 'Primary800' : 'White',
+            subText: _isLight ? 'White' : 'Primary800',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.primaryContainer,
+            backgroundColor: _colorScheme.primaryContainer,
             text: 'Primary Container',
-            subText: _isDark ? 'Primary700' : 'Primary100',
+            subText: _isLight ? 'Primary100' : 'Primary700',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onPrimaryContainer,
+            backgroundColor: _colorScheme.onPrimaryContainer,
             text: 'On Primary Container',
-            subText: _isDark ? 'Primary100' : 'Primary900',
+            subText: _isLight ? 'Primary900' : 'Primary100',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.secondary,
+            backgroundColor: _colorScheme.secondary,
             text: 'Secondary',
-            subText: _isDark ? 'Secondary200' : 'Secondary600',
+            subText: _isLight ? 'Secondary600' : 'Secondary200',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onSecondary,
+            backgroundColor: _colorScheme.onSecondary,
             text: 'On Secondary',
-            subText: _isDark ? 'Secondary800' : 'White',
+            subText: _isLight ? 'White' : 'Secondary800',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.secondaryContainer,
+            backgroundColor: _colorScheme.secondaryContainer,
             text: 'Secondary Container',
-            subText: _isDark ? 'Secondary700' : 'Secondary100',
+            subText: _isLight ? 'Secondary100' : 'Secondary700',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onSecondaryContainer,
+            backgroundColor: _colorScheme.onSecondaryContainer,
             text: 'On Secondary Container',
-            subText: _isDark ? 'Secondary100' : 'Secondary900',
+            subText: _isLight ? 'Secondary900' : 'Secondary100',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.tertiary,
+            backgroundColor: _colorScheme.tertiary,
             text: 'Tertiary',
-            subText: _isDark ? 'Tertiary200' : 'Tertiary600',
+            subText: _isLight ? 'Tertiary600' : 'Tertiary200',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onTertiary,
+            backgroundColor: _colorScheme.onTertiary,
             text: 'On Tertiary',
-            subText: _isDark ? 'Tertiary800' : 'White',
+            subText: _isLight ? 'White' : 'Tertiary800',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.tertiaryContainer,
+            backgroundColor: _colorScheme.tertiaryContainer,
             text: 'Tertiary Container',
-            subText: _isDark ? 'Tertiary700' : 'Tertiary100',
+            subText: _isLight ? 'Tertiary100' : 'Tertiary700',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onTertiaryContainer,
+            backgroundColor: _colorScheme.onTertiaryContainer,
             text: 'On Tertiary Container',
-            subText: _isDark ? 'Tertiary100' : 'Tertiary900',
+            subText: _isLight ? 'Tertiary900' : 'Tertiary100',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.error,
+            backgroundColor: _colorScheme.error,
             text: 'Error',
-            subText: _isDark ? 'Error200' : 'Error600',
+            subText: _isLight ? 'Error600' : 'Error200',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onError,
+            backgroundColor: _colorScheme.onError,
             text: 'On Error',
-            subText: _isDark ? 'Error800' : 'White',
+            subText: _isLight ? 'White' : 'Error800',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.errorContainer,
+            backgroundColor: _colorScheme.errorContainer,
             text: 'Error Container',
-            subText: _isDark ? 'Error700' : 'Error100',
+            subText: _isLight ? 'Error100' : 'Error700',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onErrorContainer,
+            backgroundColor: _colorScheme.onErrorContainer,
             text: 'On Error Container',
-            subText: _isDark ? 'Error100' : 'Error900',
+            subText: _isLight ? 'Error900' : 'Error100',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.background,
+            backgroundColor: _colorScheme.background,
             text: 'Background',
-            subText: _isDark ? 'Neutral900' : 'Neutral1',
+            subText: _isLight ? 'Neutral1' : 'Neutral900',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onBackground,
+            backgroundColor: _colorScheme.onBackground,
             text: 'On Background',
-            subText: _isDark ? 'Neutral100' : 'Neutral900',
+            subText: _isLight ? 'Neutral900' : 'Neutral100',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.surface,
+            backgroundColor: _colorScheme.surface,
             text: 'Surface',
-            subText: _isDark ? 'Neutral900' : 'Neutral1',
+            subText: _isLight ? 'Neutral1' : 'Neutral900',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onSurface,
+            backgroundColor: _colorScheme.onSurface,
             text: 'On Surface',
-            subText: _isDark ? 'Neutral100' : 'Neutral900',
+            subText: _isLight ? 'Neutral900' : 'Neutral100',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.outline,
+            backgroundColor: _colorScheme.outline,
             text: 'Outline',
-            subText: _isDark ? 'Neutral-Variant400' : 'Neutral-Variant500',
+            subText: _isLight ? 'Neutral-Variant500' : 'Neutral-Variant400',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.outlineVariant,
+            backgroundColor: _colorScheme.outlineVariant,
             text: 'Outline Variant',
-            subText: _isDark ? 'Neutral-Variant800' : 'Neutral-Variant200',
+            subText: _isLight ? 'Neutral-Variant200' : 'Neutral-Variant800',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.surfaceVariant,
+            backgroundColor: _colorScheme.surfaceVariant,
             text: 'Surface Variant',
-            subText: _isDark ? 'Neutral-Variant1700' : 'Neutral-Variant100',
+            subText: _isLight ? 'Neutral-Variant100' : 'Neutral-Variant700',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onSurfaceVariant,
+            backgroundColor: _colorScheme.onSurfaceVariant,
             text: 'On Surface Variant',
-            subText: _isDark ? 'Neutral-Variant200' : 'Neutral-Variant700',
+            subText: _isLight ? 'Neutral-Variant700' : 'Neutral-Variant200',
           ),
         ],
         [
           PaletteItem(
-            backgroundColor: colorScheme.inverseSurface,
-            text: 'Inverse Surface',
-            subText: _isDark ? 'Neutral1' : 'Neutral800',
+            backgroundColor: _colorScheme.surfaceTint,
+            text: 'Surface Tint',
+            subText: _isLight ? 'Primary600' : 'Primary200',
           ),
           PaletteItem(
-            backgroundColor: colorScheme.onInverseSurface,
+            backgroundColor: _colorScheme.inversePrimary,
+            text: 'Inverse Primary',
+            subText: _isLight ? 'Primary200' : 'Primary600',
+          ),
+          PaletteItem(
+            backgroundColor: _colorScheme.inverseSurface,
+            text: 'Inverse Surface',
+            subText: _isLight ? 'Neutral800' : 'Neutral100',
+          ),
+          PaletteItem(
+            backgroundColor: _colorScheme.onInverseSurface,
             text: 'On Inverse Surface',
-            subText: _isDark ? 'Neutral900' : 'Neutral50',
+            subText: _isLight ? 'Neutral50' : 'Neutral800',
+          ),
+        ],
+        [
+          PaletteItem(
+            backgroundColor: _colorScheme.shadow,
+            text: 'Shadow',
+            subText: _isLight ? 'Black' : 'White',
+          ),
+          PaletteItem(
+            backgroundColor: _colorScheme.scrim,
+            text: 'Scrim',
+            subText: _isLight ? 'Black' : 'White',
           ),
           const PaletteItem(),
           const PaletteItem(),
         ],
       ];
 
-  bool get _isDark => brightness == Brightness.dark;
+  bool get _isLight => brightness == Brightness.light;
 
   @override
   Widget build(BuildContext context) {

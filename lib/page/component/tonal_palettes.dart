@@ -1,47 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:material_color_utilities/material_color_utilities.dart';
 
-import '../../theme.dart';
 import '../../util/material_x.dart';
 import 'palette.dart';
 
-class TonalPalettes extends StatelessWidget {
-  const TonalPalettes({super.key});
+class MaterialColorPalettes extends StatelessWidget {
+  const MaterialColorPalettes({
+    super.key,
+    required this.seedColor,
+  });
+
+  final Color seedColor;
+
+  CorePalette get _palette => CorePalette.of(seedColor.value);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _TonalPalette(
+        _PaletteRow(
           title: 'Primary',
-          materialColor: primary,
+          materialColor: _palette.materialPrimary,
         ),
-        _TonalPalette(
+        _PaletteRow(
           title: 'Secondary',
-          materialColor: secondary,
+          materialColor: _palette.materialSecondary,
         ),
-        _TonalPalette(
+        _PaletteRow(
           title: 'Tertiary',
-          materialColor: tertiary,
+          materialColor: _palette.materialTertiary,
         ),
-        _TonalPalette(
+        _PaletteRow(
           title: 'Error',
-          materialColor: error,
+          materialColor: _palette.materialError,
         ),
-        _TonalPalette(
+        _PaletteRow(
           title: 'Neutral',
-          materialColor: neutral,
+          materialColor: _palette.materialNeutral,
         ),
-        _TonalPalette(
+        _PaletteRow(
           title: 'Neutral Variant',
-          materialColor: neutralVariant,
+          materialColor: _palette.materialNeutralVariant,
         ),
       ],
     );
   }
 }
 
-class _TonalPalette extends StatelessWidget {
-  const _TonalPalette({
+class _PaletteRow extends StatelessWidget {
+  const _PaletteRow({
     required this.title,
     required this.materialColor,
   });
@@ -51,7 +58,7 @@ class _TonalPalette extends StatelessWidget {
 
   List<PaletteItem> get _paletteItems => [
         PaletteItem(
-          backgroundColor: materialColor.shade1,
+          backgroundColor: materialColor.shade1!,
           text: '1',
         ),
         PaletteItem(

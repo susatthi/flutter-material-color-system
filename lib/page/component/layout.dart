@@ -1,1 +1,1 @@
-const paletteHeight = 64.0;
+const paletteHeight = 56.0;

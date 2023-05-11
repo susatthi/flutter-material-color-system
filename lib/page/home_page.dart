@@ -17,11 +17,11 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: const [
-            _TonalPalettesPanel(),
+            _MaterialColorPalettesPanel(),
             Divider(),
-            _LightPanel(),
+            _LightSchemePanel(),
             Divider(),
-            _DarkPanel(),
+            _DarkSchemePanel(),
           ],
         ),
       ),
@@ -29,43 +29,45 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _TonalPalettesPanel extends StatelessWidget {
-  const _TonalPalettesPanel();
+class _MaterialColorPalettesPanel extends StatelessWidget {
+  const _MaterialColorPalettesPanel();
 
   @override
   Widget build(BuildContext context) {
     return const Panel(
-      title: 'Tonal Palettes',
-      child: TonalPalettes(),
-    );
-  }
-}
-
-class _LightPanel extends StatelessWidget {
-  const _LightPanel();
-
-  @override
-  Widget build(BuildContext context) {
-    return Panel(
-      title: 'Light',
-      child: ColorSchemes(
-        brightness: Brightness.light,
-        colorScheme: lightColorScheme,
+      title: 'Material Color Palettes',
+      child: MaterialColorPalettes(
+        seedColor: seedColor,
       ),
     );
   }
 }
 
-class _DarkPanel extends StatelessWidget {
-  const _DarkPanel();
+class _LightSchemePanel extends StatelessWidget {
+  const _LightSchemePanel();
 
   @override
   Widget build(BuildContext context) {
-    return Panel(
-      title: 'Dark',
+    return const Panel(
+      title: 'Light Scheme',
+      child: ColorSchemes(
+        brightness: Brightness.light,
+        seedColor: seedColor,
+      ),
+    );
+  }
+}
+
+class _DarkSchemePanel extends StatelessWidget {
+  const _DarkSchemePanel();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Panel(
+      title: 'Dark Scheme',
       child: ColorSchemes(
         brightness: Brightness.dark,
-        colorScheme: darkColorScheme,
+        seedColor: seedColor,
       ),
     );
   }
