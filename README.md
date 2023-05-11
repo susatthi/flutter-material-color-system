@@ -12,6 +12,13 @@ https://susatthi.github.io/flutter-material-color-system/
 - 左側にあるカラーピッカーからシード色を変更できます。
 - 右上のテーマモードアイコンからライトテーマとダークテーマの切替が出来ます。
 
+## 参考サイト
+
+- 本家サイト
+  - https://m3.material.io/theme-builder#/custom
+- Tonal palettes について
+  - https://m3.material.io/styles/color/the-color-system/key-colors-tones#a828e350-1551-45e5-8430-eb643e6a7713
+
 ## カラースキームの設定方法
 
 カラースキームは次のように `colorSchemeSeed` を使って `MaterialApp` に登録するように実装しています。詳しくはコードを見てください。
