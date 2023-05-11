@@ -24,25 +24,34 @@ class HomePage extends StatelessWidget {
           ToggleThemeModeButton(),
         ],
       ),
-      body: Row(
-        children: [
-          const SingleChildScrollView(
-            child: _SeedColorPickerPanel(),
-          ),
-          const VerticalDivider(),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  _MaterialColorPalettesPanel(),
-                  Divider(),
-                  _SchemePanel(),
-                ],
-              ),
+      body: const _Body(),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SingleChildScrollView(
+          child: _SeedColorPickerPanel(),
+        ),
+        const VerticalDivider(),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: const [
+                _MaterialColorPalettesPanel(),
+                Divider(),
+                _ColorSchemesPanel(),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -82,8 +91,8 @@ class _MaterialColorPalettesPanel extends ConsumerWidget {
   }
 }
 
-class _SchemePanel extends ConsumerWidget {
-  const _SchemePanel();
+class _ColorSchemesPanel extends ConsumerWidget {
+  const _ColorSchemesPanel();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
