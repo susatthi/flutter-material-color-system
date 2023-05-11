@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../util/extention.dart';
 import 'layout.dart';
+import 'snack_bar.dart';
 
 class Palette extends StatefulWidget {
   const Palette({
@@ -69,6 +71,11 @@ class _PaletteState extends State<Palette> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.item.backgroundColor == Colors.transparent) {
+      return const SizedBox(
+        height: paletteHeight,
+      );
+    }
     return MouseRegion(
       onEnter: (_) {
         setState(() {
@@ -104,7 +111,7 @@ class _PaletteState extends State<Palette> {
   }
 }
 
-class _CopyButton extends StatefulWidget {
+class _CopyButton extends ConsumerStatefulWidget {
   const _CopyButton({
     required this.backgroundColor,
     required this.iconColor,
@@ -114,10 +121,10 @@ class _CopyButton extends StatefulWidget {
   final Color iconColor;
 
   @override
-  State<_CopyButton> createState() => _CopyButtonState();
+  ConsumerState<_CopyButton> createState() => _CopyButtonState();
 }
 
-class _CopyButtonState extends State<_CopyButton> {
+class _CopyButtonState extends ConsumerState<_CopyButton> {
   bool copied = false;
 
   @override
@@ -126,6 +133,17 @@ class _CopyButtonState extends State<_CopyButton> {
       onTap: () async {
         await Clipboard.setData(
           ClipboardData(text: widget.backgroundColor.toHexString()),
+        );
+
+        // スナックバーを表示する
+        final messengerState =
+            ref.read(scaffoldMessengerKeyProvider).currentState;
+        messengerState?.clearSnackBars();
+        messengerState?.showSnackBar(
+          SnackBar(
+            content: Text(widget.backgroundColor.toHexString()),
+            width: snackBarWidth,
+          ),
         );
         setState(() {
           copied = true;

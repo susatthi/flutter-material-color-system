@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'page/component/snack_bar.dart';
 import 'page/home_page.dart';
 import 'state/current_theme_mode.dart';
 import 'state/theme.dart';
@@ -16,6 +17,7 @@ class App extends ConsumerWidget {
       darkTheme: ref.watch(themeProvider(Brightness.dark)),
       themeMode: ref.watch(currentThemeModeProvider),
       debugShowCheckedModeBanner: false,
+      scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
       home: const HomePage(),
     );
   }

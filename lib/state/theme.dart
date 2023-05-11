@@ -9,5 +9,8 @@ final themeProvider = Provider.family<ThemeData, Brightness>((ref, brightness) {
     useMaterial3: true,
     colorSchemeSeed: seedColor,
     brightness: brightness,
+    snackBarTheme: const SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+    ),
   );
 });
