@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../state/current_seed_color.dart';
 import '../state/current_theme_mode.dart';
 import 'component/color_schemes.dart';
+import 'component/github.dart';
 import 'component/layout.dart';
 import 'component/panel.dart';
 import 'component/seed_color_picker.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Material Color System'),
         actions: const [
+          GitHubButton(),
           ToggleThemeModeButton(),
         ],
       ),
