@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import '../../util/material_x.dart';
+import '../../util/extention.dart';
 import 'palette.dart';
 
 class MaterialColorPalettes extends StatelessWidget {
