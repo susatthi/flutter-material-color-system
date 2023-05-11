@@ -7,14 +7,19 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.5
+  flex_color_picker: ^3.2.2
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.3.6
+  hexcolor: ^3.0.1
   material_color_utilities: ^0.2.0
 
 dev_dependencies:
+  custom_lint: ^0.3.4
   flutter_test:
     sdk: flutter
   pedantic_mono: ^1.21.1
+  riverpod_lint: ^1.3.1
 
 flutter:
   uses-material-design: true

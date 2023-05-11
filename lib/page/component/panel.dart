@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class Panel extends StatelessWidget {
   const Panel({
     super.key,
-    required this.title,
+    this.title,
     required this.child,
   });
 
-  final String title;
+  final String? title;
   final Widget child;
 
   @override
@@ -16,10 +16,11 @@ class Panel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 8),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: _TitleText(title: title),
-        ),
+        if (title != null)
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: _TitleText(title: title!),
+          ),
         child,
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../util/extention.dart';
 import 'layout.dart';
 
 class Palette extends StatefulWidget {
@@ -152,19 +153,4 @@ class PaletteItem {
   final Color backgroundColor;
   final String? text;
   final String? subText;
-}
-
-extension on Color {
-  /// HEX型の文字列に変換する
-  String toHexString() {
-    return '#${alpha.toHexString()}'
-        '${red.toHexString()}'
-        '${green.toHexString()}'
-        '${blue.toHexString()}';
-  }
-}
-
-extension on int {
-  /// 大文字、2桁の16進数の文字列に変換する
-  String toHexString() => toRadixString(16).padLeft(2, '0').toUpperCase();
 }
