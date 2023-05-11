@@ -17,6 +17,11 @@ https://susatthi.github.io/flutter-material-color-system/
 カラースキームは次のように `colorSchemeSeed` を使って `MaterialApp` に登録するように実装しています。詳しくはコードを見てください。
 
 ```dart
+final currentSeedColorProvider = StateProvider((ref) {
+  // カラーを決める大本になる単色
+  return const Color(0xFF6750A4);
+});
+
 final themeProvider = Provider.family<ThemeData, Brightness>((ref, brightness) {
   final seedColor = ref.watch(currentSeedColorProvider);
   return ThemeData(
