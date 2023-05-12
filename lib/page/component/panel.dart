@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'layout.dart';
+
 class Panel extends StatelessWidget {
   const Panel({
     super.key,
@@ -15,10 +17,10 @@ class Panel extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 8),
+        const SizedBox(height: commonPadding),
         if (title != null)
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(commonPadding),
             child: _TitleText(title: title!),
           ),
         child,

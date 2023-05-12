@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'layout.dart';
 import 'palette.dart';
 
 class ColorSchemes extends StatelessWidget {
@@ -7,7 +8,7 @@ class ColorSchemes extends StatelessWidget {
     super.key,
     required this.brightness,
     required this.seedColor,
-    this.padding = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(commonPadding),
   });
 
   final Brightness brightness;

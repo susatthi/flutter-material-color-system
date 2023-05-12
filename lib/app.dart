@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'page/component/snack_bar.dart';
 import 'page/home_page.dart';
@@ -18,7 +19,17 @@ class App extends ConsumerWidget {
       themeMode: ref.watch(currentThemeModeProvider),
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
-      home: const HomePage(),
+      home: ResponsiveWrapper.builder(
+        const HomePage(),
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(320, name: MOBILE),
+          const ResponsiveBreakpoint.resize(600, name: TABLET),
+          const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+        ],
+        minWidth: 320,
+        maxWidth: 1600,
+        defaultScale: true,
+      ),
     );
   }
 }

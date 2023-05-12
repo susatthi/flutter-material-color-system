@@ -10,7 +10,7 @@ class Palette extends StatefulWidget {
   const Palette({
     super.key,
     required this.item,
-    this.padding = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(commonPadding),
   });
 
   final PaletteItem item;

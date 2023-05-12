@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
 import '../../util/extention.dart';
+import 'layout.dart';
 import 'palette.dart';
 
 class MaterialColorPalettes extends StatelessWidget {
   const MaterialColorPalettes({
     super.key,
     required this.seedColor,
-    this.padding = const EdgeInsets.all(8),
+    this.padding = const EdgeInsets.all(commonPadding),
   });
 
   final Color seedColor;

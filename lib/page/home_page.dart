@@ -7,7 +7,8 @@ import 'component/color_schemes.dart';
 import 'component/github.dart';
 import 'component/layout.dart';
 import 'component/panel.dart';
-import 'component/seed_color_picker.dart';
+import 'component/responsive.dart';
+import 'component/seed_color.dart';
 import 'component/theme_mode.dart';
 import 'component/tonal_palettes.dart';
 
@@ -16,21 +17,60 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Material Color System'),
-        actions: const [
-          GitHubButton(),
-          ToggleThemeModeButton(),
-        ],
+    return Responsive(
+      mobile: Scaffold(
+        appBar: AppBar(
+          title: const _Title(),
+          actions: const [
+            SeedColorButton(),
+            GitHubButton(),
+            ToggleThemeModeButton(),
+          ],
+        ),
+        body: const _MobileBody(),
       ),
-      body: const _Body(),
+      desktop: Scaffold(
+        appBar: AppBar(
+          title: const _Title(),
+          actions: const [
+            GitHubButton(),
+            ToggleThemeModeButton(),
+          ],
+        ),
+        body: const _DesktopBody(),
+      ),
     );
   }
 }
 
-class _Body extends StatelessWidget {
-  const _Body();
+class _Title extends StatelessWidget {
+  const _Title();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Material Color System');
+  }
+}
+
+class _MobileBody extends StatelessWidget {
+  const _MobileBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          _MaterialColorPalettesPanel(),
+          Divider(indent: commonPadding, endIndent: commonPadding),
+          _ColorSchemesPanel(),
+        ],
+      ),
+    );
+  }
+}
+
+class _DesktopBody extends StatelessWidget {
+  const _DesktopBody();
 
   @override
   Widget build(BuildContext context) {
@@ -38,39 +78,30 @@ class _Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SingleChildScrollView(
-          child: _SeedColorPickerPanel(),
+          child: Padding(
+            padding: EdgeInsets.all(commonPadding),
+            child: SizedBox(
+              width: pickerPanelWidth,
+              child: SeedColorPicker(),
+            ),
+          ),
         ),
         VerticalDivider(
-          indent: 8,
-          endIndent: 8,
+          indent: commonPadding,
+          endIndent: commonPadding,
         ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 _MaterialColorPalettesPanel(),
-                Divider(endIndent: 8),
+                Divider(endIndent: commonPadding),
                 _ColorSchemesPanel(),
               ],
             ),
           ),
         ),
       ],
-    );
-  }
-}
-
-class _SeedColorPickerPanel extends ConsumerWidget {
-  const _SeedColorPickerPanel();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const Padding(
-      padding: EdgeInsets.all(8),
-      child: SizedBox(
-        width: pickerPanelWidth,
-        child: SeedColorPicker(),
-      ),
     );
   }
 }
