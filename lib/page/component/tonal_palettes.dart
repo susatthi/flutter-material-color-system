@@ -4,6 +4,7 @@ import 'package:material_color_utilities/material_color_utilities.dart';
 import '../../util/extention.dart';
 import 'layout.dart';
 import 'palette.dart';
+import 'responsive.dart';
 
 class MaterialColorPalettes extends StatelessWidget {
   const MaterialColorPalettes({
@@ -111,6 +112,76 @@ class _PaletteRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Responsive(
+      mobile: _MobilePaletteRow(
+        title: title,
+        materialColor: materialColor,
+        paletteItems: _paletteItems,
+      ),
+      tablet: _TabletPaletteRow(
+        title: title,
+        materialColor: materialColor,
+        paletteItems: _paletteItems,
+      ),
+    );
+  }
+}
+
+class _MobilePaletteRow extends StatelessWidget {
+  const _MobilePaletteRow({
+    required this.title,
+    required this.materialColor,
+    required this.paletteItems,
+  });
+
+  final String title;
+  final MaterialColor materialColor;
+  final List<PaletteItem> paletteItems;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _TitleText(
+            title: title,
+          ),
+          const SizedBox(height: commonPadding / 2),
+          Row(
+            children: [
+              _PrimaryCircleColor(
+                materialColor: materialColor,
+                colorDimention: 32,
+              ),
+              ...paletteItems.map(
+                (e) => Expanded(
+                  child: Palette(item: e),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: commonPadding),
+        ],
+      ),
+    );
+  }
+}
+
+class _TabletPaletteRow extends StatelessWidget {
+  const _TabletPaletteRow({
+    required this.title,
+    required this.materialColor,
+    required this.paletteItems,
+  });
+
+  final String title;
+  final MaterialColor materialColor;
+  final List<PaletteItem> paletteItems;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Row(
@@ -123,7 +194,7 @@ class _PaletteRow extends StatelessWidget {
             materialColor: materialColor,
           ),
           const SizedBox(width: 24),
-          ..._paletteItems.map(
+          ...paletteItems.map(
             (e) => Expanded(
               child: Palette(item: e),
             ),
@@ -144,7 +215,7 @@ class _TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 160,
+      width: 120,
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium,
@@ -158,14 +229,19 @@ class _TitleText extends StatelessWidget {
 class _PrimaryCircleColor extends StatelessWidget {
   const _PrimaryCircleColor({
     required this.materialColor,
+    this.colorDimention = 42,
   });
 
   final MaterialColor materialColor;
+  final double colorDimention;
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: materialColor.shade600,
+    return SizedBox.square(
+      dimension: colorDimention,
+      child: CircleAvatar(
+        backgroundColor: materialColor.shade600,
+      ),
     );
   }
 }

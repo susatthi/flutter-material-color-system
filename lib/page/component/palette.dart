@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../util/extention.dart';
 import 'layout.dart';
@@ -29,7 +30,16 @@ class _PaletteState extends State<Palette> {
 
   TextStyle get textStyle => TextStyle(
         color: textColor,
-        fontSize: 12,
+        fontSize: ResponsiveValue<double>(
+          context,
+          defaultValue: 10,
+          valueWhen: [
+            const Condition.largerThan(
+              name: MOBILE,
+              value: 12,
+            )
+          ],
+        ).value,
       );
 
   Widget get foreground {
@@ -76,6 +86,7 @@ class _PaletteState extends State<Palette> {
         height: paletteHeight,
       );
     }
+
     return MouseRegion(
       onEnter: (_) {
         setState(() {

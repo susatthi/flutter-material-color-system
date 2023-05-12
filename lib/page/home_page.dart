@@ -60,7 +60,7 @@ class _MobileBody extends StatelessWidget {
     return const SingleChildScrollView(
       child: Column(
         children: [
-          _MaterialColorPalettesPanel(),
+          _ColorPalettesPanel(),
           Divider(indent: commonPadding, endIndent: commonPadding),
           _ColorSchemesPanel(),
         ],
@@ -94,7 +94,7 @@ class _DesktopBody extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                _MaterialColorPalettesPanel(),
+                _ColorPalettesPanel(),
                 Divider(endIndent: commonPadding),
                 _ColorSchemesPanel(),
               ],
@@ -106,14 +106,14 @@ class _DesktopBody extends StatelessWidget {
   }
 }
 
-class _MaterialColorPalettesPanel extends ConsumerWidget {
-  const _MaterialColorPalettesPanel();
+class _ColorPalettesPanel extends ConsumerWidget {
+  const _ColorPalettesPanel();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final seedColor = ref.watch(currentSeedColorProvider);
     return Panel(
-      title: 'Material Color Palettes',
+      title: 'Color Palettes',
       child: MaterialColorPalettes(
         seedColor: seedColor,
       ),
