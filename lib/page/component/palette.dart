@@ -93,6 +93,14 @@ class _PaletteState extends ConsumerState<Palette> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(currentHoverColorProvider, (previous, next) {
+      if (widget.item.backgroundColor != next) {
+        setState(() {
+          isHover = false;
+        });
+      }
+    });
+
     if (widget.item.backgroundColor == Colors.transparent) {
       return const SizedBox(
         height: paletteHeight,
@@ -102,19 +110,29 @@ class _PaletteState extends ConsumerState<Palette> {
     final currentThemeMode = ref.watch(currentThemeModeProvider);
     final isLight = currentThemeMode == ThemeMode.light;
     final currentHoverColor = ref.watch(currentHoverColorProvider);
-    return MouseRegion(
-      onEnter: (_) {
+    return InkWell(
+      onHover: (value) {
         setState(() {
-          isHover = true;
-          ref
-              .read(currentHoverColorProvider.notifier)
-              .update(widget.item.backgroundColor);
+          isHover = value;
+
+          final notifier = ref.read(currentHoverColorProvider.notifier);
+          if (isHover) {
+            notifier.update(widget.item.backgroundColor);
+          } else {
+            notifier.clear();
+          }
         });
       },
-      onExit: (_) {
+      onTap: () {
         setState(() {
-          isHover = false;
-          ref.read(currentHoverColorProvider.notifier).clear();
+          isHover = !isHover;
+
+          final notifier = ref.read(currentHoverColorProvider.notifier);
+          if (isHover) {
+            notifier.update(widget.item.backgroundColor);
+          } else {
+            notifier.clear();
+          }
         });
       },
       child: DecoratedBox(
