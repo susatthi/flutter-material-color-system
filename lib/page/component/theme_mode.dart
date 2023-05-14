@@ -10,8 +10,8 @@ class ToggleThemeModeButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(currentThemeModeProvider);
     return IconButton(
-      onPressed: () {
-        ref.read(currentThemeModeProvider.notifier).toggle();
+      onPressed: () async {
+        await ref.read(currentThemeModeProvider.notifier).toggle();
       },
       icon: Icon(themeMode.icon),
     );
