@@ -155,6 +155,7 @@ class _MobilePaletteRow extends StatelessWidget {
                 materialColor: materialColor,
                 colorDimention: 32,
               ),
+              const SizedBox(width: commonPadding),
               ...paletteItems.map(
                 (e) => Expanded(
                   child: Palette(item: e),
