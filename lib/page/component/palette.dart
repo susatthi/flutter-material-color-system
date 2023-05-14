@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../state/current_hover_color.dart';
+import '../../state/current_theme_mode.dart';
 import '../../util/extention.dart';
 import 'layout.dart';
 import 'snack_bar.dart';
 
-class Palette extends StatefulWidget {
+class Palette extends ConsumerStatefulWidget {
   const Palette({
     super.key,
     required this.item,
@@ -18,15 +20,25 @@ class Palette extends StatefulWidget {
   final EdgeInsets padding;
 
   @override
-  State<Palette> createState() => _PaletteState();
+  ConsumerState<Palette> createState() => _PaletteState();
 }
 
-class _PaletteState extends State<Palette> {
+class _PaletteState extends ConsumerState<Palette> {
   bool isHover = false;
 
   Color get textColor => widget.item.backgroundColor.computeLuminance() < 0.5
       ? Colors.white
       : Colors.black;
+
+  Color get lightBorderColor =>
+      widget.item.backgroundColor.computeLuminance() < 0.5
+          ? Theme.of(context).colorScheme.primaryContainer
+          : Theme.of(context).colorScheme.primary;
+
+  Color get darkBorderColor =>
+      widget.item.backgroundColor.computeLuminance() < 0.5
+          ? Theme.of(context).colorScheme.primary
+          : Theme.of(context).colorScheme.primaryContainer;
 
   TextStyle get textStyle => TextStyle(
         color: textColor,
@@ -87,19 +99,34 @@ class _PaletteState extends State<Palette> {
       );
     }
 
+    final currentThemeMode = ref.watch(currentThemeModeProvider);
+    final isLight = currentThemeMode == ThemeMode.light;
+    final currentHoverColor = ref.watch(currentHoverColorProvider);
     return MouseRegion(
       onEnter: (_) {
         setState(() {
           isHover = true;
+          ref
+              .read(currentHoverColorProvider.notifier)
+              .update(widget.item.backgroundColor);
         });
       },
       onExit: (_) {
         setState(() {
           isHover = false;
+          ref.read(currentHoverColorProvider.notifier).clear();
         });
       },
-      child: ColoredBox(
-        color: widget.item.backgroundColor,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: widget.item.backgroundColor,
+          border: currentHoverColor == widget.item.backgroundColor
+              ? Border.all(
+                  color: isLight ? lightBorderColor : darkBorderColor,
+                  width: 3,
+                )
+              : null,
+        ),
         child: SizedBox(
           height: paletteHeight,
           child: Padding(

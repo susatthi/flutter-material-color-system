@@ -58,9 +58,7 @@ class SeedColorPicker extends ConsumerWidget {
       child: ColorPicker(
         color: ref.watch(currentSeedColorProvider),
         onColorChanged: (color) async {
-          await ref
-              .read(currentSeedColorProvider.notifier)
-              .updateSeedColor(color);
+          await ref.read(currentSeedColorProvider.notifier).update(color);
         },
         width: colorDimension,
         height: colorDimension,

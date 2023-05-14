@@ -12,8 +12,8 @@ class CurrentSeedColor extends _$CurrentSeedColor {
   @override
   Color build() => _appDataSource.getSeedColor() ?? const Color(0xFF6750A4);
 
-  Future<void> updateSeedColor(Color seedColor) async {
-    await _appDataSource.setSeedColor(seedColor: seedColor);
-    state = seedColor;
+  Future<void> update(Color color) async {
+    await _appDataSource.setSeedColor(seedColor: color);
+    state = color;
   }
 }

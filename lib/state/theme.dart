@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'current_seed_color.dart';
 
-final themeProvider =
-    Provider.autoDispose.family<ThemeData, Brightness>((ref, brightness) {
+part 'theme.g.dart';
+
+@riverpod
+ThemeData theme(ThemeRef ref, Brightness brightness) {
   final seedColor = ref.watch(currentSeedColorProvider);
   return ThemeData(
     useMaterial3: true,
@@ -14,4 +16,4 @@ final themeProvider =
       behavior: SnackBarBehavior.floating,
     ),
   );
-});
+}
