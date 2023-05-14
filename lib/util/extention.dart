@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-extension MaterialColorHelper on MaterialColor {
+extension MaterialColorX on MaterialColor {
   /// 標準のMaterialColorで一番明るいのはshade50だが、それよりももっと明るく
   /// ほぼ白色だがほんの少しだけ色がついている色
   Color? get shade1 => this[1];

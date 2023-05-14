@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'layout.dart';
+import 'material.dart';
 import 'palette.dart';
 
 class ColorSchemes extends StatelessWidget {
@@ -16,6 +17,11 @@ class ColorSchemes extends StatelessWidget {
   final EdgeInsets padding;
 
   ColorScheme get _colorScheme => ColorScheme.fromSeed(
+        seedColor: seedColor,
+        brightness: brightness,
+      );
+
+  MaterialSurfaceColor get _materialSurface => MaterialSurfaceColor.fromSeed(
         seedColor: seedColor,
         brightness: brightness,
       );
@@ -42,6 +48,11 @@ class ColorSchemes extends StatelessWidget {
             text: 'On Primary Container',
             subText: _isLight ? 'Primary900' : 'Primary100',
           ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceContainerLowest,
+            text: 'Surface Container Lowest',
+            subText: _isLight ? 'White' : 'Neutral960',
+          ),
         ],
         [
           PaletteItem(
@@ -63,6 +74,11 @@ class ColorSchemes extends StatelessWidget {
             backgroundColor: _colorScheme.onSecondaryContainer,
             text: 'On Secondary Container',
             subText: _isLight ? 'Secondary900' : 'Secondary100',
+          ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceContainerLow,
+            text: 'Surface Container Low',
+            subText: _isLight ? 'Neutral40' : 'Neutral900',
           ),
         ],
         [
@@ -86,6 +102,11 @@ class ColorSchemes extends StatelessWidget {
             text: 'On Tertiary Container',
             subText: _isLight ? 'Tertiary900' : 'Tertiary100',
           ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceContainer,
+            text: 'Surface Container',
+            subText: _isLight ? 'Neutral60' : 'Neutral880',
+          ),
         ],
         [
           PaletteItem(
@@ -107,6 +128,11 @@ class ColorSchemes extends StatelessWidget {
             backgroundColor: _colorScheme.onErrorContainer,
             text: 'On Error Container',
             subText: _isLight ? 'Error900' : 'Error100',
+          ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceContainerHigh,
+            text: 'Surface Container High',
+            subText: _isLight ? 'Neutral80' : 'Neutral830',
           ),
         ],
         [
@@ -130,6 +156,11 @@ class ColorSchemes extends StatelessWidget {
             text: 'On Surface',
             subText: _isLight ? 'Neutral900' : 'Neutral100',
           ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceContainerHighest,
+            text: 'Surface Container Lowest',
+            subText: _isLight ? 'Neutral100' : 'Neutral780',
+          ),
         ],
         [
           PaletteItem(
@@ -151,6 +182,11 @@ class ColorSchemes extends StatelessWidget {
             backgroundColor: _colorScheme.onSurfaceVariant,
             text: 'On Surface Variant',
             subText: _isLight ? 'Neutral-Variant700' : 'Neutral-Variant200',
+          ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceBright,
+            text: 'Surface Bright',
+            subText: _isLight ? 'Neutral20' : 'Neutral760',
           ),
         ],
         [
@@ -174,6 +210,11 @@ class ColorSchemes extends StatelessWidget {
             text: 'On Inverse Surface',
             subText: _isLight ? 'Neutral50' : 'Neutral800',
           ),
+          PaletteItem(
+            backgroundColor: _materialSurface.surfaceDim,
+            text: 'Surface Dim',
+            subText: _isLight ? 'Neutral130' : 'Neutral940',
+          ),
         ],
       ];
 
@@ -190,7 +231,20 @@ class ColorSchemes extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 child: Row(
                   children: row
-                      .map((item) => Expanded(child: Palette(item: item)))
+                      .asMap()
+                      .entries
+                      .map(
+                        (entry) => Expanded(
+                          child: Padding(
+                            padding: entry.key == row.length - 1
+                                ? const EdgeInsets.only(left: commonPadding)
+                                : EdgeInsets.zero,
+                            child: Palette(
+                              item: entry.value,
+                            ),
+                          ),
+                        ),
+                      )
                       .toList(),
                 ),
               ),
