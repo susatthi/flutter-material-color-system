@@ -149,17 +149,7 @@ class _PaletteState extends ConsumerState<Palette> {
           height: paletteHeight,
           child: Padding(
             padding: widget.padding,
-            child: Stack(
-              alignment: Alignment.topRight,
-              children: [
-                foreground,
-                if (isHover)
-                  _CopyButton(
-                    backgroundColor: widget.item.backgroundColor,
-                    iconColor: textColor,
-                  ),
-              ],
-            ),
+            child: foreground,
           ),
         ),
       ),
