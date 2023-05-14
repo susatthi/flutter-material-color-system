@@ -9,7 +9,6 @@ class MaterialSurfaceColor {
     required this.surfaceContainerHigh,
     required this.surfaceContainerHighest,
     required this.surfaceDim,
-    required this.surface,
     required this.surfaceBright,
   });
 
@@ -27,7 +26,6 @@ class MaterialSurfaceColor {
           surfaceContainerHigh: Color(neutralPalette.get(92)),
           surfaceContainerHighest: Color(neutralPalette.get(90)),
           surfaceDim: Color(neutralPalette.get(87)),
-          surface: Color(neutralPalette.get(98)),
           surfaceBright: Color(neutralPalette.get(98)),
         );
       case Brightness.dark:
@@ -38,7 +36,6 @@ class MaterialSurfaceColor {
           surfaceContainerHigh: Color(neutralPalette.get(17)),
           surfaceContainerHighest: Color(neutralPalette.get(22)),
           surfaceDim: Color(neutralPalette.get(6)),
-          surface: Color(neutralPalette.get(6)),
           surfaceBright: Color(neutralPalette.get(24)),
         );
     }
@@ -50,6 +47,5 @@ class MaterialSurfaceColor {
   final Color surfaceContainerHigh;
   final Color surfaceContainerHighest;
   final Color surfaceDim;
-  final Color surface;
   final Color surfaceBright;
 }
