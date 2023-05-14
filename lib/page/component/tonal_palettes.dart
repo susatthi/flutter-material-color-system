@@ -6,8 +6,8 @@ import 'layout.dart';
 import 'palette.dart';
 import 'responsive.dart';
 
-class MaterialColorPalettes extends StatelessWidget {
-  const MaterialColorPalettes({
+class TonalPalettes extends StatelessWidget {
+  const TonalPalettes({
     super.key,
     required this.seedColor,
     this.padding = const EdgeInsets.all(commonPadding),
@@ -145,8 +145,11 @@ class _MobilePaletteRow extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _TitleText(
-            title: title,
+          Row(
+            children: [
+              _TitleText(title: title),
+              _PrimaryColorText(materialColor: materialColor),
+            ],
           ),
           const SizedBox(height: commonPadding / 2),
           Row(
@@ -187,8 +190,11 @@ class _TabletPaletteRow extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       child: Row(
         children: [
-          _TitleText(
-            title: title,
+          Column(
+            children: [
+              _TitleText(title: title),
+              _PrimaryColorText(materialColor: materialColor),
+            ],
           ),
           const SizedBox(width: 24),
           _PrimaryCircleColor(
@@ -219,6 +225,27 @@ class _TitleText extends StatelessWidget {
       width: 120,
       child: Text(
         title,
+        style: Theme.of(context).textTheme.titleMedium,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+}
+
+class _PrimaryColorText extends StatelessWidget {
+  const _PrimaryColorText({
+    required this.materialColor,
+  });
+
+  final MaterialColor materialColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 120,
+      child: Text(
+        '0x${materialColor.shade600.toHexString()}',
         style: Theme.of(context).textTheme.titleMedium,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,

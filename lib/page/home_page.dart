@@ -60,7 +60,7 @@ class _MobileBody extends StatelessWidget {
     return const SingleChildScrollView(
       child: Column(
         children: [
-          _ColorPalettesPanel(),
+          _TonalPalettesPanel(),
           Divider(indent: commonPadding, endIndent: commonPadding),
           _ColorSchemesPanel(),
         ],
@@ -94,7 +94,7 @@ class _DesktopBody extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                _ColorPalettesPanel(),
+                _TonalPalettesPanel(),
                 Divider(endIndent: commonPadding),
                 _ColorSchemesPanel(),
               ],
@@ -106,15 +106,15 @@ class _DesktopBody extends StatelessWidget {
   }
 }
 
-class _ColorPalettesPanel extends ConsumerWidget {
-  const _ColorPalettesPanel();
+class _TonalPalettesPanel extends ConsumerWidget {
+  const _TonalPalettesPanel();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final seedColor = ref.watch(currentSeedColorProvider);
     return Panel(
-      title: 'Color Palettes',
-      child: MaterialColorPalettes(
+      title: 'Tonal Palettes',
+      child: TonalPalettes(
         seedColor: seedColor,
       ),
     );
@@ -130,7 +130,7 @@ class _ColorSchemesPanel extends ConsumerWidget {
     final themeMode = ref.watch(currentThemeModeProvider);
     final isLight = themeMode == ThemeMode.light;
     return Panel(
-      title: isLight ? 'Light Scheme' : 'Dark Scheme',
+      title: isLight ? 'Light Color Scheme' : 'Dark Color Scheme',
       child: ColorSchemes(
         brightness: isLight ? Brightness.light : Brightness.dark,
         seedColor: seedColor,
