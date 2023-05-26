@@ -1,16 +1,18 @@
-# Flutter Material Color System
+# Material Color System
 
-Material Design 3 の Tonal Palletes と Color Scheme を動的に確認できるデモサイトです。
-アプリを作る際のカラー決めにご利用ください。
+Material Design 3 のカラーシステムを確認できるサイトです。配色に悩んだときにご利用ください。
 
 https://susatthi.github.io/flutter-material-color-system/
 
+https://github.com/susatthi/flutter-material-color-system/assets/13707135/dfb41f3e-5dac-40e9-a55c-98422f25d99f
+
+
 ライトモード|ダークモード
 --|--
-<img width="1766" alt="CleanShot 2023-05-11 at 16 53 14@2x" src="https://github.com/susatthi/flutter-material-color-system/assets/13707135/b7d55695-3bbb-41a4-95db-9c3e5ecf4142">|<img width="1768" alt="CleanShot 2023-05-11 at 16 53 32@2x" src="https://github.com/susatthi/flutter-material-color-system/assets/13707135/e4c44c7a-51a7-4a10-9286-6e6fe50094db">
+![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/cf198752-6c69-4262-b2f1-821a99a5e6aa)|![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/50b01fdd-2b1d-4dd5-aac5-2af5587fd30d)
 
-- 左側にあるカラーピッカーからシード色を変更できます。
-- 右上のテーマモードアイコンからライトテーマとダークテーマの切替が出来ます。
+- カラーピッカーからシード色を変更できます。
+- ライトテーマとダークテーマの切替ができます。
 
 ## 参考サイト
 
@@ -24,12 +26,14 @@ https://susatthi.github.io/flutter-material-color-system/
 カラースキームは次のように `colorSchemeSeed` を使って `MaterialApp` に登録するように実装しています。詳しくはコードを見てください。
 
 ```dart
-final currentSeedColorProvider = StateProvider((ref) {
-  // カラーを決める大本になる単色
-  return const Color(0xFF6750A4);
-});
+@riverpod
+class CurrentSeedColor extends _$CurrentSeedColor {
+  @override
+  Color build() => const Color(0xFF6750A4);
+}
 
-final themeProvider = Provider.family<ThemeData, Brightness>((ref, brightness) {
+@riverpod
+ThemeData theme(ThemeRef ref, Brightness brightness) {
   final seedColor = ref.watch(currentSeedColorProvider);
   return ThemeData(
     useMaterial3: true,
@@ -37,7 +41,7 @@ final themeProvider = Provider.family<ThemeData, Brightness>((ref, brightness) {
     brightness: brightness,
     ・・・
   );
-});
+}
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -57,10 +61,10 @@ class App extends ConsumerWidget {
 ## 環境
 
 ```
-Flutter 3.10.0 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 84a1e904f4 (2 days ago) • 2023-05-09 07:41:44 -0700
-Engine • revision d44b5a94c9
-Tools • Dart 3.0.0 • DevTools 2.23.1
+Flutter 3.10.2 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 9cd3d0d9ff (2 days ago) • 2023-05-23 20:57:28 -0700
+Engine • revision 90fa3ae28f
+Tools • Dart 3.0.2 • DevTools 2.23.1
 ```
 
 ## LISENCE

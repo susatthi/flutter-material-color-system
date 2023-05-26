@@ -1,5 +1,5 @@
 name: flutter_material_color_system
-description: Flutter Material Color System
+description: Material Design 3 のカラーシステムを確認できるサイトです。配色に悩んだときにご利用ください。
 publish_to: 'none'
 version: 1.0.0+1
 environment:
