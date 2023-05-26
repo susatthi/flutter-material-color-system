@@ -6,6 +6,7 @@ import '../state/current_theme_mode.dart';
 import 'component/color_schemes.dart';
 import 'component/github.dart';
 import 'component/layout.dart';
+import 'component/logo.dart';
 import 'component/panel.dart';
 import 'component/responsive.dart';
 import 'component/seed_color.dart';
@@ -48,7 +49,12 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Material Color System');
+    return const Row(
+      children: [
+        Logo(),
+        Text('Material Color System'),
+      ],
+    );
   }
 }
 

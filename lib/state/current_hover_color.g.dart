@@ -6,7 +6,7 @@ part of 'current_hover_color.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentHoverColorHash() => r'1e58963a6201cd0beb7c1c8a0fca2f9b595dc8d9';
+String _$currentHoverColorHash() => r'8dda7515435b3c95e9763c62ff0594fe29fead99';
 
 /// See also [CurrentHoverColor].
 @ProviderFor(CurrentHoverColor)

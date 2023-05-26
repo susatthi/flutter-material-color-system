@@ -6,7 +6,7 @@ part of 'current_seed_color.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentSeedColorHash() => r'5d694b381549eb5be345ac2e9507ea630eb3b74a';
+String _$currentSeedColorHash() => r'38ab0246342673b56c8586d93d76d1c0e72ef7e7';
 
 /// See also [CurrentSeedColor].
 @ProviderFor(CurrentSeedColor)
