@@ -1,6 +1,6 @@
 {
-    "name": "flutter_material_color_tonal_palettes",
-    "short_name": "flutter_material_color_tonal_palettes",
+    "name": "Material Color System",
+    "short_name": "Material Color System",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
