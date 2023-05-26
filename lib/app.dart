@@ -29,6 +29,13 @@ class App extends ConsumerWidget {
         minWidth: 600,
         maxWidth: 1600,
         defaultScale: true,
+        background: Consumer(
+          builder: (context, ref, _) {
+            return Container(
+              color: Theme.of(context).colorScheme.background,
+            );
+          },
+        ),
       ),
     );
   }
