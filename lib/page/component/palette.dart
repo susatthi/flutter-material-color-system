@@ -5,8 +5,8 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../state/current_hover_color.dart';
 import '../../state/current_theme_mode.dart';
-import '../../util/extention.dart';
 import 'layout.dart';
+import 'material.dart';
 import 'snack_bar.dart';
 
 class Palette extends ConsumerStatefulWidget {
@@ -32,13 +32,13 @@ class _PaletteState extends ConsumerState<Palette> {
 
   Color get lightBorderColor =>
       widget.item.backgroundColor.computeLuminance() < 0.5
-          ? Theme.of(context).colorScheme.primaryContainer
-          : Theme.of(context).colorScheme.primary;
+          ? context.primaryContainer
+          : context.primary;
 
   Color get darkBorderColor =>
       widget.item.backgroundColor.computeLuminance() < 0.5
-          ? Theme.of(context).colorScheme.primary
-          : Theme.of(context).colorScheme.primaryContainer;
+          ? context.primary
+          : context.primaryContainer;
 
   TextStyle get textStyle => TextStyle(
         color: textColor,

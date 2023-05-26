@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../state/current_seed_color.dart';
+import 'material.dart';
 
 class SeedColorButton extends ConsumerWidget {
   const SeedColorButton({super.key});
@@ -65,16 +66,16 @@ class SeedColorPicker extends ConsumerWidget {
         borderRadius: 25,
         heading: Text(
           'Select color',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.headlineSmall,
         ),
         subheading: Text(
           'Select color shade',
-          style: Theme.of(context).textTheme.titleSmall,
+          style: context.titleSmall,
         ),
         wheelDiameter: wheelDiameter,
         wheelSubheading: Text(
           'Selected color and its shades',
-          style: Theme.of(context).textTheme.titleSmall,
+          style: context.titleSmall,
         ),
         showMaterialName: true,
         showColorName: true,
@@ -82,9 +83,9 @@ class SeedColorPicker extends ConsumerWidget {
         copyPasteBehavior: const ColorPickerCopyPasteBehavior(
           longPressMenu: true,
         ),
-        materialNameTextStyle: Theme.of(context).textTheme.bodySmall,
-        colorNameTextStyle: Theme.of(context).textTheme.bodySmall,
-        colorCodeTextStyle: Theme.of(context).textTheme.bodySmall,
+        materialNameTextStyle: context.bodySmall,
+        colorNameTextStyle: context.bodySmall,
+        colorCodeTextStyle: context.bodySmall,
         pickersEnabled: const {
           ColorPickerType.primary: true,
           ColorPickerType.accent: true,

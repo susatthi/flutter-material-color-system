@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'layout.dart';
+import 'material.dart';
 
 class Panel extends StatelessWidget {
   const Panel({
@@ -40,7 +41,7 @@ class _TitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: Theme.of(context).textTheme.titleLarge,
+      style: context.titleLarge,
     );
   }
 }

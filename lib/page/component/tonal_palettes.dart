@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import '../../util/extention.dart';
 import 'layout.dart';
+import 'material.dart';
 import 'palette.dart';
 import 'responsive.dart';
 
@@ -26,27 +26,27 @@ class TonalPalettes extends StatelessWidget {
         children: [
           _PaletteRow(
             title: 'Primary',
-            materialColor: _palette.materialPrimary,
+            materialColor: _palette.primaryMaterial,
           ),
           _PaletteRow(
             title: 'Secondary',
-            materialColor: _palette.materialSecondary,
+            materialColor: _palette.secondaryMaterial,
           ),
           _PaletteRow(
             title: 'Tertiary',
-            materialColor: _palette.materialTertiary,
+            materialColor: _palette.tertiaryMaterial,
           ),
           _PaletteRow(
             title: 'Error',
-            materialColor: _palette.materialError,
+            materialColor: _palette.errorMaterial,
           ),
           _PaletteRow(
             title: 'Neutral',
-            materialColor: _palette.materialNeutral,
+            materialColor: _palette.neutralMaterial,
           ),
           _PaletteRow(
             title: 'Neutral Variant',
-            materialColor: _palette.materialNeutralVariant,
+            materialColor: _palette.neutralVariantMaterial,
           ),
         ],
       ),
@@ -225,7 +225,7 @@ class _TitleText extends StatelessWidget {
       width: 120,
       child: Text(
         title,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: context.titleMedium,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
@@ -246,7 +246,7 @@ class _PrimaryColorText extends StatelessWidget {
       width: 120,
       child: Text(
         '0x${materialColor.shade600.toHexString()}',
-        style: Theme.of(context).textTheme.titleMedium,
+        style: context.titleMedium,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
