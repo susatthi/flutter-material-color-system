@@ -49,7 +49,7 @@ class _PaletteState extends ConsumerState<Palette> {
             const Condition.largerThan(
               name: MOBILE,
               value: 12,
-            )
+            ),
           ],
         ).value,
       );

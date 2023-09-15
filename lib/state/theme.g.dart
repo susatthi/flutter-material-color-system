@@ -29,8 +29,6 @@ class _SystemHash {
   }
 }
 
-typedef ThemeRef = AutoDisposeProviderRef<ThemeData>;
-
 /// See also [theme].
 @ProviderFor(theme)
 const themeProvider = ThemeFamily();
@@ -77,10 +75,10 @@ class ThemeFamily extends Family<ThemeData> {
 class ThemeProvider extends AutoDisposeProvider<ThemeData> {
   /// See also [theme].
   ThemeProvider(
-    this.brightness,
-  ) : super.internal(
+    Brightness brightness,
+  ) : this._internal(
           (ref) => theme(
-            ref,
+            ref as ThemeRef,
             brightness,
           ),
           from: themeProvider,
@@ -91,9 +89,43 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
                   : _$themeHash,
           dependencies: ThemeFamily._dependencies,
           allTransitiveDependencies: ThemeFamily._allTransitiveDependencies,
+          brightness: brightness,
         );
 
+  ThemeProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.brightness,
+  }) : super.internal();
+
   final Brightness brightness;
+
+  @override
+  Override overrideWith(
+    ThemeData Function(ThemeRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ThemeProvider._internal(
+        (ref) => create(ref as ThemeRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        brightness: brightness,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<ThemeData> createElement() {
+    return _ThemeProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -108,4 +140,18 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
     return _SystemHash.finish(hash);
   }
 }
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+
+mixin ThemeRef on AutoDisposeProviderRef<ThemeData> {
+  /// The parameter `brightness` of this provider.
+  Brightness get brightness;
+}
+
+class _ThemeProviderElement extends AutoDisposeProviderElement<ThemeData>
+    with ThemeRef {
+  _ThemeProviderElement(super.provider);
+
+  @override
+  Brightness get brightness => (origin as ThemeProvider).brightness;
+}
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -205,7 +205,7 @@ class _TabletPaletteRow extends StatelessWidget {
             (e) => Expanded(
               child: Palette(item: e),
             ),
-          )
+          ),
         ],
       ),
     );
