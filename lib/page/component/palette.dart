@@ -123,17 +123,21 @@ class _PaletteState extends ConsumerState<Palette> {
           }
         });
       },
-      onTap: () {
-        setState(() {
-          isHover = !isHover;
+      onTap: () async {
+        // クリップボードにHEX文字列をコピー
+        final hex = widget.item.backgroundColor.toHexString();
+        await Clipboard.setData(ClipboardData(text: hex));
 
-          final notifier = ref.read(currentHoverColorProvider.notifier);
-          if (isHover) {
-            notifier.update(widget.item.backgroundColor);
-          } else {
-            notifier.clear();
-          }
-        });
+        // スナックバーを表示する
+        final messengerState =
+            ref.read(scaffoldMessengerKeyProvider).currentState;
+        messengerState?.clearSnackBars();
+        messengerState?.showSnackBar(
+          SnackBar(
+            content: Text('$hex Coppied!'),
+            width: snackBarWidth,
+          ),
+        );
       },
       child: DecoratedBox(
         decoration: BoxDecoration(
@@ -151,56 +155,6 @@ class _PaletteState extends ConsumerState<Palette> {
             padding: widget.padding,
             child: foreground,
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _CopyButton extends ConsumerStatefulWidget {
-  const _CopyButton({
-    required this.backgroundColor,
-    required this.iconColor,
-  });
-
-  final Color backgroundColor;
-  final Color iconColor;
-
-  @override
-  ConsumerState<_CopyButton> createState() => _CopyButtonState();
-}
-
-class _CopyButtonState extends ConsumerState<_CopyButton> {
-  bool copied = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        await Clipboard.setData(
-          ClipboardData(text: widget.backgroundColor.toHexString()),
-        );
-
-        // スナックバーを表示する
-        final messengerState =
-            ref.read(scaffoldMessengerKeyProvider).currentState;
-        messengerState?.clearSnackBars();
-        messengerState?.showSnackBar(
-          SnackBar(
-            content: Text(widget.backgroundColor.toHexString()),
-            width: snackBarWidth,
-          ),
-        );
-        setState(() {
-          copied = true;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(2),
-        child: Icon(
-          copied ? Icons.check : Icons.copy,
-          color: widget.iconColor,
-          size: 18,
         ),
       ),
     );
