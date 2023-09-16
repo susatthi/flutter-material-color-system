@@ -6,7 +6,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../../core/state/current_theme_mode.dart';
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
-import '../../../../../core/ui/component/snack_bar.dart';
+import '../../../../core/ui/component/scaffold_messenger.dart';
 import '../../state/current_hover_color.dart';
 
 class Palette extends ConsumerStatefulWidget {
@@ -129,15 +129,12 @@ class _PaletteState extends ConsumerState<Palette> {
         await Clipboard.setData(ClipboardData(text: hex));
 
         // スナックバーを表示する
-        final messengerState =
-            ref.read(scaffoldMessengerKeyProvider).currentState;
-        messengerState?.clearSnackBars();
-        messengerState?.showSnackBar(
-          SnackBar(
-            content: Text('$hex Coppied!'),
-            width: snackBarWidth,
-          ),
-        );
+        ref.read(scaffoldMessengerProvider.notifier).showSnackBar(
+              SnackBar(
+                content: Text('$hex Coppied!'),
+                width: snackBarWidth,
+              ),
+            );
       },
       child: DecoratedBox(
         decoration: BoxDecoration(

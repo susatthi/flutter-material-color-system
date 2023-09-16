@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LaunchGitHubButton extends StatelessWidget {
+import '../../../../../core/launcher/launcher.dart';
+
+class LaunchGitHubButton extends ConsumerWidget {
   const LaunchGitHubButton({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
-      onPressed: () async {
-        final url = Uri.parse(
-          'https://github.com/susatthi/flutter-material-color-system',
-        );
-        await launchUrl(url);
-      },
+      onPressed: () => ref.read(launcherProvider.notifier).launchUrl(
+            Uri.parse(
+              'https://github.com/susatthi/flutter-material-color-system',
+            ),
+          ),
       icon: const Icon(Icons.code),
     );
   }
