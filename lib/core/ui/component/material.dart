@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import '../../../../util/core.dart';
+import '../../../util/extensions.dart';
 
 extension BuildContextX on BuildContext {
   /// ダークモードかどうかを返す

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/ui/component/layout.dart';
-import '../../../../common/ui/component/material.dart';
+import '../../../../../core/ui/component/layout.dart';
+import '../../../../../core/ui/component/material.dart';
 import 'palette.dart';
 
 class ColorSchemes extends StatelessWidget {

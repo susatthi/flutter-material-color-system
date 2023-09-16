@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../common/app_data/state/current_seed_color.dart';
-import '../../../common/app_data/state/current_theme_mode.dart';
-import '../../../common/ui/component/layout.dart';
-import '../../../common/ui/component/responsive.dart';
+import '../../../../core/feature/app_data/state/current_seed_color.dart';
+import '../../../../core/feature/app_data/state/current_theme_mode.dart';
+import '../../../../core/ui/component/layout.dart';
+import '../../../../core/ui/component/responsive.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
 import 'component/color_schemes.dart';
 import 'component/github.dart';
