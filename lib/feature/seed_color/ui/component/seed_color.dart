@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/ui/component/material.dart';
+import 'seed_color_history.dart';
 
 class SeedColorButton extends ConsumerWidget {
   const SeedColorButton({super.key});
@@ -56,43 +57,48 @@ class SeedColorPicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       elevation: 2,
-      child: ColorPicker(
-        color: ref.watch(currentSeedColorProvider),
-        onColorChanged: (color) async {
-          await ref
-              .read(currentSeedColorProvider.notifier)
-              .set(seedColor: color);
-        },
-        width: colorDimension,
-        height: colorDimension,
-        borderRadius: 25,
-        heading: Text(
-          'Select color',
-          style: context.headlineSmall,
-        ),
-        subheading: Text(
-          'Select color shade',
-          style: context.titleSmall,
-        ),
-        wheelDiameter: wheelDiameter,
-        wheelSubheading: Text(
-          'Selected color and its shades',
-          style: context.titleSmall,
-        ),
-        showMaterialName: true,
-        showColorName: true,
-        showColorCode: true,
-        copyPasteBehavior: const ColorPickerCopyPasteBehavior(
-          longPressMenu: true,
-        ),
-        materialNameTextStyle: context.bodySmall,
-        colorNameTextStyle: context.bodySmall,
-        colorCodeTextStyle: context.bodySmall,
-        pickersEnabled: const {
-          ColorPickerType.primary: true,
-          ColorPickerType.accent: true,
-          ColorPickerType.wheel: true,
-        },
+      child: Column(
+        children: [
+          ColorPicker(
+            color: ref.watch(currentSeedColorProvider),
+            onColorChanged: (color) async {
+              await ref
+                  .read(currentSeedColorProvider.notifier)
+                  .set(seedColor: color);
+            },
+            width: colorDimension,
+            height: colorDimension,
+            borderRadius: 25,
+            heading: Text(
+              'Select color',
+              style: context.headlineSmall,
+            ),
+            subheading: Text(
+              'Select color shade',
+              style: context.titleSmall,
+            ),
+            wheelDiameter: wheelDiameter,
+            wheelSubheading: Text(
+              'Selected color and its shades',
+              style: context.titleSmall,
+            ),
+            showMaterialName: true,
+            showColorName: true,
+            showColorCode: true,
+            copyPasteBehavior: const ColorPickerCopyPasteBehavior(
+              longPressMenu: true,
+            ),
+            materialNameTextStyle: context.bodySmall,
+            colorNameTextStyle: context.bodySmall,
+            colorCodeTextStyle: context.bodySmall,
+            pickersEnabled: const {
+              ColorPickerType.primary: true,
+              ColorPickerType.accent: true,
+              ColorPickerType.wheel: true,
+            },
+          ),
+          const SeedColorHistoryPanel(),
+        ],
       ),
     );
   }
