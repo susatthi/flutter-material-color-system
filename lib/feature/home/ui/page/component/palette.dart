@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../../../../core/feature/app_data/state/current_theme_mode.dart';
+import '../../../../../core/state/current_theme_mode.dart';
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../core/ui/component/snack_bar.dart';

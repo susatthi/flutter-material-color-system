@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/feature/app_data/state/current_theme_mode.dart';
+import '../../../../../core/state/current_theme_mode.dart';
 
 class ToggleThemeModeButton extends ConsumerWidget {
   const ToggleThemeModeButton({super.key});

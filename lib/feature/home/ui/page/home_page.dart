@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/feature/app_data/state/current_seed_color.dart';
-import '../../../../core/feature/app_data/state/current_theme_mode.dart';
+import '../../../../core/state/current_seed_color.dart';
+import '../../../../core/state/current_theme_mode.dart';
 import '../../../../core/ui/component/layout.dart';
 import '../../../../core/ui/component/responsive.dart';
 import '../../../seed_color/ui/component/seed_color.dart';

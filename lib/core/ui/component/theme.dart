@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../feature/app_data/state/current_seed_color.dart';
+import '../../state/current_seed_color.dart';
 
 part 'theme.g.dart';
 
