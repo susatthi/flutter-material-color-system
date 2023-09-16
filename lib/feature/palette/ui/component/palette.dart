@@ -7,7 +7,7 @@ import '../../../../../core/state/current_theme_mode.dart';
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../core/ui/component/snack_bar.dart';
-import '../../../state/current_hover_color.dart';
+import '../../state/current_hover_color.dart';
 
 class Palette extends ConsumerStatefulWidget {
   const Palette({

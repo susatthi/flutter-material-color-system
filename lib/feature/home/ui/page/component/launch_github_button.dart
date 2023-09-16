@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class GitHubButton extends StatelessWidget {
-  const GitHubButton({super.key});
+class LaunchGitHubButton extends StatelessWidget {
+  const LaunchGitHubButton({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,13 +5,13 @@ import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/state/current_theme_mode.dart';
 import '../../../../core/ui/component/layout.dart';
 import '../../../../core/ui/component/responsive.dart';
+import '../../../palette/ui/component/color_schemes.dart';
+import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
-import 'component/color_schemes.dart';
-import 'component/github.dart';
-import 'component/logo.dart';
-import 'component/panel.dart';
-import 'component/theme_mode.dart';
-import 'component/tonal_palettes.dart';
+import 'component/home_panel.dart';
+import 'component/home_title.dart';
+import 'component/launch_github_button.dart';
+import 'component/toggle_theme_mode_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,10 +21,10 @@ class HomePage extends StatelessWidget {
     return Responsive(
       mobile: Scaffold(
         appBar: AppBar(
-          title: const _Title(),
+          title: const HomeTitle(),
           actions: const [
             SeedColorButton(),
-            GitHubButton(),
+            LaunchGitHubButton(),
             ToggleThemeModeButton(),
           ],
         ),
@@ -32,28 +32,14 @@ class HomePage extends StatelessWidget {
       ),
       desktop: Scaffold(
         appBar: AppBar(
-          title: const _Title(),
+          title: const HomeTitle(),
           actions: const [
-            GitHubButton(),
+            LaunchGitHubButton(),
             ToggleThemeModeButton(),
           ],
         ),
         body: const _DesktopBody(),
       ),
-    );
-  }
-}
-
-class _Title extends StatelessWidget {
-  const _Title();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Logo(),
-        Text('Material Color System'),
-      ],
     );
   }
 }
@@ -118,7 +104,7 @@ class _TonalPalettesPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final seedColor = ref.watch(currentSeedColorProvider);
-    return Panel(
+    return HomePanel(
       title: 'Tonal Palettes',
       child: TonalPalettes(
         seedColor: seedColor,
@@ -135,7 +121,7 @@ class _ColorSchemesPanel extends ConsumerWidget {
     final seedColor = ref.watch(currentSeedColorProvider);
     final themeMode = ref.watch(currentThemeModeProvider);
     final isLight = themeMode == ThemeMode.light;
-    return Panel(
+    return HomePanel(
       title: isLight ? 'Light Color Scheme' : 'Dark Color Scheme',
       child: ColorSchemes(
         brightness: isLight ? Brightness.light : Brightness.dark,

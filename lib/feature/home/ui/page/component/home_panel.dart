@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/ui/component/layout.dart';
-import '../../../../../core/ui/component/material.dart';
+import '../../../../../../core/ui/component/layout.dart';
+import '../../../../../../core/ui/component/material.dart';
 
-class Panel extends StatelessWidget {
-  const Panel({
+class HomePanel extends StatelessWidget {
+  const HomePanel({
     super.key,
     this.title,
     required this.child,
