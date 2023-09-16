@@ -5,7 +5,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
-import 'data_source/app_data/shared_preferences.dart';
+import 'data_source/shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   usePathUrlStrategy();

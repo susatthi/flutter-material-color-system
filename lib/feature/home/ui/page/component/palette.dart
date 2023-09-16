@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../state/current_hover_color.dart';
-import '../../state/current_theme_mode.dart';
+import '../../../state/current_hover_color.dart';
+import '../../../state/current_theme_mode.dart';
 import 'layout.dart';
 import 'material.dart';
 import 'snack_bar.dart';

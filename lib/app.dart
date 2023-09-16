@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'page/component/material.dart';
-import 'page/component/snack_bar.dart';
-import 'page/home_page.dart';
-import 'state/current_theme_mode.dart';
-import 'state/theme.dart';
+import 'feature/home/state/current_theme_mode.dart';
+import 'feature/home/ui/page/component/material.dart';
+import 'feature/home/ui/page/component/snack_bar.dart';
+import 'feature/home/ui/page/component/theme.dart';
+import 'feature/home/ui/page/home_page.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

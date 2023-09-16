@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../util/assets/assets.gen.dart';
+import '../../../../../util/assets/assets.gen.dart';
 
 class Logo extends StatelessWidget {
   const Logo({
