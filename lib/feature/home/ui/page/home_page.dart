@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../app_data/state/current_seed_color.dart';
-import '../../../app_data/state/current_theme_mode.dart';
+import '../../../common/app_data/state/current_seed_color.dart';
+import '../../../common/app_data/state/current_theme_mode.dart';
 import 'component/color_schemes.dart';
 import 'component/github.dart';
 import 'component/layout.dart';

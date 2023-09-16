@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '../../../../app_data/state/current_theme_mode.dart';
+import '../../../../common/app_data/state/current_theme_mode.dart';
 import '../../../state/current_hover_color.dart';
 import 'layout.dart';
 import 'material.dart';
