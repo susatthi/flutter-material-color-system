@@ -2,8 +2,8 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../common/app_data/state/current_seed_color.dart';
-import 'material.dart';
+import '../../../common/app_data/state/current_seed_color.dart';
+import '../../../common/ui/component/material.dart';
 
 class SeedColorButton extends ConsumerWidget {
   const SeedColorButton({super.key});

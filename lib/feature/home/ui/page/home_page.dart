@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../common/app_data/state/current_seed_color.dart';
 import '../../../common/app_data/state/current_theme_mode.dart';
+import '../../../common/ui/component/layout.dart';
+import '../../../common/ui/component/responsive.dart';
+import '../../../seed_color/ui/component/seed_color.dart';
 import 'component/color_schemes.dart';
 import 'component/github.dart';
-import 'component/layout.dart';
 import 'component/logo.dart';
 import 'component/panel.dart';
-import 'component/responsive.dart';
-import 'component/seed_color.dart';
 import 'component/theme_mode.dart';
 import 'component/tonal_palettes.dart';
 

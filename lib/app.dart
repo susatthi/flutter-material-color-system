@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'feature/common/app_data/state/current_theme_mode.dart';
-import 'feature/home/ui/page/component/material.dart';
-import 'feature/home/ui/page/component/snack_bar.dart';
-import 'feature/home/ui/page/component/theme.dart';
+import 'feature/common/ui/component/material.dart';
+import 'feature/common/ui/component/snack_bar.dart';
+import 'feature/common/ui/component/theme.dart';
 import 'feature/home/ui/page/home_page.dart';
 
 class App extends ConsumerWidget {

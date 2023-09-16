@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'layout.dart';
-import 'material.dart';
+import '../../../../common/ui/component/layout.dart';
+import '../../../../common/ui/component/material.dart';
 
 class Panel extends StatelessWidget {
   const Panel({

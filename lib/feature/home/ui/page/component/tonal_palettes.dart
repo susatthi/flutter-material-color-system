@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
-import 'layout.dart';
-import 'material.dart';
+import '../../../../common/ui/component/layout.dart';
+import '../../../../common/ui/component/material.dart';
+import '../../../../common/ui/component/responsive.dart';
 import 'palette.dart';
-import 'responsive.dart';
 
 class TonalPalettes extends StatelessWidget {
   const TonalPalettes({
