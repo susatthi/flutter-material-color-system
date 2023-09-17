@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/state/current_theme_mode.dart';
 import '../../../../core/ui/component/layout.dart';
-import '../../../../core/ui/component/responsive.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
@@ -18,34 +17,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-      mobile: Scaffold(
-        appBar: AppBar(
-          title: const HomeTitle(),
-          actions: const [
-            ShowSeedColorPickerDialogButton(),
-            LaunchGitHubButton(),
-            ToggleThemeModeButton(),
-          ],
-        ),
-        body: const _MobileBody(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const HomeTitle(),
+        actions: const [
+          ShowSeedColorPickerDialogButton(),
+          LaunchGitHubButton(),
+          ToggleThemeModeButton(),
+        ],
       ),
-      desktop: Scaffold(
-        appBar: AppBar(
-          title: const HomeTitle(),
-          actions: const [
-            LaunchGitHubButton(),
-            ToggleThemeModeButton(),
-          ],
-        ),
-        body: const _DesktopBody(),
-      ),
+      body: const _Body(),
     );
   }
 }
 
-class _MobileBody extends StatelessWidget {
-  const _MobileBody();
+class _Body extends StatelessWidget {
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
@@ -53,47 +40,13 @@ class _MobileBody extends StatelessWidget {
       child: Column(
         children: [
           _TonalPalettesPanel(),
-          Divider(indent: commonPadding, endIndent: commonPadding),
+          Divider(
+            indent: commonPadding,
+            endIndent: commonPadding,
+          ),
           _ColorSchemesPanel(),
         ],
       ),
-    );
-  }
-}
-
-class _DesktopBody extends StatelessWidget {
-  const _DesktopBody();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(commonPadding),
-            child: SizedBox(
-              width: pickerPanelWidth,
-              child: SeedColorPicker(),
-            ),
-          ),
-        ),
-        VerticalDivider(
-          indent: commonPadding,
-          endIndent: commonPadding,
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _TonalPalettesPanel(),
-                Divider(endIndent: commonPadding),
-                _ColorSchemesPanel(),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
