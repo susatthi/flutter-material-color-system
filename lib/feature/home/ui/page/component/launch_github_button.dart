@@ -15,6 +15,7 @@ class LaunchGitHubButton extends ConsumerWidget {
             ),
           ),
       icon: const Icon(Icons.code),
+      tooltip: 'github.com',
     );
   }
 }

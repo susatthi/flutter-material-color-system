@@ -23,6 +23,7 @@ class ShowSeedColorPickerDialogButton extends ConsumerWidget {
           backgroundColor: seedColor,
         ),
       ),
+      tooltip: 'Change color',
     );
   }
 }

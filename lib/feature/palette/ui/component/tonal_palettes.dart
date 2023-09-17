@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../core/ui/component/responsive.dart';
+import '../../../../core/ui/component/scaffold_messenger.dart';
 import 'palette.dart';
 
 class TonalPalettes extends StatelessWidget {
@@ -254,7 +257,7 @@ class _PrimaryColorText extends StatelessWidget {
   }
 }
 
-class _PrimaryCircleColor extends StatelessWidget {
+class _PrimaryCircleColor extends ConsumerWidget {
   const _PrimaryCircleColor({
     required this.materialColor,
     this.colorDimention = 42,
@@ -264,11 +267,27 @@ class _PrimaryCircleColor extends StatelessWidget {
   final double colorDimention;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final color = materialColor.shade600;
     return SizedBox.square(
       dimension: colorDimention,
-      child: CircleAvatar(
-        backgroundColor: materialColor.shade600,
+      child: InkWell(
+        onTap: () async {
+          // クリップボードにHEX文字列をコピー
+          final hex = color.toHexString();
+          await Clipboard.setData(ClipboardData(text: hex));
+
+          // スナックバーを表示する
+          ref.read(scaffoldMessengerProvider.notifier).showSnackBar(
+                SnackBar(
+                  content: Text('$hex Coppied!'),
+                  width: snackBarWidth,
+                ),
+              );
+        },
+        child: CircleAvatar(
+          backgroundColor: color,
+        ),
       ),
     );
   }

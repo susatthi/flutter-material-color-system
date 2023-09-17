@@ -14,6 +14,7 @@ class ToggleThemeModeButton extends ConsumerWidget {
         await ref.read(currentThemeModeProvider.notifier).toggle();
       },
       icon: Icon(themeMode.icon),
+      tooltip: 'Change ThemeMode',
     );
   }
 }
