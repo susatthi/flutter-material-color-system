@@ -3,9 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/state/current_seed_color.dart';
-import '../../../../core/ui/component/layout.dart';
 import '../../../../core/ui/component/material.dart';
-import '../../../../core/ui/component/scaffold_messenger.dart';
 import '../../entity/seed_color_history.dart';
 import '../../state/current_seed_color_history_collection.dart';
 import '../../use_case/add_seed_color_history.dart';
@@ -72,15 +70,9 @@ class _ListTile extends ConsumerWidget {
       leading: _ColorAvatar(
         history: history,
       ),
-      title: InkWell(
-        // onTap: () => showDialog<void>(
-        //   context: context,
-        //   builder: (context) => const _EditDialog(),
-        // ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Text(history.name),
-        ),
+      title: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Text(history.name),
       ),
       trailing: _DeleteButton(
         history: history,
@@ -141,57 +133,6 @@ class _AddButton extends ConsumerWidget {
   }
 }
 
-//TODO
-class _EditDialog extends ConsumerWidget {
-  const _EditDialog();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(addSeedColorHistoryUseCaseProvider, (prev, next) {
-      if (prev == null) {
-        return;
-      }
-      if (prev.isLoading && next.hasValue) {
-        Navigator.of(context).pop();
-        ref.read(scaffoldMessengerProvider.notifier).showSnackBar(
-              const SnackBar(
-                content: Text('Edited history color'),
-                width: snackBarWidth,
-              ),
-            );
-      }
-    });
-    final color = ref.watch(currentSeedColorProvider);
-    final useCaseState = ref.watch(addSeedColorHistoryUseCaseProvider);
-    return AlertDialog(
-      content: SingleChildScrollView(
-        child: Column(
-          children: [
-            CircleAvatar(
-              backgroundColor: color,
-            ),
-          ],
-        ),
-      ),
-      actions: [
-        TextButton(
-          onPressed:
-              useCaseState.isLoading ? null : () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: useCaseState.isLoading
-              ? null
-              : () => ref
-                  .read(addSeedColorHistoryUseCaseProvider.notifier)
-                  .invoke(color: color),
-          child: const Text('Add'),
-        ),
-      ],
-    );
-  }
-}
-
 class _NameTextField extends StatefulWidget {
   const _NameTextField();
 
@@ -227,6 +168,7 @@ class _DeleteButton extends ConsumerWidget {
       icon: const Icon(Icons.remove),
       color: context.outlineVariant,
       iconSize: 20,
+      tooltip: 'Delete color',
     );
   }
 }

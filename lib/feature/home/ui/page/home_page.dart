@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: const HomeTitle(),
           actions: const [
-            SeedColorButton(),
+            ShowSeedColorPickerDialogButton(),
             LaunchGitHubButton(),
             ToggleThemeModeButton(),
           ],

@@ -6,8 +6,8 @@ import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/ui/component/material.dart';
 import 'seed_color_history.dart';
 
-class SeedColorButton extends ConsumerWidget {
-  const SeedColorButton({super.key});
+class ShowSeedColorPickerDialogButton extends ConsumerWidget {
+  const ShowSeedColorPickerDialogButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,11 +33,9 @@ class SeedColorPickerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AlertDialog(
-      content: SingleChildScrollView(
-        child: SeedColorPicker(
-          wheelDiameter: 160,
-          colorDimension: 32,
-        ),
+      content: SeedColorPicker(
+        wheelDiameter: 160,
+        colorDimension: 32,
       ),
     );
   }
@@ -55,8 +53,7 @@ class SeedColorPicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
-      elevation: 2,
+    return SingleChildScrollView(
       child: Column(
         children: [
           ColorPicker(
