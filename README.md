@@ -4,15 +4,22 @@ Material Design 3 のカラーシステムを確認できるサイトです。�
 
 https://susatthi.github.io/flutter-material-color-system/
 
-https://github.com/susatthi/flutter-material-color-system/assets/13707135/dfb41f3e-5dac-40e9-a55c-98422f25d99f
+https://github.com/susatthi/flutter-material-color-system/assets/13707135/2e03e2d8-9b0a-4739-a619-8eee9e06b6dc
 
 
 ライトモード|ダークモード
 --|--
-![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/cf198752-6c69-4262-b2f1-821a99a5e6aa)|![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/50b01fdd-2b1d-4dd5-aac5-2af5587fd30d)
+![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/dd144ec6-4e96-4a29-a8a3-9dad039a4602)|![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/20d35f43-6104-4d85-a83a-1b695a7b9e2b)
+
+## 使い方
+
+デスクトップでお使いください。スマホでも使えますがマウスホバーが効かないので使いづらいと思います。
 
 - カラーピッカーからシード色を変更できます。
+- シード色を最大10個まで保存できます。
+- カラーをクリックするとHEX値をコピーします。
 - ライトテーマとダークテーマの切替ができます。
+- レスポンシブ対応です。
 
 ## 参考サイト
 
