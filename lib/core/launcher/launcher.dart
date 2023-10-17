@@ -29,14 +29,26 @@ class Launcher extends _$Launcher {
         logger.i('Successful launch: url = ${data.url}');
         return data;
       } on FormatException catch (e, s) {
-        logger.e('Can\'t parse url: url = ${data.url}', e, s);
+        logger.e(
+          'Can\'t parse url: url = ${data.url}',
+          error: e,
+          stackTrace: s,
+        );
         throw LauncherException(data, e, s);
       } on PlatformException catch (e, s) {
-        logger.w('Failure launch: url = ${data.url}', e, s);
+        logger.w(
+          'Failure launch: url = ${data.url}',
+          error: e,
+          stackTrace: s,
+        );
         throw LauncherException(data, e, s);
         // ignore: avoid_catching_errors
       } on ArgumentError catch (e, s) {
-        logger.w('Failure launch: url = ${data.url}', e, s);
+        logger.w(
+          'Failure launch: url = ${data.url}',
+          error: e,
+          stackTrace: s,
+        );
         throw LauncherException(data, e, s);
       }
     });

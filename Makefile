@@ -5,6 +5,10 @@ FLUTTER := $(FVM) flutter
 get-dependencies:
 	$(FLUTTER) pub get
 
+.PHONY: pub-upgrade
+pub-upgrade:
+	$(FLUTTER) pub upgrade
+
 .PHONY: clean
 clean:
 	$(FLUTTER) clean
@@ -15,7 +19,8 @@ build-runner:
 
 .PHONY: build-runner-watch
 build-runner-watch:
-	$(FLUTTER) packages pub run build_runner watch
+	$(FLUTTER) packages pub run build_runner clean
+	$(FLUTTER) packages pub run build_runner watch --delete-conflicting-outputs
 
 .PHONY: flutter-launcher-icons
 flutter-launcher-icons:

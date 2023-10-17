@@ -14,12 +14,12 @@
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false,
-    "editor.codeActionsOnSave": [
-      "source.organizeImports",
-      "source.addMissingImports",
-      "quickfix.insertSemicolon",
-      "source.fixAll"
-    ]
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.addMissingImports": "always",
+      "quickfix.insertSemicolon": "always",
+      "source.fixAll": "always",
+    }
   },
   "[css]": {
     "editor.formatOnSave": true,

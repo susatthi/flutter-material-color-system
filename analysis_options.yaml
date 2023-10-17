@@ -1,28 +1,31 @@
 # https://pub.dev/packages/pedantic_mono
 include: package:pedantic_mono/analysis_options.yaml
 
-# カスタマイズしたLinterルール
 linter:
   rules:
     avoid_classes_with_only_static_members: false
     cascade_invocations: false
+    comment_references: false
     constant_identifier_names: true
     library_private_types_in_public_api: false
     one_member_abstracts: false
     prefer_relative_imports: true
     use_build_context_synchronously: false
     lines_longer_than_80_chars: false
+    use_setters_to_change_properties: false
 
 # see: https://github.com/rrousselGit/freezed/issues/488#issuecomment-894358980
 analyzer:
   exclude:
-    - "**/*.freezed.dart"
-    - "**/*.gen.dart"
+    - '**/*.freezed.dart'
+    - '**/*.g.dart'
+    - '**/*.gr.dart'
+    - '**/*.gen.dart'
     - "**/generated_plugin_registrant.dart"
     - "**/firebase_options_*.dart"
   errors:
-    todo: ignore
     invalid_annotation_target: ignore
+    todo: ignore
   plugins:
     - custom_lint
 
