@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
-import 'data_source/shared_preferences/shared_preferences.dart';
+import 'core/data/shared_preferences/shared_preferences.dart';
 import 'feature/seed_color/entity/seed_color_history.dart';
 import 'feature/seed_color/entity/seed_color_history_collection.dart';
 import 'feature/seed_color/state/current_seed_color_history_collection.dart';
