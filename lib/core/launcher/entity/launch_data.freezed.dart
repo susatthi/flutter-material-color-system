@@ -63,22 +63,22 @@ class _$LaunchDataCopyWithImpl<$Res, $Val extends LaunchData>
 }
 
 /// @nodoc
-abstract class _$$_LaunchDataCopyWith<$Res>
+abstract class _$$LaunchDataImplCopyWith<$Res>
     implements $LaunchDataCopyWith<$Res> {
-  factory _$$_LaunchDataCopyWith(
-          _$_LaunchData value, $Res Function(_$_LaunchData) then) =
-      __$$_LaunchDataCopyWithImpl<$Res>;
+  factory _$$LaunchDataImplCopyWith(
+          _$LaunchDataImpl value, $Res Function(_$LaunchDataImpl) then) =
+      __$$LaunchDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Uri url, url_launcher.LaunchMode mode});
 }
 
 /// @nodoc
-class __$$_LaunchDataCopyWithImpl<$Res>
-    extends _$LaunchDataCopyWithImpl<$Res, _$_LaunchData>
-    implements _$$_LaunchDataCopyWith<$Res> {
-  __$$_LaunchDataCopyWithImpl(
-      _$_LaunchData _value, $Res Function(_$_LaunchData) _then)
+class __$$LaunchDataImplCopyWithImpl<$Res>
+    extends _$LaunchDataCopyWithImpl<$Res, _$LaunchDataImpl>
+    implements _$$LaunchDataImplCopyWith<$Res> {
+  __$$LaunchDataImplCopyWithImpl(
+      _$LaunchDataImpl _value, $Res Function(_$LaunchDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_LaunchDataCopyWithImpl<$Res>
     Object? url = null,
     Object? mode = null,
   }) {
-    return _then(_$_LaunchData(
+    return _then(_$LaunchDataImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_LaunchDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LaunchData implements _LaunchData {
-  const _$_LaunchData({required this.url, required this.mode});
+class _$LaunchDataImpl implements _LaunchData {
+  const _$LaunchDataImpl({required this.url, required this.mode});
 
   @override
   final Uri url;
@@ -119,7 +119,7 @@ class _$_LaunchData implements _LaunchData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LaunchData &&
+            other is _$LaunchDataImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.mode, mode) || other.mode == mode));
   }
@@ -130,14 +130,14 @@ class _$_LaunchData implements _LaunchData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LaunchDataCopyWith<_$_LaunchData> get copyWith =>
-      __$$_LaunchDataCopyWithImpl<_$_LaunchData>(this, _$identity);
+  _$$LaunchDataImplCopyWith<_$LaunchDataImpl> get copyWith =>
+      __$$LaunchDataImplCopyWithImpl<_$LaunchDataImpl>(this, _$identity);
 }
 
 abstract class _LaunchData implements LaunchData {
   const factory _LaunchData(
       {required final Uri url,
-      required final url_launcher.LaunchMode mode}) = _$_LaunchData;
+      required final url_launcher.LaunchMode mode}) = _$LaunchDataImpl;
 
   @override
   Uri get url;
@@ -145,6 +145,6 @@ abstract class _LaunchData implements LaunchData {
   url_launcher.LaunchMode get mode;
   @override
   @JsonKey(ignore: true)
-  _$$_LaunchDataCopyWith<_$_LaunchData> get copyWith =>
+  _$$LaunchDataImplCopyWith<_$LaunchDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,6 +18,7 @@ dependencies:
   hive: any
   hive_flutter: any
   material_color_utilities: any
+  recase: any
   responsive_framework: 0.2.0
   riverpod_annotation: any
   roggle: any

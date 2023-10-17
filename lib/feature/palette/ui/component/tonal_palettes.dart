@@ -2,15 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:material_color_utilities/material_color_utilities.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../core/ui/component/responsive.dart';
 import '../../../../core/ui/component/scaffold_messenger.dart';
+import '../../state/tonal_palette_kind.dart';
 import 'palette.dart';
 
-class TonalPalettes extends StatelessWidget {
+part 'tonal_palettes.g.dart';
+
+@riverpod
+PaletteItem _paletteItem(
+  _PaletteItemRef ref, {
+  required TonalPaletteKind kind,
+  required TonalPaletteShade shade,
+}) {
+  final color = ref.watch(tonalPaletteColorProvider(kind: kind, shade: shade));
+  return PaletteItem(
+    backgroundColor: color,
+    text: shade.title,
+  );
+}
+
+class TonalPalettes extends ConsumerWidget {
   const TonalPalettes({
     super.key,
     required this.seedColor,
@@ -20,37 +36,16 @@ class TonalPalettes extends StatelessWidget {
   final Color seedColor;
   final EdgeInsets padding;
 
-  CorePalette get _palette => CorePalette.of(seedColor.value);
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: padding,
       child: Column(
         children: [
-          _PaletteRow(
-            title: 'Primary',
-            materialColor: _palette.primaryMaterial,
-          ),
-          _PaletteRow(
-            title: 'Secondary',
-            materialColor: _palette.secondaryMaterial,
-          ),
-          _PaletteRow(
-            title: 'Tertiary',
-            materialColor: _palette.tertiaryMaterial,
-          ),
-          _PaletteRow(
-            title: 'Error',
-            materialColor: _palette.errorMaterial,
-          ),
-          _PaletteRow(
-            title: 'Neutral',
-            materialColor: _palette.neutralMaterial,
-          ),
-          _PaletteRow(
-            title: 'Neutral Variant',
-            materialColor: _palette.neutralVariantMaterial,
+          ...TonalPaletteKind.values.map(
+            (e) => _PaletteRow(
+              kind: e,
+            ),
           ),
         ],
       ),
@@ -60,90 +55,35 @@ class TonalPalettes extends StatelessWidget {
 
 class _PaletteRow extends StatelessWidget {
   const _PaletteRow({
-    required this.title,
-    required this.materialColor,
+    required this.kind,
   });
 
-  final String title;
-  final MaterialColor materialColor;
-
-  List<PaletteItem> get _paletteItems => [
-        PaletteItem(
-          backgroundColor: materialColor.shade1!,
-          text: '1',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade50,
-          text: '50',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade100,
-          text: '100',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade200,
-          text: '200',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade300,
-          text: '300',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade400,
-          text: '400',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade500,
-          text: '500',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade600,
-          text: '600',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade700,
-          text: '700',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade800,
-          text: '800',
-        ),
-        PaletteItem(
-          backgroundColor: materialColor.shade900,
-          text: '900',
-        ),
-      ];
+  final TonalPaletteKind kind;
 
   @override
   Widget build(BuildContext context) {
     return Responsive(
       mobile: _MobilePaletteRow(
-        title: title,
-        materialColor: materialColor,
-        paletteItems: _paletteItems,
+        kind: kind,
       ),
       tablet: _TabletPaletteRow(
-        title: title,
-        materialColor: materialColor,
-        paletteItems: _paletteItems,
+        kind: kind,
       ),
     );
   }
 }
 
-class _MobilePaletteRow extends StatelessWidget {
+class _MobilePaletteRow extends ConsumerWidget {
   const _MobilePaletteRow({
-    required this.title,
-    required this.materialColor,
-    required this.paletteItems,
+    required this.kind,
   });
 
-  final String title;
-  final MaterialColor materialColor;
-  final List<PaletteItem> paletteItems;
+  final TonalPaletteKind kind;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final materialColor =
+        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Column(
@@ -155,15 +95,17 @@ class _MobilePaletteRow extends StatelessWidget {
                 materialColor: materialColor,
               ),
               const Gap(24),
-              _TitleText(title: title),
+              _TitleText(title: kind.title),
             ],
           ),
           const SizedBox(height: commonPadding),
           Row(
             children: [
-              ...paletteItems.map(
+              ...TonalPaletteShade.values.map(
                 (e) => Expanded(
-                  child: Palette(item: e),
+                  child: Palette(
+                    item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
+                  ),
                 ),
               ),
             ],
@@ -175,19 +117,17 @@ class _MobilePaletteRow extends StatelessWidget {
   }
 }
 
-class _TabletPaletteRow extends StatelessWidget {
+class _TabletPaletteRow extends ConsumerWidget {
   const _TabletPaletteRow({
-    required this.title,
-    required this.materialColor,
-    required this.paletteItems,
+    required this.kind,
   });
 
-  final String title;
-  final MaterialColor materialColor;
-  final List<PaletteItem> paletteItems;
+  final TonalPaletteKind kind;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final materialColor =
+        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Row(
@@ -196,11 +136,13 @@ class _TabletPaletteRow extends StatelessWidget {
             materialColor: materialColor,
           ),
           const Gap(24),
-          _TitleText(title: title),
+          _TitleText(title: kind.title),
           const Gap(24),
-          ...paletteItems.map(
+          ...TonalPaletteShade.values.map(
             (e) => Expanded(
-              child: Palette(item: e),
+              child: Palette(
+                item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
+              ),
             ),
           ),
         ],
