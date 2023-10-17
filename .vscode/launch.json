@@ -12,7 +12,7 @@
       "program": "lib/main.dart",
       "args": [
         "--web-renderer",
-        "html",
+        "canvaskit",
         "--web-hostname",
         "localhost",
         "--web-port",

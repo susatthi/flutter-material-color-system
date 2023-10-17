@@ -50,7 +50,7 @@ jobs:
         run: |
           flutter config --enable-web
           flutter build web \
-            --web-renderer html \
+            --web-renderer canvaskit \
             --release \
             --base-href /${{ steps.version.outputs.repository }}/
 
