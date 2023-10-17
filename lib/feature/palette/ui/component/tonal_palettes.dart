@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 
 import '../../../../../core/ui/component/layout.dart';
@@ -150,18 +151,16 @@ class _MobilePaletteRow extends StatelessWidget {
         children: [
           Row(
             children: [
-              _TitleText(title: title),
-              _PrimaryColorText(materialColor: materialColor),
-            ],
-          ),
-          const SizedBox(height: commonPadding / 2),
-          Row(
-            children: [
               _PrimaryCircleColor(
                 materialColor: materialColor,
-                colorDimention: 32,
               ),
-              const SizedBox(width: commonPadding),
+              const Gap(24),
+              _TitleText(title: title),
+            ],
+          ),
+          const SizedBox(height: commonPadding),
+          Row(
+            children: [
               ...paletteItems.map(
                 (e) => Expanded(
                   child: Palette(item: e),
@@ -193,17 +192,12 @@ class _TabletPaletteRow extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       child: Row(
         children: [
-          Column(
-            children: [
-              _TitleText(title: title),
-              _PrimaryColorText(materialColor: materialColor),
-            ],
-          ),
-          const SizedBox(width: 24),
           _PrimaryCircleColor(
             materialColor: materialColor,
           ),
-          const SizedBox(width: 24),
+          const Gap(24),
+          _TitleText(title: title),
+          const Gap(24),
           ...paletteItems.map(
             (e) => Expanded(
               child: Palette(item: e),
@@ -236,35 +230,13 @@ class _TitleText extends StatelessWidget {
   }
 }
 
-class _PrimaryColorText extends StatelessWidget {
-  const _PrimaryColorText({
-    required this.materialColor,
-  });
-
-  final MaterialColor materialColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      child: Text(
-        '0x${materialColor.shade600.toHexString()}',
-        style: context.titleMedium,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
-  }
-}
-
 class _PrimaryCircleColor extends ConsumerWidget {
   const _PrimaryCircleColor({
     required this.materialColor,
-    this.colorDimention = 42,
   });
 
   final MaterialColor materialColor;
-  final double colorDimention;
+  static const colorDimention = 42.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
