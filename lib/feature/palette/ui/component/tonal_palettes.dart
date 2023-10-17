@@ -29,11 +29,9 @@ PaletteItem _paletteItem(
 class TonalPalettes extends ConsumerWidget {
   const TonalPalettes({
     super.key,
-    required this.seedColor,
     this.padding = const EdgeInsets.all(commonPadding),
   });
 
-  final Color seedColor;
   final EdgeInsets padding;
 
   @override

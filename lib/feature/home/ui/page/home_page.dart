@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recase/recase.dart';
 
 import '../../../../core/state/current_brightness.dart';
-import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/ui/component/layout.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
@@ -64,17 +63,14 @@ class _Body extends StatelessWidget {
   }
 }
 
-class _TonalPalettesPanel extends ConsumerWidget {
+class _TonalPalettesPanel extends StatelessWidget {
   const _TonalPalettesPanel();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final seedColor = ref.watch(currentSeedColorProvider);
-    return HomePanel(
+  Widget build(BuildContext context) {
+    return const HomePanel(
       title: 'Tonal Palettes',
-      child: TonalPalettes(
-        seedColor: seedColor,
-      ),
+      child: TonalPalettes(),
     );
   }
 }
