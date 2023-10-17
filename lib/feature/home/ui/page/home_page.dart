@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recase/recase.dart';
 
 import '../../../../core/state/current_brightness.dart';
 import '../../../../core/state/current_seed_color.dart';
@@ -7,6 +8,7 @@ import '../../../../core/ui/component/layout.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
+import 'component/copy_right.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';
 import 'component/launch_github_button.dart';
@@ -36,17 +38,28 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          _TonalPalettesPanel(),
-          Divider(
-            indent: commonPadding,
-            endIndent: commonPadding,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: const IntrinsicHeight(
+              child: Column(
+                children: [
+                  _TonalPalettesPanel(),
+                  Divider(
+                    indent: commonPadding,
+                    endIndent: commonPadding,
+                  ),
+                  _ColorSchemesPanel(),
+                  Spacer(),
+                  CopyRightText(),
+                ],
+              ),
+            ),
           ),
-          _ColorSchemesPanel(),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -73,10 +86,12 @@ class _ColorSchemesPanel extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final brightness = ref.watch(currentBrightnessProvider);
     return HomePanel(
-      title: brightness == Brightness.light
-          ? 'Light Color Scheme'
-          : 'Dark Color Scheme',
+      title: brightness.title,
       child: const ColorSchemes(),
     );
   }
+}
+
+extension on Brightness {
+  String get title => '${ReCase(name).titleCase} Color Scheme';
 }
