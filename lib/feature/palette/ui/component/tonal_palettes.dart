@@ -69,12 +69,60 @@ class _PaletteRow extends StatelessWidget {
       tablet: _TabletPaletteRow(
         kind: kind,
       ),
+      desktop: _DesktopPaletteRow(
+        kind: kind,
+      ),
     );
   }
 }
 
 class _MobilePaletteRow extends ConsumerWidget {
   const _MobilePaletteRow({
+    required this.kind,
+  });
+
+  final TonalPaletteKind kind;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final materialColor =
+        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              _PrimaryCircleColor(
+                materialColor: materialColor,
+              ),
+              const Gap(24),
+              _TitleText(title: kind.title),
+            ],
+          ),
+          const SizedBox(height: commonPadding),
+          Column(
+            children: [
+              ...TonalPaletteShade.values.map(
+                (e) => SizedBox(
+                  height: 40,
+                  child: Palette(
+                    item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: commonPadding),
+        ],
+      ),
+    );
+  }
+}
+
+class _TabletPaletteRow extends ConsumerWidget {
+  const _TabletPaletteRow({
     required this.kind,
   });
 
@@ -117,8 +165,8 @@ class _MobilePaletteRow extends ConsumerWidget {
   }
 }
 
-class _TabletPaletteRow extends ConsumerWidget {
-  const _TabletPaletteRow({
+class _DesktopPaletteRow extends ConsumerWidget {
+  const _DesktopPaletteRow({
     required this.kind,
   });
 

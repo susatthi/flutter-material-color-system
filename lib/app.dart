@@ -49,11 +49,11 @@ class App extends ConsumerWidget {
       home: ResponsiveWrapper.builder(
         const HomePage(),
         breakpoints: [
-          const ResponsiveBreakpoint.resize(820, name: MOBILE),
-          const ResponsiveBreakpoint.resize(1000, name: TABLET),
-          const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+          const ResponsiveBreakpoint.resize(420, name: MOBILE),
+          const ResponsiveBreakpoint.resize(600, name: TABLET),
+          const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
         ],
-        minWidth: 820,
+        minWidth: 420,
         maxWidth: 1200,
         defaultScale: true,
         background: Consumer(
