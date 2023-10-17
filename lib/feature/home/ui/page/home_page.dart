@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/state/current_brightness.dart';
 import '../../../../core/state/current_seed_color.dart';
-import '../../../../core/state/current_theme_mode.dart';
 import '../../../../core/ui/component/layout.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
@@ -71,15 +71,12 @@ class _ColorSchemesPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final seedColor = ref.watch(currentSeedColorProvider);
-    final themeMode = ref.watch(currentThemeModeProvider);
-    final isLight = themeMode == ThemeMode.light;
+    final brightness = ref.watch(currentBrightnessProvider);
     return HomePanel(
-      title: isLight ? 'Light Color Scheme' : 'Dark Color Scheme',
-      child: ColorSchemes(
-        brightness: isLight ? Brightness.light : Brightness.dark,
-        seedColor: seedColor,
-      ),
+      title: brightness == Brightness.light
+          ? 'Light Color Scheme'
+          : 'Dark Color Scheme',
+      child: const ColorSchemes(),
     );
   }
 }

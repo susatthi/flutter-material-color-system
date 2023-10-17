@@ -63,21 +63,21 @@ class _PaletteRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      mobile: _MobilePaletteRow(
+      mobile: _Mobile(
         kind: kind,
       ),
-      tablet: _TabletPaletteRow(
+      tablet: _Tablet(
         kind: kind,
       ),
-      desktop: _DesktopPaletteRow(
+      desktop: _Desktop(
         kind: kind,
       ),
     );
   }
 }
 
-class _MobilePaletteRow extends ConsumerWidget {
-  const _MobilePaletteRow({
+class _Mobile extends ConsumerWidget {
+  const _Mobile({
     required this.kind,
   });
 
@@ -121,8 +121,8 @@ class _MobilePaletteRow extends ConsumerWidget {
   }
 }
 
-class _TabletPaletteRow extends ConsumerWidget {
-  const _TabletPaletteRow({
+class _Tablet extends ConsumerWidget {
+  const _Tablet({
     required this.kind,
   });
 
@@ -165,8 +165,8 @@ class _TabletPaletteRow extends ConsumerWidget {
   }
 }
 
-class _DesktopPaletteRow extends ConsumerWidget {
-  const _DesktopPaletteRow({
+class _Desktop extends ConsumerWidget {
+  const _Desktop({
     required this.kind,
   });
 
