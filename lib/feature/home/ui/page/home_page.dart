@@ -7,6 +7,7 @@ import '../../../../core/ui/component/layout.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
+import 'component/app_version.dart';
 import 'component/copy_right.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';
@@ -52,7 +53,19 @@ class _Body extends StatelessWidget {
                   ),
                   _ColorSchemesPanel(),
                   Spacer(),
-                  CopyRightText(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Stack(
+                      alignment: AlignmentDirectional.center,
+                      children: [
+                        CopyRightText(),
+                        Positioned(
+                          right: 0,
+                          child: AppVersionText(),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
