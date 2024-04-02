@@ -1,8 +1,8 @@
 FVM := $(shell which fvm)
 FLUTTER := $(FVM) flutter
 
-.PHONY: get-dependencies
-get-dependencies:
+.PHONY: pub-get
+pub-get:
 	$(FLUTTER) pub get
 
 .PHONY: pub-upgrade
@@ -12,9 +12,10 @@ pub-upgrade:
 .PHONY: clean
 clean:
 	$(FLUTTER) clean
+	rm -rf ios/Pods ios/Podfile.lock
 
-.PHONY: build-runner
-build-runner:
+.PHONY: build-runner-build
+build-runner-build:
 	$(FLUTTER) packages pub run build_runner build --delete-conflicting-outputs
 
 .PHONY: build-runner-watch
