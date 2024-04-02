@@ -1,7 +1,8 @@
-// Dart Recommended Settings: https://dartcode.org/docs/recommended-settings/
 {
   "debug.openDebug": "openOnDebugBreak",
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,
   "editor.minimap.enabled": false,
@@ -13,17 +14,17 @@
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false,
+    "editor.wordBasedSuggestions": "off",
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always",
       "source.addMissingImports": "always",
       "quickfix.insertSemicolon": "always",
-      "source.fixAll": "always",
+      "source.fixAll": "always"
     }
   },
   "[css]": {
     "editor.formatOnSave": true,
-    "editor.formatOnType": true,
+    "editor.formatOnType": true
   },
   "dart.flutterSdkPath": ".fvm/flutter_sdk",
   "dart.debugSdkLibraries": false,
