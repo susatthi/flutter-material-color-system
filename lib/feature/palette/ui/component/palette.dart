@@ -25,7 +25,7 @@ class Palette extends ConsumerStatefulWidget {
   const Palette({
     super.key,
     required this.item,
-    this.padding = const EdgeInsets.all(commonPadding),
+    this.padding = const EdgeInsets.all(p8),
   });
 
   final PaletteItem item;

@@ -29,7 +29,7 @@ PaletteItem _paletteItem(
 class TonalPalettes extends ConsumerWidget {
   const TonalPalettes({
     super.key,
-    this.padding = const EdgeInsets.all(commonPadding),
+    this.padding = const EdgeInsets.all(p8),
   });
 
   final EdgeInsets padding;
@@ -99,7 +99,7 @@ class _Mobile extends ConsumerWidget {
               _TitleText(title: kind.title),
             ],
           ),
-          const SizedBox(height: commonPadding),
+          const SizedBox(height: p8),
           Column(
             children: [
               ...TonalPaletteShade.values.map(
@@ -112,7 +112,7 @@ class _Mobile extends ConsumerWidget {
               ),
             ],
           ),
-          const SizedBox(height: commonPadding),
+          const SizedBox(height: p8),
         ],
       ),
     );
@@ -144,7 +144,7 @@ class _Tablet extends ConsumerWidget {
               _TitleText(title: kind.title),
             ],
           ),
-          const SizedBox(height: commonPadding),
+          const SizedBox(height: p8),
           Row(
             children: [
               ...TonalPaletteShade.values.map(
@@ -156,7 +156,7 @@ class _Tablet extends ConsumerWidget {
               ),
             ],
           ),
-          const SizedBox(height: commonPadding),
+          const SizedBox(height: p8),
         ],
       ),
     );

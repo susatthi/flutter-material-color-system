@@ -48,8 +48,8 @@ class _Body extends StatelessWidget {
                 children: [
                   _TonalPalettesPanel(),
                   Divider(
-                    indent: commonPadding,
-                    endIndent: commonPadding,
+                    indent: p8,
+                    endIndent: p8,
                   ),
                   _ColorSchemesPanel(),
                   Spacer(),

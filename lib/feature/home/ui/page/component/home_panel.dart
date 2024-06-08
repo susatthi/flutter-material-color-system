@@ -18,10 +18,10 @@ class HomePanel extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: commonPadding),
+        const SizedBox(height: p8),
         if (title != null)
           Padding(
-            padding: const EdgeInsets.all(commonPadding),
+            padding: const EdgeInsets.all(p8),
             child: _TitleText(title: title!),
           ),
         child,
