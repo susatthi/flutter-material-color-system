@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'launch_data.dart';
+part of 'launch_url.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LaunchData {
+mixin _$LaunchUrlUseCaseState {
   Uri get url => throw _privateConstructorUsedError;
   url_launcher.LaunchMode get mode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LaunchDataCopyWith<LaunchData> get copyWith =>
+  $LaunchUrlUseCaseStateCopyWith<LaunchUrlUseCaseState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LaunchDataCopyWith<$Res> {
-  factory $LaunchDataCopyWith(
-          LaunchData value, $Res Function(LaunchData) then) =
-      _$LaunchDataCopyWithImpl<$Res, LaunchData>;
+abstract class $LaunchUrlUseCaseStateCopyWith<$Res> {
+  factory $LaunchUrlUseCaseStateCopyWith(LaunchUrlUseCaseState value,
+          $Res Function(LaunchUrlUseCaseState) then) =
+      _$LaunchUrlUseCaseStateCopyWithImpl<$Res, LaunchUrlUseCaseState>;
   @useResult
   $Res call({Uri url, url_launcher.LaunchMode mode});
 }
 
 /// @nodoc
-class _$LaunchDataCopyWithImpl<$Res, $Val extends LaunchData>
-    implements $LaunchDataCopyWith<$Res> {
-  _$LaunchDataCopyWithImpl(this._value, this._then);
+class _$LaunchUrlUseCaseStateCopyWithImpl<$Res,
+        $Val extends LaunchUrlUseCaseState>
+    implements $LaunchUrlUseCaseStateCopyWith<$Res> {
+  _$LaunchUrlUseCaseStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +64,24 @@ class _$LaunchDataCopyWithImpl<$Res, $Val extends LaunchData>
 }
 
 /// @nodoc
-abstract class _$$LaunchDataImplCopyWith<$Res>
-    implements $LaunchDataCopyWith<$Res> {
-  factory _$$LaunchDataImplCopyWith(
-          _$LaunchDataImpl value, $Res Function(_$LaunchDataImpl) then) =
-      __$$LaunchDataImplCopyWithImpl<$Res>;
+abstract class _$$LaunchUrlUseCaseStateImplCopyWith<$Res>
+    implements $LaunchUrlUseCaseStateCopyWith<$Res> {
+  factory _$$LaunchUrlUseCaseStateImplCopyWith(
+          _$LaunchUrlUseCaseStateImpl value,
+          $Res Function(_$LaunchUrlUseCaseStateImpl) then) =
+      __$$LaunchUrlUseCaseStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Uri url, url_launcher.LaunchMode mode});
 }
 
 /// @nodoc
-class __$$LaunchDataImplCopyWithImpl<$Res>
-    extends _$LaunchDataCopyWithImpl<$Res, _$LaunchDataImpl>
-    implements _$$LaunchDataImplCopyWith<$Res> {
-  __$$LaunchDataImplCopyWithImpl(
-      _$LaunchDataImpl _value, $Res Function(_$LaunchDataImpl) _then)
+class __$$LaunchUrlUseCaseStateImplCopyWithImpl<$Res>
+    extends _$LaunchUrlUseCaseStateCopyWithImpl<$Res,
+        _$LaunchUrlUseCaseStateImpl>
+    implements _$$LaunchUrlUseCaseStateImplCopyWith<$Res> {
+  __$$LaunchUrlUseCaseStateImplCopyWithImpl(_$LaunchUrlUseCaseStateImpl _value,
+      $Res Function(_$LaunchUrlUseCaseStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +90,7 @@ class __$$LaunchDataImplCopyWithImpl<$Res>
     Object? url = null,
     Object? mode = null,
   }) {
-    return _then(_$LaunchDataImpl(
+    return _then(_$LaunchUrlUseCaseStateImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -102,8 +105,8 @@ class __$$LaunchDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LaunchDataImpl implements _LaunchData {
-  const _$LaunchDataImpl({required this.url, required this.mode});
+class _$LaunchUrlUseCaseStateImpl implements _LaunchUrlUseCaseState {
+  const _$LaunchUrlUseCaseStateImpl({required this.url, required this.mode});
 
   @override
   final Uri url;
@@ -112,14 +115,14 @@ class _$LaunchDataImpl implements _LaunchData {
 
   @override
   String toString() {
-    return 'LaunchData(url: $url, mode: $mode)';
+    return 'LaunchUrlUseCaseState(url: $url, mode: $mode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LaunchDataImpl &&
+            other is _$LaunchUrlUseCaseStateImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.mode, mode) || other.mode == mode));
   }
@@ -130,14 +133,16 @@ class _$LaunchDataImpl implements _LaunchData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LaunchDataImplCopyWith<_$LaunchDataImpl> get copyWith =>
-      __$$LaunchDataImplCopyWithImpl<_$LaunchDataImpl>(this, _$identity);
+  _$$LaunchUrlUseCaseStateImplCopyWith<_$LaunchUrlUseCaseStateImpl>
+      get copyWith => __$$LaunchUrlUseCaseStateImplCopyWithImpl<
+          _$LaunchUrlUseCaseStateImpl>(this, _$identity);
 }
 
-abstract class _LaunchData implements LaunchData {
-  const factory _LaunchData(
-      {required final Uri url,
-      required final url_launcher.LaunchMode mode}) = _$LaunchDataImpl;
+abstract class _LaunchUrlUseCaseState implements LaunchUrlUseCaseState {
+  const factory _LaunchUrlUseCaseState(
+          {required final Uri url,
+          required final url_launcher.LaunchMode mode}) =
+      _$LaunchUrlUseCaseStateImpl;
 
   @override
   Uri get url;
@@ -145,6 +150,6 @@ abstract class _LaunchData implements LaunchData {
   url_launcher.LaunchMode get mode;
   @override
   @JsonKey(ignore: true)
-  _$$LaunchDataImplCopyWith<_$LaunchDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LaunchUrlUseCaseStateImplCopyWith<_$LaunchUrlUseCaseStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

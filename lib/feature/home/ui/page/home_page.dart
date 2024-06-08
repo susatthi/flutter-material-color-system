@@ -4,10 +4,10 @@ import 'package:recase/recase.dart';
 
 import '../../../../core/state/current_brightness.dart';
 import '../../../../core/ui/component/layout.dart';
+import '../../../app_info/ui/component/app_version.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';
-import 'component/app_version.dart';
 import 'component/copy_right.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/launcher/launcher.dart';
+import '../../../../launcher/use_case/launch_url.dart';
 
 class LaunchGitHubButton extends ConsumerWidget {
   const LaunchGitHubButton({super.key});
@@ -9,7 +9,7 @@ class LaunchGitHubButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
-      onPressed: () => ref.read(launcherProvider.notifier).launchUrl(
+      onPressed: () => ref.read(launchUrlUseCaseProvider.notifier).invoke(
             Uri.parse(
               'https://github.com/susatthi/flutter-material-color-system',
             ),
