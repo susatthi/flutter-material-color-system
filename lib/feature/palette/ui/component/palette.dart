@@ -84,14 +84,15 @@ class _PaletteState extends ConsumerState<Palette> {
 
     return Column(
       children: [
-        Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            text,
-            style: textStyle,
+        Expanded(
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              text,
+              style: textStyle,
+            ),
           ),
         ),
-        const Spacer(),
         Align(
           alignment: Alignment.bottomRight,
           child: Text(
