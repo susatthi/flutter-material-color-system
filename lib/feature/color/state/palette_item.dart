@@ -8,6 +8,7 @@ part 'palette_item.freezed.dart';
 class PaletteItem with _$PaletteItem {
   const factory PaletteItem({
     required Color backgroundColor,
+    Color? foregroundColor,
     String? text,
     String? subText,
   }) = _PaletteItem;

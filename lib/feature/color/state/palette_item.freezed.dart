@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PaletteItem {
   Color get backgroundColor => throw _privateConstructorUsedError;
+  Color? get foregroundColor => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   String? get subText => throw _privateConstructorUsedError;
 
@@ -31,7 +32,11 @@ abstract class $PaletteItemCopyWith<$Res> {
           PaletteItem value, $Res Function(PaletteItem) then) =
       _$PaletteItemCopyWithImpl<$Res, PaletteItem>;
   @useResult
-  $Res call({Color backgroundColor, String? text, String? subText});
+  $Res call(
+      {Color backgroundColor,
+      Color? foregroundColor,
+      String? text,
+      String? subText});
 }
 
 /// @nodoc
@@ -48,6 +53,7 @@ class _$PaletteItemCopyWithImpl<$Res, $Val extends PaletteItem>
   @override
   $Res call({
     Object? backgroundColor = null,
+    Object? foregroundColor = freezed,
     Object? text = freezed,
     Object? subText = freezed,
   }) {
@@ -56,6 +62,10 @@ class _$PaletteItemCopyWithImpl<$Res, $Val extends PaletteItem>
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      foregroundColor: freezed == foregroundColor
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -76,7 +86,11 @@ abstract class _$$PaletteItemImplCopyWith<$Res>
       __$$PaletteItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color backgroundColor, String? text, String? subText});
+  $Res call(
+      {Color backgroundColor,
+      Color? foregroundColor,
+      String? text,
+      String? subText});
 }
 
 /// @nodoc
@@ -91,6 +105,7 @@ class __$$PaletteItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? backgroundColor = null,
+    Object? foregroundColor = freezed,
     Object? text = freezed,
     Object? subText = freezed,
   }) {
@@ -99,6 +114,10 @@ class __$$PaletteItemImplCopyWithImpl<$Res>
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      foregroundColor: freezed == foregroundColor
+          ? _value.foregroundColor
+          : foregroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -115,10 +134,15 @@ class __$$PaletteItemImplCopyWithImpl<$Res>
 
 class _$PaletteItemImpl implements _PaletteItem {
   const _$PaletteItemImpl(
-      {required this.backgroundColor, this.text, this.subText});
+      {required this.backgroundColor,
+      this.foregroundColor,
+      this.text,
+      this.subText});
 
   @override
   final Color backgroundColor;
+  @override
+  final Color? foregroundColor;
   @override
   final String? text;
   @override
@@ -126,7 +150,7 @@ class _$PaletteItemImpl implements _PaletteItem {
 
   @override
   String toString() {
-    return 'PaletteItem(backgroundColor: $backgroundColor, text: $text, subText: $subText)';
+    return 'PaletteItem(backgroundColor: $backgroundColor, foregroundColor: $foregroundColor, text: $text, subText: $subText)';
   }
 
   @override
@@ -136,12 +160,15 @@ class _$PaletteItemImpl implements _PaletteItem {
             other is _$PaletteItemImpl &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
+            (identical(other.foregroundColor, foregroundColor) ||
+                other.foregroundColor == foregroundColor) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.subText, subText) || other.subText == subText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, backgroundColor, text, subText);
+  int get hashCode =>
+      Object.hash(runtimeType, backgroundColor, foregroundColor, text, subText);
 
   @JsonKey(ignore: true)
   @override
@@ -153,11 +180,14 @@ class _$PaletteItemImpl implements _PaletteItem {
 abstract class _PaletteItem implements PaletteItem {
   const factory _PaletteItem(
       {required final Color backgroundColor,
+      final Color? foregroundColor,
       final String? text,
       final String? subText}) = _$PaletteItemImpl;
 
   @override
   Color get backgroundColor;
+  @override
+  Color? get foregroundColor;
   @override
   String? get text;
   @override
