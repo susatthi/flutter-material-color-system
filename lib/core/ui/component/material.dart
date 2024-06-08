@@ -45,8 +45,6 @@ extension BuildContextX on BuildContext {
   Color get errorContainer => _colorScheme.errorContainer;
   Color get onErrorContainer => _colorScheme.onErrorContainer;
 
-  Color get background => _colorScheme.surface;
-  Color get onBackground => _colorScheme.onSurface;
   Color get surface => _colorScheme.surface;
   Color get onSurface => _colorScheme.onSurface;
   Color get surfaceDim => _colorScheme.surfaceDim;
@@ -57,7 +55,6 @@ extension BuildContextX on BuildContext {
   Color get surfaceContainerHigh => _colorScheme.surfaceContainerHigh;
   Color get surfaceContainerHighest => _colorScheme.surfaceContainerHighest;
   Color get onSurfaceVariant => _colorScheme.onSurfaceVariant;
-  Color get surfaceVariant => _colorScheme.surfaceContainerHighest;
 
   Color get outline => _colorScheme.outline;
   Color get outlineVariant => _colorScheme.outlineVariant;

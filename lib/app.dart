@@ -66,7 +66,7 @@ class _AppState extends ConsumerState<_App> {
       background: Consumer(
         builder: (context, ref, _) {
           return Container(
-            color: context.background,
+            color: context.surface,
           );
         },
       ),

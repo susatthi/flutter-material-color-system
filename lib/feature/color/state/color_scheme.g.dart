@@ -7,7 +7,7 @@ part of 'color_scheme.dart';
 // **************************************************************************
 
 String _$colorSchemeCollectionHash() =>
-    r'd6489b064108d0cb0892b0c7516f11c695745777';
+    r'527510cd09cd064829128825afaf68b7b13fb83d';
 
 /// See also [colorSchemeCollection].
 @ProviderFor(colorSchemeCollection)

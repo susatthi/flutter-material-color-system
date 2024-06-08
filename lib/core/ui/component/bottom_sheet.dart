@@ -57,7 +57,7 @@ class _GrabMark extends StatelessWidget {
       height: 4,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: context.surfaceVariant,
+          color: context.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(10),
         ),
       ),

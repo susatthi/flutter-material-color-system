@@ -27,9 +27,11 @@ class Palette extends ConsumerStatefulWidget {
 class _PaletteState extends ConsumerState<Palette> {
   bool isHover = false;
 
-  Color get textColor => widget.item.backgroundColor.computeLuminance() < 0.5
-      ? Colors.white
-      : Colors.black;
+  Color get textColor =>
+      widget.item.foregroundColor ??
+      (widget.item.backgroundColor.computeLuminance() < 0.5
+          ? Colors.white
+          : Colors.black);
 
   Color get lightBorderColor =>
       widget.item.backgroundColor.computeLuminance() < 0.5

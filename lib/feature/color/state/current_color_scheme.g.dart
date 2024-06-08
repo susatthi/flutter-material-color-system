@@ -7,7 +7,7 @@ part of 'current_color_scheme.dart';
 // **************************************************************************
 
 String _$currentColorSchemeHash() =>
-    r'4ee18adc69c6915ff50807c840ea4215c4855291';
+    r'57de576b3de2d5793f0ac7940d924d49de713afb';
 
 /// See also [currentColorScheme].
 @ProviderFor(currentColorScheme)

@@ -13,5 +13,6 @@ ColorScheme currentColorScheme(CurrentColorSchemeRef ref) {
   return ColorScheme.fromSeed(
     seedColor: seedColor,
     brightness: brightness,
+    dynamicSchemeVariant: DynamicSchemeVariant.rainbow,
   );
 }

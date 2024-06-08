@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:recase/recase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/ui/component/material.dart';
 import 'current_color_scheme.dart';
 import 'palette_item.dart';
 
@@ -64,8 +65,6 @@ enum ColorSchemeKind {
   errorContainer,
   onErrorContainer,
 
-  background,
-  onBackground,
   surface,
   onSurface,
   surfaceDim,
@@ -76,7 +75,6 @@ enum ColorSchemeKind {
   surfaceContainerHigh,
   surfaceContainerHighest,
   onSurfaceVariant,
-  surfaceVariant,
 
   outline,
   outlineVariant,
@@ -103,25 +101,15 @@ ColorSchemeCollection colorSchemeCollection(
             kind: kind,
             item: PaletteItem(
               backgroundColor: colorScheme.getColor(kind),
+              foregroundColor: colorScheme.getOnColor(kind),
               text: kind.title,
-              subText: 'TBD',
+              subText: colorScheme.getColor(kind).toHexString(),
             ),
           ),
         )
         .toList(),
   );
 }
-
-// @riverpod
-// String colorSchemeColorName(
-//   ColorSchemeColorNameRef ref, {
-//   required ColorSchemeKind kind,
-// }) {
-//   final color = ref.watch(colorSchemeColorProvider(kind: kind));
-//   logger.d('kind: ${kind.name} $color');
-//   final title = ref.watch(tonalPaletteTitleProvider(color: color));
-//   return title ?? 'TBD';
-// }
 
 extension on ColorScheme {
   Color getColor(ColorSchemeKind kind) => switch (kind) {
@@ -153,8 +141,6 @@ extension on ColorScheme {
         ColorSchemeKind.onError => onError,
         ColorSchemeKind.errorContainer => errorContainer,
         ColorSchemeKind.onErrorContainer => onErrorContainer,
-        ColorSchemeKind.background => surface,
-        ColorSchemeKind.onBackground => onSurface,
         ColorSchemeKind.surface => surface,
         ColorSchemeKind.onSurface => onSurface,
         ColorSchemeKind.surfaceDim => surfaceDim,
@@ -165,7 +151,6 @@ extension on ColorScheme {
         ColorSchemeKind.surfaceContainerHigh => surfaceContainerHigh,
         ColorSchemeKind.surfaceContainerHighest => surfaceContainerHighest,
         ColorSchemeKind.onSurfaceVariant => onSurfaceVariant,
-        ColorSchemeKind.surfaceVariant => surfaceContainerHighest,
         ColorSchemeKind.outline => outline,
         ColorSchemeKind.outlineVariant => outlineVariant,
         ColorSchemeKind.shadow => shadow,
@@ -173,6 +158,55 @@ extension on ColorScheme {
         ColorSchemeKind.inverseSurface => inverseSurface,
         ColorSchemeKind.onInverseSurface => onInverseSurface,
         ColorSchemeKind.inversePrimary => inversePrimary,
+        ColorSchemeKind.surfaceTint => surfaceTint,
+      };
+
+  Color getOnColor(ColorSchemeKind kind) => switch (kind) {
+        ColorSchemeKind.primary => onPrimary,
+        ColorSchemeKind.onPrimary => primary,
+        ColorSchemeKind.primaryContainer => onPrimaryContainer,
+        ColorSchemeKind.onPrimaryContainer => primaryContainer,
+        ColorSchemeKind.primaryFixed => onPrimaryFixed,
+        ColorSchemeKind.primaryFixedDim => onPrimaryFixed,
+        ColorSchemeKind.onPrimaryFixed => primaryFixed,
+        ColorSchemeKind.onPrimaryFixedVariant => primaryFixed,
+        ColorSchemeKind.secondary => onSecondary,
+        ColorSchemeKind.onSecondary => secondary,
+        ColorSchemeKind.secondaryContainer => onSecondaryContainer,
+        ColorSchemeKind.onSecondaryContainer => secondaryContainer,
+        ColorSchemeKind.secondaryFixed => onSecondaryFixed,
+        ColorSchemeKind.secondaryFixedDim => onSecondaryFixed,
+        ColorSchemeKind.onSecondaryFixed => secondaryFixed,
+        ColorSchemeKind.onSecondaryFixedVariant => secondaryFixed,
+        ColorSchemeKind.tertiary => onTertiary,
+        ColorSchemeKind.onTertiary => tertiary,
+        ColorSchemeKind.tertiaryContainer => onTertiaryContainer,
+        ColorSchemeKind.onTertiaryContainer => tertiaryContainer,
+        ColorSchemeKind.tertiaryFixed => onTertiaryFixed,
+        ColorSchemeKind.tertiaryFixedDim => onTertiaryFixed,
+        ColorSchemeKind.onTertiaryFixed => tertiaryFixed,
+        ColorSchemeKind.onTertiaryFixedVariant => tertiaryFixed,
+        ColorSchemeKind.error => onError,
+        ColorSchemeKind.onError => error,
+        ColorSchemeKind.errorContainer => onErrorContainer,
+        ColorSchemeKind.onErrorContainer => errorContainer,
+        ColorSchemeKind.surface => onSurface,
+        ColorSchemeKind.onSurface => surface,
+        ColorSchemeKind.surfaceDim => onSurface,
+        ColorSchemeKind.surfaceBright => onSurface,
+        ColorSchemeKind.surfaceContainerLowest => onSurface,
+        ColorSchemeKind.surfaceContainerLow => onSurface,
+        ColorSchemeKind.surfaceContainer => onSurface,
+        ColorSchemeKind.surfaceContainerHigh => onSurface,
+        ColorSchemeKind.surfaceContainerHighest => onSurface,
+        ColorSchemeKind.onSurfaceVariant => surface,
+        ColorSchemeKind.outline => surface,
+        ColorSchemeKind.outlineVariant => onSurface,
+        ColorSchemeKind.shadow => Colors.white,
+        ColorSchemeKind.scrim => Colors.white,
+        ColorSchemeKind.inverseSurface => onInverseSurface,
+        ColorSchemeKind.onInverseSurface => inverseSurface,
+        ColorSchemeKind.inversePrimary => onSurface,
         ColorSchemeKind.surfaceTint => surfaceTint,
       };
 }
