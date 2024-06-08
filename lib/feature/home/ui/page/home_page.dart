@@ -4,8 +4,8 @@ import 'package:recase/recase.dart';
 
 import '../../../../core/ui/component/layout.dart';
 import '../../../app/ui/component/app_version.dart';
-import '../../../palette/ui/component/color_schemes.dart';
-import '../../../palette/ui/component/tonal_palettes.dart';
+import '../../../color/ui/component/color_schemes.dart';
+import '../../../color/ui/component/tonal_palettes.dart';
 import '../../../theme_mode/state/current_brightness.dart';
 import '../../../theme_mode/ui/component/toggle_theme_mode_button.dart';
 import 'component/copy_right.dart';
