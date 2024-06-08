@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $DartToolGen {
+  const $DartToolGen();
+
+  /// File path: .dart_tool/version
+  String get version => '.dart_tool/version';
+
+  /// List of all assets
+  List<String> get values => [version];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -23,6 +33,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $DartToolGen dartTool = $DartToolGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
