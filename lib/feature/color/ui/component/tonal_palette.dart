@@ -2,29 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../core/ui/component/responsive.dart';
 import '../../../../core/ui/component/widget_ref_x.dart';
-import '../../state/tonal_palette_kind.dart';
+import '../../state/tonal_palette.dart';
 import 'palette.dart';
-
-part 'tonal_palettes.g.dart';
-
-@riverpod
-PaletteItem _paletteItem(
-  _PaletteItemRef ref, {
-  required TonalPaletteKind kind,
-  required TonalPaletteShade shade,
-}) {
-  final color = ref.watch(tonalPaletteColorProvider(kind: kind, shade: shade));
-  return PaletteItem(
-    backgroundColor: color,
-    text: shade.title,
-  );
-}
 
 class TonalPalettes extends ConsumerWidget {
   const TonalPalettes({
@@ -36,15 +20,13 @@ class TonalPalettes extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final collections = ref.watch(tonalPaletteCollectionsProvider);
     return Padding(
       padding: padding,
       child: Column(
         children: [
-          ...TonalPaletteKind.values.map(
-            (e) => _PaletteRow(
-              kind: e,
-            ),
-          ),
+          ...collections
+              .map((collection) => _PaletteRow(collection: collection)),
         ],
       ),
     );
@@ -53,22 +35,22 @@ class TonalPalettes extends ConsumerWidget {
 
 class _PaletteRow extends StatelessWidget {
   const _PaletteRow({
-    required this.kind,
+    required this.collection,
   });
 
-  final TonalPaletteKind kind;
+  final TonalPaletteCollection collection;
 
   @override
   Widget build(BuildContext context) {
     return Responsive(
       mobile: _Mobile(
-        kind: kind,
+        collection: collection,
       ),
       tablet: _Tablet(
-        kind: kind,
+        collection: collection,
       ),
       desktop: _Desktop(
-        kind: kind,
+        collection: collection,
       ),
     );
   }
@@ -76,15 +58,13 @@ class _PaletteRow extends StatelessWidget {
 
 class _Mobile extends ConsumerWidget {
   const _Mobile({
-    required this.kind,
+    required this.collection,
   });
 
-  final TonalPaletteKind kind;
+  final TonalPaletteCollection collection;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final materialColor =
-        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Column(
@@ -93,21 +73,19 @@ class _Mobile extends ConsumerWidget {
           Row(
             children: [
               _PrimaryCircleColor(
-                materialColor: materialColor,
+                color: collection.color,
               ),
               const Gap(24),
-              _TitleText(title: kind.title),
+              _TitleText(title: collection.title),
             ],
           ),
-          const SizedBox(height: p8),
+          const Gap(p8),
           Column(
             children: [
-              ...TonalPaletteShade.values.map(
-                (e) => SizedBox(
+              ...collection.items.map(
+                (item) => SizedBox(
                   height: 40,
-                  child: Palette(
-                    item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
-                  ),
+                  child: Palette(item: item.item),
                 ),
               ),
             ],
@@ -121,15 +99,13 @@ class _Mobile extends ConsumerWidget {
 
 class _Tablet extends ConsumerWidget {
   const _Tablet({
-    required this.kind,
+    required this.collection,
   });
 
-  final TonalPaletteKind kind;
+  final TonalPaletteCollection collection;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final materialColor =
-        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Column(
@@ -138,20 +114,18 @@ class _Tablet extends ConsumerWidget {
           Row(
             children: [
               _PrimaryCircleColor(
-                materialColor: materialColor,
+                color: collection.color,
               ),
               const Gap(24),
-              _TitleText(title: kind.title),
+              _TitleText(title: collection.title),
             ],
           ),
-          const SizedBox(height: p8),
+          const Gap(p8),
           Row(
             children: [
-              ...TonalPaletteShade.values.map(
-                (e) => Expanded(
-                  child: Palette(
-                    item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
-                  ),
+              ...collection.items.map(
+                (item) => Expanded(
+                  child: Palette(item: item.item),
                 ),
               ),
             ],
@@ -165,30 +139,26 @@ class _Tablet extends ConsumerWidget {
 
 class _Desktop extends ConsumerWidget {
   const _Desktop({
-    required this.kind,
+    required this.collection,
   });
 
-  final TonalPaletteKind kind;
+  final TonalPaletteCollection collection;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final materialColor =
-        ref.watch(tonalPaletteMaterialColorProvider(kind: kind));
     return Padding(
       padding: const EdgeInsets.all(4),
       child: Row(
         children: [
           _PrimaryCircleColor(
-            materialColor: materialColor,
+            color: collection.color,
           ),
           const Gap(24),
-          _TitleText(title: kind.title),
+          _TitleText(title: collection.title),
           const Gap(24),
-          ...TonalPaletteShade.values.map(
-            (e) => Expanded(
-              child: Palette(
-                item: ref.watch(_paletteItemProvider(kind: kind, shade: e)),
-              ),
+          ...collection.items.map(
+            (item) => Expanded(
+              child: Palette(item: item.item),
             ),
           ),
         ],
@@ -220,15 +190,14 @@ class _TitleText extends StatelessWidget {
 
 class _PrimaryCircleColor extends ConsumerWidget {
   const _PrimaryCircleColor({
-    required this.materialColor,
+    required this.color,
   });
 
-  final MaterialColor materialColor;
+  final Color color;
   static const colorDimention = 42.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color = materialColor.shade600;
     return SizedBox.square(
       dimension: colorDimention,
       child: InkWell(

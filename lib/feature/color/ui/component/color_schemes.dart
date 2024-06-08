@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/ui/component/responsive.dart';
 import '../../state/color_scheme_kind.dart';
+import '../../state/palette_item.dart';
 import 'palette.dart';
 
 part 'color_schemes.g.dart';

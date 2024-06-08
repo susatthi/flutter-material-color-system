@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../../core/ui/component/layout.dart';
@@ -9,17 +8,7 @@ import '../../../../../core/ui/component/material.dart';
 import '../../../../core/ui/component/widget_ref_x.dart';
 import '../../../theme_mode/state/current_theme_mode.dart';
 import '../../state/current_hover_color.dart';
-
-part 'palette.freezed.dart';
-
-@freezed
-class PaletteItem with _$PaletteItem {
-  const factory PaletteItem({
-    required Color backgroundColor,
-    String? text,
-    String? subText,
-  }) = _PaletteItem;
-}
+import '../../state/palette_item.dart';
 
 class Palette extends ConsumerStatefulWidget {
   const Palette({
