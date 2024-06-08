@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'current_theme_mode.dart';
+part of 'current_seed_color.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentThemeModeHash() => r'75ca59ebe3f46790d7506b65912cd6351f0fd590';
+String _$currentSeedColorHash() => r'd12102d4d029e76b4460d9e52d1c562d5aa6b1d6';
 
-/// See also [CurrentThemeMode].
-@ProviderFor(CurrentThemeMode)
-final currentThemeModeProvider =
-    AutoDisposeNotifierProvider<CurrentThemeMode, ThemeMode>.internal(
-  CurrentThemeMode.new,
-  name: r'currentThemeModeProvider',
+/// See also [CurrentSeedColor].
+@ProviderFor(CurrentSeedColor)
+final currentSeedColorProvider =
+    AutoDisposeNotifierProvider<CurrentSeedColor, Color>.internal(
+  CurrentSeedColor.new,
+  name: r'currentSeedColorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$currentThemeModeHash,
+      : _$currentSeedColorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CurrentThemeMode = AutoDisposeNotifier<ThemeMode>;
+typedef _$CurrentSeedColor = AutoDisposeNotifier<Color>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

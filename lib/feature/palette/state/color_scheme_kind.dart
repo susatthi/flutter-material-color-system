@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recase/recase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/state/current_color_scheme.dart';
 import '../../../util/logger.dart';
+import '../../app/state/current_color_scheme.dart';
 import 'tonal_palette_kind.dart';
 
 part 'color_scheme_kind.g.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/state/current_seed_color.dart';
 import '../../../../core/ui/component/material.dart';
+import '../../../app/state/current_seed_color.dart';
 import '../../entity/seed_color_history.dart';
 import '../../state/current_seed_color_history_collection.dart';
 import '../../use_case/add_seed_color_history.dart';
@@ -100,7 +100,7 @@ class _ColorAvatarState extends ConsumerState<_ColorAvatar> {
     return InkWell(
       onTap: () => ref
           .read(currentSeedColorProvider.notifier)
-          .set(seedColor: widget.history.color),
+          .updateValue(widget.history.color),
       onHover: (value) {
         setState(() {
           isHover = value;
@@ -120,13 +120,14 @@ class _AddButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final useCaseState = ref.watch(addSeedColorHistoryUseCaseProvider);
+    final currentSeedColor = ref.watch(currentSeedColorProvider);
+    final isLoading = ref.watch(addSeedColorHistoryUseCaseProvider).isLoading;
     return IconButton(
-      onPressed: useCaseState.isLoading
+      onPressed: isLoading
           ? null
           : () => ref
               .read(addSeedColorHistoryUseCaseProvider.notifier)
-              .invoke(color: ref.read(currentSeedColorProvider)),
+              .invoke(color: currentSeedColor),
       icon: const Icon(Icons.add_rounded),
       tooltip: 'Add current color to history',
     );

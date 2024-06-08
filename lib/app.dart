@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'core/state/current_theme_mode.dart';
 import 'core/ui/component/material.dart';
 import 'core/ui/component/messenger.dart';
-import 'core/ui/component/theme.dart';
+import 'feature/app/state/current_theme_mode.dart';
+import 'feature/app/ui/component/theme.dart';
 import 'feature/home/ui/page/home_page.dart';
 import 'feature/launcher/component/widget_ref_x.dart';
 

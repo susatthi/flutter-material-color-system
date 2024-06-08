@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recase/recase.dart';
 
-import '../../../../core/state/current_brightness.dart';
 import '../../../../core/ui/component/layout.dart';
-import '../../../app_info/ui/component/app_version.dart';
+import '../../../app/state/current_brightness.dart';
+import '../../../app/ui/component/app_version.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
 import '../../../seed_color/ui/component/seed_color.dart';

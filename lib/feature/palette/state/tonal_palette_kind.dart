@@ -3,9 +3,9 @@ import 'package:material_color_utilities/material_color_utilities.dart';
 import 'package:recase/recase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/state/current_seed_color.dart';
 import '../../../core/ui/component/material.dart';
 import '../../../util/logger.dart';
+import '../../app/state/current_seed_color.dart';
 
 part 'tonal_palette_kind.g.dart';
 
