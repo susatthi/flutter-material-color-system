@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/data/package_info/app_version.dart';
-import '../../../../../core/ui/component/material.dart';
+import '../../../../core/ui/component/material.dart';
+import '../../state/app_version.dart';
 
 class AppVersionText extends ConsumerWidget {
   const AppVersionText({super.key});
