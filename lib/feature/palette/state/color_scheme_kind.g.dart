@@ -6,7 +6,7 @@ part of 'color_scheme_kind.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$colorSchemeColorHash() => r'd26b3e9db1645501dd325540228b069061d33aa8';
+String _$colorSchemeColorHash() => r'2b0a44d6f17da41e6641a79fd7175de540542484';
 
 /// Copied from Dart SDK
 class _SystemHash {

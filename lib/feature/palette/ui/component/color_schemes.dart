@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../../core/ui/component/layout.dart';
 import '../../../../core/ui/component/responsive.dart';
 import '../../state/color_scheme_kind.dart';
 import 'palette.dart';
@@ -24,306 +23,768 @@ PaletteItem _paletteItem(
 }
 
 class ColorSchemes extends ConsumerWidget {
-  const ColorSchemes({
-    super.key,
-    this.padding = const EdgeInsets.all(commonPadding),
-  });
-
-  final EdgeInsets padding;
-  List<List<ColorSchemeKind>> get _mobileKinds => [
-        [
-          ColorSchemeKind.primary,
-        ],
-        [
-          ColorSchemeKind.onPrimary,
-        ],
-        [
-          ColorSchemeKind.primaryContainer,
-        ],
-        [
-          ColorSchemeKind.onPrimaryContainer,
-        ],
-        [
-          ColorSchemeKind.secondary,
-        ],
-        [
-          ColorSchemeKind.onSecondary,
-        ],
-        [
-          ColorSchemeKind.secondaryContainer,
-        ],
-        [
-          ColorSchemeKind.onSecondaryContainer,
-        ],
-        [
-          ColorSchemeKind.tertiary,
-        ],
-        [
-          ColorSchemeKind.onTertiary,
-        ],
-        [
-          ColorSchemeKind.tertiaryContainer,
-        ],
-        [
-          ColorSchemeKind.onTertiaryContainer,
-        ],
-        [
-          ColorSchemeKind.error,
-        ],
-        [
-          ColorSchemeKind.onError,
-        ],
-        [
-          ColorSchemeKind.errorContainer,
-        ],
-        [
-          ColorSchemeKind.onErrorContainer,
-        ],
-        [
-          ColorSchemeKind.background,
-        ],
-        [
-          ColorSchemeKind.onBackground,
-        ],
-        [
-          ColorSchemeKind.surface,
-        ],
-        [
-          ColorSchemeKind.onSurface,
-        ],
-        [
-          ColorSchemeKind.outline,
-        ],
-        [
-          ColorSchemeKind.outlineVariant,
-        ],
-        [
-          ColorSchemeKind.surfaceVariant,
-        ],
-        [
-          ColorSchemeKind.onSurfaceVariant,
-        ],
-        [
-          ColorSchemeKind.surfaceTint,
-        ],
-        [
-          ColorSchemeKind.inversePrimary,
-        ],
-        [
-          ColorSchemeKind.inverseSurface,
-        ],
-        [
-          ColorSchemeKind.onInverseSurface,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerLowest,
-        ],
-        [
-          ColorSchemeKind.surfaceBright,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerLow,
-        ],
-        [
-          ColorSchemeKind.surfaceContainer,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerHigh,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerHighest,
-        ],
-        [
-          ColorSchemeKind.surfaceDim,
-        ],
-      ];
-
-  List<List<ColorSchemeKind>> get _tabletKinds => [
-        [
-          ColorSchemeKind.primary,
-          ColorSchemeKind.onPrimary,
-        ],
-        [
-          ColorSchemeKind.primaryContainer,
-          ColorSchemeKind.onPrimaryContainer,
-        ],
-        [
-          ColorSchemeKind.secondary,
-          ColorSchemeKind.onSecondary,
-        ],
-        [
-          ColorSchemeKind.secondaryContainer,
-          ColorSchemeKind.onSecondaryContainer,
-        ],
-        [
-          ColorSchemeKind.tertiary,
-          ColorSchemeKind.onTertiary,
-        ],
-        [
-          ColorSchemeKind.tertiaryContainer,
-          ColorSchemeKind.onTertiaryContainer,
-        ],
-        [
-          ColorSchemeKind.error,
-          ColorSchemeKind.onError,
-        ],
-        [
-          ColorSchemeKind.errorContainer,
-          ColorSchemeKind.onErrorContainer,
-        ],
-        [
-          ColorSchemeKind.background,
-          ColorSchemeKind.onBackground,
-        ],
-        [
-          ColorSchemeKind.surface,
-          ColorSchemeKind.onSurface,
-        ],
-        [
-          ColorSchemeKind.outline,
-          ColorSchemeKind.outlineVariant,
-        ],
-        [
-          ColorSchemeKind.surfaceVariant,
-          ColorSchemeKind.onSurfaceVariant,
-        ],
-        [
-          ColorSchemeKind.surfaceTint,
-          ColorSchemeKind.inversePrimary,
-        ],
-        [
-          ColorSchemeKind.inverseSurface,
-          ColorSchemeKind.onInverseSurface,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerLowest,
-        ],
-        [
-          ColorSchemeKind.surfaceBright,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerLow,
-        ],
-        [
-          ColorSchemeKind.surfaceContainer,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerHigh,
-        ],
-        [
-          ColorSchemeKind.surfaceContainerHighest,
-        ],
-        [
-          ColorSchemeKind.surfaceDim,
-        ],
-      ];
-
-  List<List<ColorSchemeKind>> get _desktopKinds => [
-        [
-          ColorSchemeKind.primary,
-          ColorSchemeKind.onPrimary,
-          ColorSchemeKind.primaryContainer,
-          ColorSchemeKind.onPrimaryContainer,
-          ColorSchemeKind.surfaceContainerLowest,
-        ],
-        [
-          ColorSchemeKind.secondary,
-          ColorSchemeKind.onSecondary,
-          ColorSchemeKind.secondaryContainer,
-          ColorSchemeKind.onSecondaryContainer,
-          ColorSchemeKind.surfaceBright,
-        ],
-        [
-          ColorSchemeKind.tertiary,
-          ColorSchemeKind.onTertiary,
-          ColorSchemeKind.tertiaryContainer,
-          ColorSchemeKind.onTertiaryContainer,
-          ColorSchemeKind.surfaceContainerLow,
-        ],
-        [
-          ColorSchemeKind.error,
-          ColorSchemeKind.onError,
-          ColorSchemeKind.errorContainer,
-          ColorSchemeKind.onErrorContainer,
-          ColorSchemeKind.surfaceContainer,
-        ],
-        [
-          ColorSchemeKind.background,
-          ColorSchemeKind.onBackground,
-          ColorSchemeKind.surface,
-          ColorSchemeKind.onSurface,
-          ColorSchemeKind.surfaceContainerHigh,
-        ],
-        [
-          ColorSchemeKind.outline,
-          ColorSchemeKind.outlineVariant,
-          ColorSchemeKind.surfaceVariant,
-          ColorSchemeKind.onSurfaceVariant,
-          ColorSchemeKind.surfaceContainerHighest,
-        ],
-        [
-          ColorSchemeKind.surfaceTint,
-          ColorSchemeKind.inversePrimary,
-          ColorSchemeKind.inverseSurface,
-          ColorSchemeKind.onInverseSurface,
-          ColorSchemeKind.surfaceDim,
-        ],
-      ];
+  const ColorSchemes({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: padding,
+    return const Padding(
+      padding: EdgeInsets.all(8),
       child: Responsive(
-        mobile: _Grid(
-          kinds: _mobileKinds,
-        ),
-        tablet: _Grid(
-          kinds: _tabletKinds,
-        ),
-        desktop: _Grid(
-          kinds: _desktopKinds,
-          verticalPadding: const EdgeInsets.all(4),
-        ),
+        mobile: _MobileColorSchemes(),
+        tablet: _TabletColorSchemes(),
+        desktop: _DesktopColorSchemes(),
       ),
     );
   }
 }
 
-class _Grid extends ConsumerWidget {
-  const _Grid({
-    required this.kinds,
-    this.verticalPadding = EdgeInsets.zero,
-  });
-
-  final List<List<ColorSchemeKind>> kinds;
-  final EdgeInsets verticalPadding;
+class _DesktopColorSchemes extends ConsumerWidget {
+  const _DesktopColorSchemes();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
-      children: kinds
-          .map(
-            (row) => Padding(
-              padding: verticalPadding,
-              child: Row(
-                children: row
-                    .asMap()
-                    .entries
-                    .map(
-                      (entry) => Expanded(
-                        child: Palette(
-                          item: ref.watch(
-                            _paletteItemProvider(kind: entry.value),
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
+      children: [
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.primary,
+                onColor: ColorSchemeKind.onPrimary,
               ),
             ),
-          )
-          .toList(),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.secondary,
+                onColor: ColorSchemeKind.onSecondary,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.tertiary,
+                onColor: ColorSchemeKind.onTertiary,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.error,
+                onColor: ColorSchemeKind.onError,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.primaryContainer,
+                onColor: ColorSchemeKind.onPrimaryContainer,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.secondaryContainer,
+                onColor: ColorSchemeKind.onSecondaryContainer,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.tertiaryContainer,
+                onColor: ColorSchemeKind.onTertiaryContainer,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.errorContainer,
+                onColor: ColorSchemeKind.onErrorContainer,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.primaryFixed,
+                dim: ColorSchemeKind.primaryFixedDim,
+                onFixed: ColorSchemeKind.onPrimaryFixed,
+                onFixedVariant: ColorSchemeKind.onPrimaryFixedVariant,
+              ),
+            ),
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.secondaryFixed,
+                dim: ColorSchemeKind.secondaryFixedDim,
+                onFixed: ColorSchemeKind.onSecondaryFixed,
+                onFixedVariant: ColorSchemeKind.onSecondaryFixedVariant,
+              ),
+            ),
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.tertiaryFixed,
+                dim: ColorSchemeKind.tertiaryFixedDim,
+                onFixed: ColorSchemeKind.onTertiaryFixed,
+                onFixedVariant: ColorSchemeKind.onTertiaryFixedVariant,
+              ),
+            ),
+            Expanded(
+              child: InversePaletteCollection(),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceDim,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surface,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceBright,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceContainerLowest,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceContainerLow,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceContainer,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceContainerHigh,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.surfaceContainerHighest,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.onSurface,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.outline,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.outlineVariant,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.scrim,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Palette(
+                  item: ref.watch(
+                    _paletteItemProvider(
+                      kind: ColorSchemeKind.shadow,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _TabletColorSchemes extends ConsumerWidget {
+  const _TabletColorSchemes();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.primary,
+                onColor: ColorSchemeKind.onPrimary,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.secondary,
+                onColor: ColorSchemeKind.onSecondary,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.tertiary,
+                onColor: ColorSchemeKind.onTertiary,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.error,
+                onColor: ColorSchemeKind.onError,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.primaryContainer,
+                onColor: ColorSchemeKind.onPrimaryContainer,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.secondaryContainer,
+                onColor: ColorSchemeKind.onSecondaryContainer,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.tertiaryContainer,
+                onColor: ColorSchemeKind.onTertiaryContainer,
+              ),
+            ),
+            Expanded(
+              child: MainPaletteCollection(
+                color: ColorSchemeKind.errorContainer,
+                onColor: ColorSchemeKind.onErrorContainer,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.primaryFixed,
+                dim: ColorSchemeKind.primaryFixedDim,
+                onFixed: ColorSchemeKind.onPrimaryFixed,
+                onFixedVariant: ColorSchemeKind.onPrimaryFixedVariant,
+              ),
+            ),
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.secondaryFixed,
+                dim: ColorSchemeKind.secondaryFixedDim,
+                onFixed: ColorSchemeKind.onSecondaryFixed,
+                onFixedVariant: ColorSchemeKind.onSecondaryFixedVariant,
+              ),
+            ),
+          ],
+        ),
+        const Row(
+          children: [
+            Expanded(
+              child: SubPaletteCollection(
+                fixed: ColorSchemeKind.tertiaryFixed,
+                dim: ColorSchemeKind.tertiaryFixedDim,
+                onFixed: ColorSchemeKind.onTertiaryFixed,
+                onFixedVariant: ColorSchemeKind.onTertiaryFixedVariant,
+              ),
+            ),
+            Expanded(
+              child: InversePaletteCollection(),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceDim,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surface,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceBright,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerLowest,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerLow,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainer,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerHigh,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerHighest,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.onSurface,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.onSurfaceVariant,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.outline,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.outlineVariant,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.scrim,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.shadow,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _MobileColorSchemes extends ConsumerWidget {
+  const _MobileColorSchemes();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        const MainPaletteCollection(
+          color: ColorSchemeKind.primary,
+          onColor: ColorSchemeKind.onPrimary,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.secondary,
+          onColor: ColorSchemeKind.onSecondary,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.tertiary,
+          onColor: ColorSchemeKind.onTertiary,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.error,
+          onColor: ColorSchemeKind.onError,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.primaryContainer,
+          onColor: ColorSchemeKind.onPrimaryContainer,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.secondaryContainer,
+          onColor: ColorSchemeKind.onSecondaryContainer,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.tertiaryContainer,
+          onColor: ColorSchemeKind.onTertiaryContainer,
+        ),
+        const MainPaletteCollection(
+          color: ColorSchemeKind.errorContainer,
+          onColor: ColorSchemeKind.onErrorContainer,
+        ),
+        const SubPaletteCollection(
+          fixed: ColorSchemeKind.primaryFixed,
+          dim: ColorSchemeKind.primaryFixedDim,
+          onFixed: ColorSchemeKind.onPrimaryFixed,
+          onFixedVariant: ColorSchemeKind.onPrimaryFixedVariant,
+        ),
+        const SubPaletteCollection(
+          fixed: ColorSchemeKind.secondaryFixed,
+          dim: ColorSchemeKind.secondaryFixedDim,
+          onFixed: ColorSchemeKind.onSecondaryFixed,
+          onFixedVariant: ColorSchemeKind.onSecondaryFixedVariant,
+        ),
+        const SubPaletteCollection(
+          fixed: ColorSchemeKind.tertiaryFixed,
+          dim: ColorSchemeKind.tertiaryFixedDim,
+          onFixed: ColorSchemeKind.onTertiaryFixed,
+          onFixedVariant: ColorSchemeKind.onTertiaryFixedVariant,
+        ),
+        const InversePaletteCollection(),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceDim,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surface,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceBright,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerLowest,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerLow,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainer,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerHigh,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.surfaceContainerHighest,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.onSurface,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.onSurfaceVariant,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.outline,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.outlineVariant,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.scrim,
+                  ),
+                ),
+              ),
+              Palette(
+                item: ref.watch(
+                  _paletteItemProvider(
+                    kind: ColorSchemeKind.shadow,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class MainPaletteCollection extends ConsumerWidget {
+  const MainPaletteCollection({
+    super.key,
+    required this.color,
+    required this.onColor,
+  });
+
+  final ColorSchemeKind color;
+  final ColorSchemeKind onColor;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colorItem = ref.watch(_paletteItemProvider(kind: color));
+    final onColorItem = ref.watch(_paletteItemProvider(kind: onColor));
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: Column(
+        children: [
+          Palette(item: colorItem),
+          Palette(item: onColorItem),
+        ],
+      ),
+    );
+  }
+}
+
+class InversePaletteCollection extends ConsumerWidget {
+  const InversePaletteCollection({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final inverseSurfaceItem =
+        ref.watch(_paletteItemProvider(kind: ColorSchemeKind.inverseSurface));
+    final onInverseSurfaceItem =
+        ref.watch(_paletteItemProvider(kind: ColorSchemeKind.onInverseSurface));
+    final inversePrimaryItem =
+        ref.watch(_paletteItemProvider(kind: ColorSchemeKind.inversePrimary));
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: Column(
+        children: [
+          Palette(item: inverseSurfaceItem),
+          Palette(item: onInverseSurfaceItem),
+          Palette(item: inversePrimaryItem),
+        ],
+      ),
+    );
+  }
+}
+
+class SubPaletteCollection extends ConsumerWidget {
+  const SubPaletteCollection({
+    super.key,
+    required this.fixed,
+    required this.dim,
+    required this.onFixed,
+    required this.onFixedVariant,
+  });
+
+  final ColorSchemeKind fixed;
+  final ColorSchemeKind dim;
+  final ColorSchemeKind onFixed;
+  final ColorSchemeKind onFixedVariant;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final fixedItem = ref.watch(_paletteItemProvider(kind: fixed));
+    final dimItem = ref.watch(_paletteItemProvider(kind: dim));
+    final onFixedItem = ref.watch(_paletteItemProvider(kind: onFixed));
+    final onFixedVariantItem =
+        ref.watch(_paletteItemProvider(kind: onFixedVariant));
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Palette(item: fixedItem),
+              ),
+              Expanded(
+                child: Palette(item: dimItem),
+              ),
+            ],
+          ),
+          Palette(item: onFixedItem),
+          Palette(item: onFixedVariantItem),
+        ],
+      ),
     );
   }
 }
