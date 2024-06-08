@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/ui/component/material.dart';
-import '../../../app/state/current_seed_color.dart';
+import '../../../color/state/current_seed_color.dart';
 import '../../entity/seed_color_history.dart';
 import '../../state/current_seed_color_history_collection.dart';
 import '../../use_case/add_seed_color_history.dart';

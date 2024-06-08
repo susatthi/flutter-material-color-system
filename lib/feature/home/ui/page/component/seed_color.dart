@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/ui/component/material.dart';
-import '../../../../app/state/current_seed_color.dart';
+import '../../../../color/state/current_seed_color.dart';
 import '../../../../seed_color_history/ui/component/seed_color_history.dart';
 
 class ShowSeedColorPickerDialogButton extends ConsumerWidget {

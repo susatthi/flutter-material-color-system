@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/ui/component/material.dart';
 import '../../../util/logger.dart';
-import '../../app/state/current_seed_color.dart';
+import 'current_seed_color.dart';
 
 part 'tonal_palette_kind.g.dart';
 
