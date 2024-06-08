@@ -7,9 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'core/data/package_info/package_info.dart';
 import 'core/data/shared_preferences/shared_preferences.dart';
-import 'feature/seed_color/entity/seed_color_history.dart';
-import 'feature/seed_color/entity/seed_color_history_collection.dart';
-import 'feature/seed_color/state/current_seed_color_history_collection.dart';
+import 'feature/seed_color_history/entity/seed_color_history.dart';
+import 'feature/seed_color_history/entity/seed_color_history_collection.dart';
+import 'feature/seed_color_history/state/current_seed_color_history_collection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
