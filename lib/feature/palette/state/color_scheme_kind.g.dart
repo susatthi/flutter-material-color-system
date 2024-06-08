@@ -156,7 +156,7 @@ class _ColorSchemeColorProviderElement extends AutoDisposeProviderElement<Color>
 }
 
 String _$colorSchemeColorNameHash() =>
-    r'68b33d5abae3e13281f7d9e1274a8aa9c5c9e256';
+    r'4723b1e869e585eb755a92d642860cdb57114f0e';
 
 /// See also [colorSchemeColorName].
 @ProviderFor(colorSchemeColorName)

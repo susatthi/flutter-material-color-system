@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:recase/recase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/state/current_brightness.dart';
 import '../../../core/state/current_color_scheme.dart';
+import '../../../util/logger.dart';
+import 'tonal_palette_kind.dart';
 
 part 'color_scheme_kind.g.dart';
 
@@ -68,110 +69,6 @@ enum ColorSchemeKind {
   ;
 
   String get title => ReCase(name).titleCase;
-
-  String get lightColorName => switch (this) {
-        primary => 'Primary600',
-        onPrimary => 'White',
-        primaryContainer => 'Primary100',
-        onPrimaryContainer => 'Primary900',
-        primaryFixed => 'TBD',
-        primaryFixedDim => 'TBD',
-        onPrimaryFixed => 'TBD',
-        onPrimaryFixedVariant => 'TBD',
-        secondary => 'Secondary600',
-        onSecondary => 'White',
-        secondaryContainer => 'Secondary100',
-        onSecondaryContainer => 'Secondary900',
-        secondaryFixed => 'TBD',
-        secondaryFixedDim => 'TBD',
-        onSecondaryFixed => 'TBD',
-        onSecondaryFixedVariant => 'TBD',
-        tertiary => 'Tertiary600',
-        onTertiary => 'White',
-        tertiaryContainer => 'Tertiary100',
-        onTertiaryContainer => 'Tertiary900',
-        tertiaryFixed => 'TBD',
-        tertiaryFixedDim => 'TBD',
-        onTertiaryFixed => 'TBD',
-        onTertiaryFixedVariant => 'TBD',
-        error => 'Error600',
-        onError => 'White',
-        errorContainer => 'Error100',
-        onErrorContainer => 'Error900',
-        background => 'Neutral1',
-        onBackground => 'Neutral900',
-        surface => 'Neutral1',
-        onSurface => 'Neutral900',
-        surfaceDim => 'Neutral130',
-        surfaceBright => 'Neutral20',
-        surfaceContainerLowest => 'White',
-        surfaceContainerLow => 'Neutral40',
-        surfaceContainer => 'Neutral60',
-        surfaceContainerHigh => 'Neutral80',
-        surfaceContainerHighest => 'Neutral100',
-        onSurfaceVariant => 'Neutral-Variant700',
-        surfaceVariant => 'Neutral-Variant100',
-        outline => 'Neutral-Variant500',
-        outlineVariant => 'Neutral-Variant200',
-        shadow => 'TBD',
-        scrim => 'TBD',
-        inverseSurface => 'Neutral800',
-        onInverseSurface => 'Neutral50',
-        inversePrimary => 'Primary200',
-        surfaceTint => 'Primary600',
-      };
-
-  String get darkColorName => switch (this) {
-        primary => 'Primary200',
-        onPrimary => 'Primary800',
-        primaryContainer => 'Primary700',
-        onPrimaryContainer => 'Primary100',
-        primaryFixed => 'TBD',
-        primaryFixedDim => 'TBD',
-        onPrimaryFixed => 'TBD',
-        onPrimaryFixedVariant => 'TBD',
-        secondary => 'Secondary200',
-        onSecondary => 'Secondary800',
-        secondaryContainer => 'Secondary700',
-        onSecondaryContainer => 'Secondary100',
-        secondaryFixed => 'TBD',
-        secondaryFixedDim => 'TBD',
-        onSecondaryFixed => 'TBD',
-        onSecondaryFixedVariant => 'TBD',
-        tertiary => 'Tertiary200',
-        onTertiary => 'Tertiary800',
-        tertiaryContainer => 'Tertiary700',
-        onTertiaryContainer => 'Tertiary100',
-        tertiaryFixed => 'TBD',
-        tertiaryFixedDim => 'TBD',
-        onTertiaryFixed => 'TBD',
-        onTertiaryFixedVariant => 'TBD',
-        error => 'Error200',
-        onError => 'Error800',
-        errorContainer => 'Error700',
-        onErrorContainer => 'Error100',
-        background => 'Neutral900',
-        onBackground => 'Neutral100',
-        surface => 'Neutral900',
-        onSurface => 'Neutral100',
-        surfaceDim => 'Neutral940',
-        surfaceBright => 'Neutral760',
-        surfaceContainerLowest => 'Neutral960',
-        surfaceContainerLow => 'Neutral900',
-        surfaceContainer => 'Neutral880',
-        surfaceContainerHigh => 'Neutral830',
-        surfaceContainerHighest => 'Neutral780',
-        onSurfaceVariant => 'Neutral-Variant200',
-        surfaceVariant => 'Neutral-Variant700',
-        outline => 'Neutral-Variant400',
-        outlineVariant => 'Neutral-Variant800',
-        shadow => 'TBD',
-        scrim => 'TBD',
-        inverseSurface => 'Neutral100',
-        onInverseSurface => 'Neutral800',
-        inversePrimary => 'Primary600',
-        surfaceTint => 'Primary200',
-      };
 }
 
 @riverpod
@@ -242,9 +139,8 @@ String colorSchemeColorName(
   ColorSchemeColorNameRef ref, {
   required ColorSchemeKind kind,
 }) {
-  final brightness = ref.watch(currentBrightnessProvider);
-  return switch (brightness) {
-    Brightness.light => kind.lightColorName,
-    Brightness.dark => kind.darkColorName,
-  };
+  final color = ref.watch(colorSchemeColorProvider(kind: kind));
+  logger.d('kind: ${kind.name} $color');
+  final title = ref.watch(tonalPaletteTitleProvider(color: color));
+  return title ?? 'TBD';
 }
