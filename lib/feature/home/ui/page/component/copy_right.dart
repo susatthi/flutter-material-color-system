@@ -25,9 +25,9 @@ class _CopyRightTextState extends State<CopyRightText> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('(C)2023 susatthi.'),
               if (flutterVersion != null)
-                Text(' powered by Flutter $flutterVersion'),
+                Text('powered by Flutter $flutterVersion '),
+              const Text('(C) 2023 susatthi.'),
             ],
           ),
         );
