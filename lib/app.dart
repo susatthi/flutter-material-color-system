@@ -4,10 +4,10 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'core/ui/component/material.dart';
 import 'core/ui/component/messenger.dart';
-import 'feature/app/state/current_theme_mode.dart';
 import 'feature/app/ui/component/theme.dart';
 import 'feature/home/ui/page/home_page.dart';
 import 'feature/launcher/component/widget_ref_x.dart';
+import 'feature/theme_mode/state/current_theme_mode.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

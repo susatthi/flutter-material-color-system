@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../app/state/current_theme_mode.dart';
+import '../../state/current_theme_mode.dart';
 
 class ToggleThemeModeButton extends ConsumerWidget {
   const ToggleThemeModeButton({super.key});
@@ -10,9 +10,7 @@ class ToggleThemeModeButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(currentThemeModeProvider);
     return IconButton(
-      onPressed: () async {
-        await ref.read(currentThemeModeProvider.notifier).toggle();
-      },
+      onPressed: () => ref.read(currentThemeModeProvider.notifier).toggle(),
       icon: Icon(themeMode.icon),
       tooltip: 'Change ThemeMode',
     );

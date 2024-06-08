@@ -3,16 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recase/recase.dart';
 
 import '../../../../core/ui/component/layout.dart';
-import '../../../app/state/current_brightness.dart';
 import '../../../app/ui/component/app_version.dart';
 import '../../../palette/ui/component/color_schemes.dart';
 import '../../../palette/ui/component/tonal_palettes.dart';
+import '../../../theme_mode/state/current_brightness.dart';
+import '../../../theme_mode/ui/component/toggle_theme_mode_button.dart';
 import 'component/copy_right.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';
 import 'component/launch_github_button.dart';
 import 'component/seed_color.dart';
-import 'component/toggle_theme_mode_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

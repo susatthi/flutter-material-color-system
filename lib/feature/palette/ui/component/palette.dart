@@ -7,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../core/ui/component/widget_ref_x.dart';
-import '../../../app/state/current_theme_mode.dart';
+import '../../../theme_mode/state/current_theme_mode.dart';
 import '../../state/current_hover_color.dart';
 
 part 'palette.freezed.dart';
