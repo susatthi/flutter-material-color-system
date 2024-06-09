@@ -38,18 +38,27 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWrapper.builder(
-      const SingleChildScrollView(
-        child: Column(
-          children: [
-            _TonalPalettesPanel(),
-            Divider(
-              indent: p8,
-              endIndent: p8,
+      LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: const IntrinsicHeight(
+                child: Column(
+                  children: [
+                    _TonalPalettesPanel(),
+                    Divider(
+                      indent: p8,
+                      endIndent: p8,
+                    ),
+                    _ColorSchemesPanel(),
+                    Gap(80),
+                  ],
+                ),
+              ),
             ),
-            _ColorSchemesPanel(),
-            Gap(80),
-          ],
-        ),
+          );
+        },
       ),
       breakpoints: [
         const ResponsiveBreakpoint.resize(420, name: MOBILE),
