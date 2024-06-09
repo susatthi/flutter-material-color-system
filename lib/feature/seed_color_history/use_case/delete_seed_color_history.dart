@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/use_case/use_case.dart';
 import '../entity/seed_color_history.dart';
 import '../entity/seed_color_history_collection.dart';
 import '../state/current_seed_color_history_collection.dart';
@@ -7,31 +8,24 @@ import '../state/current_seed_color_history_collection.dart';
 part 'delete_seed_color_history.g.dart';
 
 @riverpod
-class DeleteSeedColorHistoryUseCase extends _$DeleteSeedColorHistoryUseCase {
+class DeleteSeedColorHistoryUseCase extends _$DeleteSeedColorHistoryUseCase
+    with UseCase {
   @override
-  FutureOr<void> build() {
-    return null;
-  }
+  FutureOr<void> build() => buildInternal(() => null);
 
   Future<void> invoke({
     required SeedColorHistory history,
-  }) async {
-    if (state.isLoading) {
-      return;
-    }
+  }) =>
+      invokeInternal(() async {
+        final histories =
+            ref.read(currentSeedColorHistoryCollectionProvider).histories;
+        histories.remove(history);
 
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async {
-      final histories =
-          ref.read(currentSeedColorHistoryCollectionProvider).histories;
-      histories.remove(history);
-
-      await ref.read(seedColorHistoryCollectionBoxProvider).put(
-            SeedColorHistoryCollection.keyName,
-            SeedColorHistoryCollection(
-              histories: histories,
-            ),
-          );
-    });
-  }
+        await ref.read(seedColorHistoryCollectionBoxProvider).put(
+              SeedColorHistoryCollection.keyName,
+              SeedColorHistoryCollection(
+                histories: histories,
+              ),
+            );
+      });
 }

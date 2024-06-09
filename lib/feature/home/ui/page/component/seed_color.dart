@@ -34,9 +34,16 @@ class SeedColorPickerDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AlertDialog(
-      content: SeedColorPicker(
-        wheelDiameter: 160,
-        colorDimension: 32,
+      content: SingleChildScrollView(
+        child: Column(
+          children: [
+            SeedColorPicker(
+              wheelDiameter: 160,
+              colorDimension: 32,
+            ),
+            SeedColorHistoryPanel(),
+          ],
+        ),
       ),
     );
   }
@@ -54,50 +61,41 @@ class SeedColorPicker extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ColorPicker(
-            color: ref.watch(currentSeedColorProvider),
-            onColorChanged: (color) async {
-              await ref
-                  .read(currentSeedColorProvider.notifier)
-                  .updateValue(color);
-            },
-            width: colorDimension,
-            height: colorDimension,
-            borderRadius: 25,
-            heading: Text(
-              'Select color',
-              style: context.headlineSmall,
-            ),
-            subheading: Text(
-              'Select color shade',
-              style: context.titleSmall,
-            ),
-            wheelDiameter: wheelDiameter,
-            wheelSubheading: Text(
-              'Selected color and its shades',
-              style: context.titleSmall,
-            ),
-            showMaterialName: true,
-            showColorName: true,
-            showColorCode: true,
-            copyPasteBehavior: const ColorPickerCopyPasteBehavior(
-              longPressMenu: true,
-            ),
-            materialNameTextStyle: context.bodySmall,
-            colorNameTextStyle: context.bodySmall,
-            colorCodeTextStyle: context.bodySmall,
-            pickersEnabled: const {
-              ColorPickerType.primary: true,
-              ColorPickerType.accent: true,
-              ColorPickerType.wheel: true,
-            },
-          ),
-          const SeedColorHistoryPanel(),
-        ],
+    return ColorPicker(
+      color: ref.watch(currentSeedColorProvider),
+      onColorChanged: (color) async {
+        await ref.read(currentSeedColorProvider.notifier).updateValue(color);
+      },
+      width: colorDimension,
+      height: colorDimension,
+      borderRadius: 25,
+      heading: Text(
+        'Select color',
+        style: context.headlineSmall,
       ),
+      subheading: Text(
+        'Select color shade',
+        style: context.titleSmall,
+      ),
+      wheelDiameter: wheelDiameter,
+      wheelSubheading: Text(
+        'Selected color and its shades',
+        style: context.titleSmall,
+      ),
+      showMaterialName: true,
+      showColorName: true,
+      showColorCode: true,
+      copyPasteBehavior: const ColorPickerCopyPasteBehavior(
+        longPressMenu: true,
+      ),
+      materialNameTextStyle: context.bodySmall,
+      colorNameTextStyle: context.bodySmall,
+      colorCodeTextStyle: context.bodySmall,
+      pickersEnabled: const {
+        ColorPickerType.primary: true,
+        ColorPickerType.accent: true,
+        ColorPickerType.wheel: true,
+      },
     );
   }
 }
