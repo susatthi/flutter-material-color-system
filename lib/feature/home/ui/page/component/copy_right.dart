@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/ui/component/material.dart';
+
 class CopyRightText extends StatefulWidget {
   const CopyRightText({super.key});
 
@@ -22,13 +24,19 @@ class _CopyRightTextState extends State<CopyRightText> {
         final flutterVersion = snapshot.data;
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (flutterVersion != null)
-                Text('powered by Flutter $flutterVersion '),
-              const Text('(C) 2023 susatthi.'),
-            ],
+          child: DefaultTextStyle.merge(
+            style: TextStyle(
+              color: context.outline,
+              fontSize: 12,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (flutterVersion != null)
+                  Text('powered by Flutter $flutterVersion '),
+                const Text('(C) 2023 susatthi.'),
+              ],
+            ),
           ),
         );
       },

@@ -14,7 +14,8 @@ class AppVersionText extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Text(
         text,
-        style: context.caption?.copyWith(
+        style: TextStyle(
+          color: context.onPrimary,
           fontSize: 12,
         ),
       ),

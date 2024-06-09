@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:recase/recase.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../../core/ui/component/layout.dart';
-import '../../../app/ui/component/app_version.dart';
+import '../../../../core/ui/component/material.dart';
 import '../../../color/ui/component/color_scheme.dart';
 import '../../../color/ui/component/tonal_palette.dart';
 import '../../../theme_mode/state/current_brightness.dart';
 import '../../../theme_mode/ui/component/toggle_theme_mode_button.dart';
-import 'component/copy_right.dart';
+import 'component/home_drawer.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';
-import 'component/launch_github_button.dart';
-import 'component/seed_color.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,12 +23,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const HomeTitle(),
         actions: const [
-          ShowSeedColorPickerDialogButton(),
-          LaunchGitHubButton(),
           ToggleThemeModeButton(),
         ],
       ),
       body: const _Body(),
+      drawer: const HomeDrawer(),
     );
   }
 }
@@ -38,40 +37,35 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: const IntrinsicHeight(
-              child: Column(
-                children: [
-                  _TonalPalettesPanel(),
-                  Divider(
-                    indent: p8,
-                    endIndent: p8,
-                  ),
-                  _ColorSchemesPanel(),
-                  Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        CopyRightText(),
-                        Positioned(
-                          right: 0,
-                          child: AppVersionText(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+    return ResponsiveWrapper.builder(
+      const SingleChildScrollView(
+        child: Column(
+          children: [
+            _TonalPalettesPanel(),
+            Divider(
+              indent: p8,
+              endIndent: p8,
             ),
-          ),
-        );
-      },
+            _ColorSchemesPanel(),
+            Gap(80),
+          ],
+        ),
+      ),
+      breakpoints: [
+        const ResponsiveBreakpoint.resize(420, name: MOBILE),
+        const ResponsiveBreakpoint.resize(600, name: TABLET),
+        const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+      ],
+      minWidth: 420,
+      maxWidth: 1200,
+      defaultScale: true,
+      background: Consumer(
+        builder: (context, ref, _) {
+          return Container(
+            color: context.surface,
+          );
+        },
+      ),
     );
   }
 }
