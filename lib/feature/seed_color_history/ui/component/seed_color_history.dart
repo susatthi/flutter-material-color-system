@@ -2,12 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/ui/component/bottom_sheet.dart';
 import '../../../../core/ui/component/material.dart';
 import '../../../color/state/current_seed_color.dart';
 import '../../entity/seed_color_history.dart';
 import '../../state/current_seed_color_history_collection.dart';
-import '../../use_case/add_seed_color_history.dart';
 import '../../use_case/delete_seed_color_history.dart';
+
+class SeedColorHistoryBottomSheet extends StatelessWidget {
+  const SeedColorHistoryBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const BottomSheetContainer(
+      child: SeedColorHistoryPanel(),
+    );
+  }
+}
 
 class SeedColorHistoryPanel extends ConsumerWidget {
   const SeedColorHistoryPanel({super.key});
@@ -24,14 +35,9 @@ class SeedColorHistoryPanel extends ConsumerWidget {
             alignment: AlignmentDirectional.center,
             children: [
               Text(
-                'History',
+                'SeedColor History',
                 style: context.titleSmall,
                 textAlign: TextAlign.center,
-              ),
-              const Positioned(
-                top: 2,
-                right: 4,
-                child: _AddButton(),
               ),
             ],
           ),
@@ -111,25 +117,6 @@ class _ColorAvatarState extends ConsumerState<_ColorAvatar> {
             ? widget.history.color.withOpacity(0.5)
             : widget.history.color,
       ),
-    );
-  }
-}
-
-class _AddButton extends ConsumerWidget {
-  const _AddButton();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final currentSeedColor = ref.watch(currentSeedColorProvider);
-    final isLoading = ref.watch(addSeedColorHistoryUseCaseProvider).isLoading;
-    return IconButton(
-      onPressed: isLoading
-          ? null
-          : () => ref
-              .read(addSeedColorHistoryUseCaseProvider.notifier)
-              .invoke(color: currentSeedColor),
-      icon: const Icon(Icons.add_rounded),
-      tooltip: 'Add current color to history',
     );
   }
 }

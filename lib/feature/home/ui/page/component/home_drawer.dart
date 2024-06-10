@@ -6,7 +6,6 @@ import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../util/assets/assets.gen.dart';
 import '../../../../app/ui/component/app_version.dart';
-import '../../../../seed_color_history/ui/component/seed_color_history.dart';
 import 'copy_right.dart';
 import 'launch_github_button.dart';
 import 'seed_color.dart';
@@ -35,7 +34,6 @@ class HomeDrawer extends ConsumerWidget {
                       child: Column(
                         children: [
                           SeedColorPicker(),
-                          SeedColorHistoryPanel(),
                           Spacer(),
                           _Footer(),
                         ],

@@ -69,10 +69,6 @@ class SeedColorPicker extends ConsumerWidget {
       width: colorDimension,
       height: colorDimension,
       borderRadius: 25,
-      heading: Text(
-        'Select color',
-        style: context.headlineSmall,
-      ),
       subheading: Text(
         'Select color shade',
         style: context.titleSmall,
