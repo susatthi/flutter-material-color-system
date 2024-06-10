@@ -7,7 +7,7 @@ part 'theme.g.dart';
 
 @riverpod
 ThemeData theme(ThemeRef ref, Brightness brightness) {
-  final seedColor = ref.watch(currentSeedColorProvider);
+  final seedColor = ref.watch(currentSeedColorNotifierProvider);
   return ThemeData(
     useMaterial3: true,
     colorSchemeSeed: seedColor,

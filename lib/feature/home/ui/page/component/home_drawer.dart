@@ -6,6 +6,7 @@ import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
 import '../../../../../util/assets/assets.gen.dart';
 import '../../../../app/ui/component/app_version.dart';
+import '../../../../seed_color_history/ui/component/dynamic_scheme_variant.dart';
 import 'copy_right.dart';
 import 'launch_github_button.dart';
 import 'seed_color.dart';
@@ -34,6 +35,11 @@ class HomeDrawer extends ConsumerWidget {
                       child: Column(
                         children: [
                           SeedColorPicker(),
+                          Divider(
+                            indent: p8,
+                            endIndent: p8,
+                          ),
+                          DynamicSchemeVariantChips(),
                           Spacer(),
                           _Footer(),
                         ],
@@ -110,11 +116,6 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CopyRightText(),
-      ],
-    );
+    return const CopyRightText();
   }
 }

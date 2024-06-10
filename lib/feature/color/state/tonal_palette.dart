@@ -70,7 +70,7 @@ enum TonalPaletteShade {
 List<TonalPaletteCollection> tonalPaletteCollections(
   TonalPaletteCollectionsRef ref,
 ) {
-  final seedColor = ref.watch(currentSeedColorProvider);
+  final seedColor = ref.watch(currentSeedColorNotifierProvider);
   final palette = CorePalette.of(seedColor.value);
   return TonalPaletteKind.values
       .map(
@@ -132,7 +132,7 @@ String? tonalPaletteTitle(
   if (color == Colors.white) {
     return 'White';
   }
-  final seedColor = ref.watch(currentSeedColorProvider);
+  final seedColor = ref.watch(currentSeedColorNotifierProvider);
   final palette = CorePalette.of(seedColor.value);
   final materialColors = {
     'Primary': palette.primaryMaterial,

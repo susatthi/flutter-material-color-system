@@ -6,7 +6,7 @@ import '../../../core/data/shared_preferences/shared_preferences.dart';
 part 'current_seed_color.g.dart';
 
 @riverpod
-class CurrentSeedColor extends _$CurrentSeedColor {
+class CurrentSeedColorNotifier extends _$CurrentSeedColorNotifier {
   static const _key = 'seedColor';
 
   @override

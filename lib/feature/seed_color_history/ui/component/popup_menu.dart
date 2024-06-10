@@ -68,7 +68,7 @@ extension on WidgetRef {
           builder: (context) => const SeedColorHistoryBottomSheet(),
         );
       case _MenuItem.save:
-        final currentSeedColor = read(currentSeedColorProvider);
+        final currentSeedColor = read(currentSeedColorNotifierProvider);
         await read(addSeedColorHistoryUseCaseProvider.notifier)
             .invoke(color: currentSeedColor);
     }

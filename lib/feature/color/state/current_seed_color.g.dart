@@ -6,21 +6,22 @@ part of 'current_seed_color.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$currentSeedColorHash() => r'd12102d4d029e76b4460d9e52d1c562d5aa6b1d6';
+String _$currentSeedColorNotifierHash() =>
+    r'a6c221a9b9376674851f0d9ad4f9d98a9b4541e1';
 
-/// See also [CurrentSeedColor].
-@ProviderFor(CurrentSeedColor)
-final currentSeedColorProvider =
-    AutoDisposeNotifierProvider<CurrentSeedColor, Color>.internal(
-  CurrentSeedColor.new,
-  name: r'currentSeedColorProvider',
+/// See also [CurrentSeedColorNotifier].
+@ProviderFor(CurrentSeedColorNotifier)
+final currentSeedColorNotifierProvider =
+    AutoDisposeNotifierProvider<CurrentSeedColorNotifier, Color>.internal(
+  CurrentSeedColorNotifier.new,
+  name: r'currentSeedColorNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$currentSeedColorHash,
+      : _$currentSeedColorNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CurrentSeedColor = AutoDisposeNotifier<Color>;
+typedef _$CurrentSeedColorNotifier = AutoDisposeNotifier<Color>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -35,7 +35,7 @@ class SeedColorHistoryPanel extends ConsumerWidget {
             alignment: AlignmentDirectional.center,
             children: [
               Text(
-                'SeedColor History',
+                'Seed Color History',
                 style: context.titleSmall,
                 textAlign: TextAlign.center,
               ),
@@ -105,7 +105,7 @@ class _ColorAvatarState extends ConsumerState<_ColorAvatar> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => ref
-          .read(currentSeedColorProvider.notifier)
+          .read(currentSeedColorNotifierProvider.notifier)
           .updateValue(widget.history.color),
       onHover: (value) {
         setState(() {

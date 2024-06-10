@@ -7,7 +7,7 @@ part of 'tonal_palette.dart';
 // **************************************************************************
 
 String _$tonalPaletteCollectionsHash() =>
-    r'082071cdf522d343aa963e64c8f6619479ad100c';
+    r'3f8bd7b15e59f02219518d3f19811f6765740806';
 
 /// See also [tonalPaletteCollections].
 @ProviderFor(tonalPaletteCollections)
@@ -24,7 +24,7 @@ final tonalPaletteCollectionsProvider =
 
 typedef TonalPaletteCollectionsRef
     = AutoDisposeProviderRef<List<TonalPaletteCollection>>;
-String _$tonalPaletteTitleHash() => r'2c708b16646347b8242a5270cb7251faf66b5e5e';
+String _$tonalPaletteTitleHash() => r'165accb844e494197da22a9e3d4299cc681bc119';
 
 /// Copied from Dart SDK
 class _SystemHash {
