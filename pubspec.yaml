@@ -1,7 +1,7 @@
 name: flutter_material_color_system
 description: Material Design 3 のカラーシステムを確認できるサイトです。配色に悩んだときにご利用ください。
 publish_to: 'none'
-version: 3.0.0+3
+version: '3.0.0'
 environment:
   sdk: '>=3.4.0 <4.0.0'
 

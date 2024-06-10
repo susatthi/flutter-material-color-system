@@ -53,6 +53,7 @@ jobs:
             --web-renderer canvaskit \
             --release \
             --base-href /${{ steps.version.outputs.repository }}/
+          bin/rewrites_version_json.sh ${{ github.run_number }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
