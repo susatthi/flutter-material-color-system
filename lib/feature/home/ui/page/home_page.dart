@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
 import 'package:recase/recase.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
 
 import '../../../../core/ui/component/layout.dart';
-import '../../../../core/ui/component/material.dart';
 import '../../../color/ui/component/color_scheme.dart';
 import '../../../color/ui/component/tonal_palette.dart';
 import '../../../seed_color_history/ui/component/popup_menu.dart';
@@ -14,6 +11,8 @@ import '../../../theme_mode/ui/component/toggle_theme_mode_button.dart';
 import 'component/home_drawer.dart';
 import 'component/home_panel.dart';
 import 'component/home_title.dart';
+
+const homeBodyMaxWidth = 1200.0;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,7 +28,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: const _Body(),
-      drawer: const HomeDrawer(),
+      drawer: context.isShowDrawer ? const HomeDrawer() : null,
     );
   }
 }
@@ -39,43 +38,44 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWrapper.builder(
-      LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: const IntrinsicHeight(
-                child: Column(
-                  children: [
-                    _TonalPalettesPanel(),
-                    Divider(
-                      indent: p8,
-                      endIndent: p8,
-                    ),
-                    _ColorSchemesPanel(),
-                    Gap(80),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      breakpoints: [
-        const ResponsiveBreakpoint.resize(420, name: MOBILE),
-        const ResponsiveBreakpoint.resize(600, name: TABLET),
-        const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+    if (context.isShowDrawer) {
+      return const _Content();
+    }
+
+    return const Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        HomeDrawerContent(),
+        Expanded(
+          child: _Content(),
+        ),
       ],
-      minWidth: 420,
-      maxWidth: 1200,
-      defaultScale: true,
-      background: Consumer(
-        builder: (context, ref, _) {
-          return Container(
-            color: context.surface,
-          );
-        },
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  const _Content();
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: homeBodyMaxWidth,
+          ),
+          child: const Column(
+            children: [
+              _TonalPalettesPanel(),
+              Divider(
+                indent: p8,
+                endIndent: p8,
+              ),
+              _ColorSchemesPanel(),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -108,4 +108,11 @@ class _ColorSchemesPanel extends ConsumerWidget {
 
 extension on Brightness {
   String get title => '${ReCase(name).titleCase} Color Scheme';
+}
+
+extension on BuildContext {
+  bool get isShowDrawer {
+    final screenWidth = MediaQuery.of(this).size.width;
+    return screenWidth < (homeBodyMaxWidth + homeDrawerWidth);
+  }
 }

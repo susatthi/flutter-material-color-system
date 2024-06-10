@@ -11,53 +11,54 @@ import 'copy_right.dart';
 import 'launch_github_button.dart';
 import 'seed_color.dart';
 
+const homeDrawerWidth = 360.0;
+
 class HomeDrawer extends ConsumerWidget {
-  const HomeDrawer({
-    super.key,
-  });
+  const HomeDrawer({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Drawer(
-      width: 360,
+    return const Drawer(
+      width: homeDrawerWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const _Header(),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints(minHeight: constraints.maxHeight),
-                    child: const IntrinsicHeight(
-                      child: Column(
-                        children: [
-                          SeedColorPicker(),
-                          Divider(
-                            indent: p8,
-                            endIndent: p8,
-                          ),
-                          DynamicSchemeVariantChips(),
-                          Spacer(),
-                          _Footer(),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
+          _Header(showTitle: true),
+          _Content(),
         ],
       ),
     );
   }
 }
 
+class HomeDrawerContent extends StatelessWidget {
+  const HomeDrawerContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: DrawerTheme.of(context).backgroundColor ??
+          context.surfaceContainerLow,
+      child: const SizedBox(
+        width: homeDrawerWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _Header(showTitle: false),
+            _Content(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _Header extends ConsumerWidget {
-  const _Header();
+  const _Header({
+    required this.showTitle,
+  });
+
+  final bool showTitle;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,25 +69,20 @@ class _Header extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              const _Logo(),
-              Expanded(
-                child: Row(
-                  children: [
-                    Text(
-                      'Material Color System',
-                      style: TextStyle(
-                        color: context.onPrimary,
-                      ),
+          if (showTitle)
+            Row(
+              children: [
+                const _Logo(),
+                Expanded(
+                  child: Text(
+                    'Material Color System',
+                    style: TextStyle(
+                      color: context.onPrimary,
                     ),
-                    const Gap(p8),
-                    const AppVersionText(),
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
           const Spacer(),
           const LaunchGitHubButton(),
         ],
@@ -111,11 +107,51 @@ class _Logo extends StatelessWidget {
   }
 }
 
+class _Content extends StatelessWidget {
+  const _Content();
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: const IntrinsicHeight(
+                child: Column(
+                  children: [
+                    SeedColorPicker(),
+                    Divider(
+                      indent: p8,
+                      endIndent: p8,
+                    ),
+                    DynamicSchemeVariantChips(),
+                    Spacer(),
+                    _Footer(),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class _Footer extends StatelessWidget {
   const _Footer();
 
   @override
   Widget build(BuildContext context) {
-    return const CopyRightText();
+    return const Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppVersionText(),
+        Gap(p8),
+        CopyRightText(),
+      ],
+    );
   }
 }

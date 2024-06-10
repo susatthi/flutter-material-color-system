@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
+import 'core/ui/component/material.dart';
 import 'core/ui/component/messenger.dart';
 import 'feature/app/ui/component/theme.dart';
 import 'feature/home/ui/page/home_page.dart';
@@ -43,14 +45,30 @@ class _AppState extends ConsumerState<_App> {
     // Launcherを監視する
     ref.listenLauncher();
 
-    return Navigator(
-      key: ref.watch(navigatorKeyProvider),
-      onPopPage: (route, dynamic _) => false,
-      pages: [
-        MaterialPage<Widget>(
-          child: widget.child!,
-        ),
+    return ResponsiveWrapper.builder(
+      Navigator(
+        key: ref.watch(navigatorKeyProvider),
+        onPopPage: (route, dynamic _) => false,
+        pages: [
+          MaterialPage<Widget>(
+            child: widget.child!,
+          ),
+        ],
+      ),
+      breakpoints: [
+        const ResponsiveBreakpoint.resize(420, name: MOBILE),
+        const ResponsiveBreakpoint.resize(600, name: TABLET),
+        const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
       ],
+      minWidth: 420,
+      defaultScale: true,
+      background: Consumer(
+        builder: (context, ref, _) {
+          return Container(
+            color: context.surface,
+          );
+        },
+      ),
     );
   }
 }

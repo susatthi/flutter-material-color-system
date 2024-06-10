@@ -15,7 +15,7 @@ class AppVersionText extends ConsumerWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: context.onPrimary,
+          color: context.outline,
           fontSize: 12,
         ),
       ),
