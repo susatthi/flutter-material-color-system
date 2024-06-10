@@ -31,6 +31,7 @@ class DynamicSchemeVariantChips extends ConsumerWidget {
             ),
           ],
         ),
+        const Gap(p32),
       ],
     );
   }

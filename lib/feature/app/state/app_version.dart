@@ -7,5 +7,5 @@ part 'app_version.g.dart';
 @riverpod
 String appVersionText(AppVersionTextRef ref) {
   final packageInfo = ref.watch(packageInfoProvider);
-  return '${packageInfo.version}(${packageInfo.buildNumber})';
+  return 'v${packageInfo.version}(${packageInfo.buildNumber})';
 }

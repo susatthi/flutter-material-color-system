@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/ui/component/layout.dart';
 import '../../../../../core/ui/component/material.dart';
-import '../../../../../util/assets/assets.gen.dart';
 import '../../../../app/ui/component/app_version.dart';
 import '../../../../seed_color_history/ui/component/dynamic_scheme_variant.dart';
 import 'copy_right.dart';
@@ -23,7 +22,6 @@ class HomeDrawer extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _Header(showTitle: true),
           _Content(),
         ],
       ),
@@ -44,64 +42,9 @@ class HomeDrawerContent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _Header(showTitle: false),
             _Content(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _Header extends ConsumerWidget {
-  const _Header({
-    required this.showTitle,
-  });
-
-  final bool showTitle;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return DrawerHeader(
-      decoration: BoxDecoration(
-        color: context.primary,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (showTitle)
-            Row(
-              children: [
-                const _Logo(),
-                Expanded(
-                  child: Text(
-                    'Material Color System',
-                    style: TextStyle(
-                      color: context.onPrimary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          const Spacer(),
-          const LaunchGitHubButton(),
-        ],
-      ),
-    );
-  }
-}
-
-class _Logo extends StatelessWidget {
-  const _Logo();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(p8),
-      child: Assets.images.appIcon.image(
-        color: context.onPrimary,
-        width: 28,
-        height: 28,
       ),
     );
   }
@@ -145,12 +88,18 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisSize: MainAxisSize.min,
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        AppVersionText(),
-        Gap(p8),
-        CopyRightText(),
+        LaunchGitHubButton(),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppVersionText(),
+            Gap(p8),
+            CopyRightText(),
+          ],
+        ),
       ],
     );
   }

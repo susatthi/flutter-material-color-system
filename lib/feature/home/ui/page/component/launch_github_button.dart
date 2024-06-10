@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/ui/component/layout.dart';
-import '../../../../../core/ui/component/material.dart';
 import '../../../../launcher/use_case/launch_url.dart';
 
 class LaunchGitHubButton extends ConsumerWidget {
@@ -17,9 +16,6 @@ class LaunchGitHubButton extends ConsumerWidget {
               'https://github.com/susatthi/flutter-material-color-system',
             ),
           ),
-      style: TextButton.styleFrom(
-        foregroundColor: context.onPrimary,
-      ),
       child: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [

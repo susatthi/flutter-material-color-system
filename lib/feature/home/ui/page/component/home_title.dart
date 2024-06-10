@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../../util/assets/assets.gen.dart';
 
@@ -7,10 +8,14 @@ class HomeTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    final isMobile = ResponsiveWrapper.of(context).isSmallerThan(MOBILE);
+    return Row(
       children: [
-        Logo(),
-        Text('Material Color System'),
+        if (!isMobile) const Logo(),
+        const Text(
+          'Material Color System',
+          style: TextStyle(fontSize: 20),
+        ),
       ],
     );
   }

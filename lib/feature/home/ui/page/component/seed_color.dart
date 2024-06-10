@@ -65,12 +65,11 @@ class SeedColorPicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        const Gap(p8),
+        const Gap(p16),
         Text(
           'Seed Color',
           style: context.titleMedium,
         ),
-        const Gap(p4),
         ColorPicker(
           color: ref.watch(currentSeedColorNotifierProvider),
           onColorChanged: (color) async {
