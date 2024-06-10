@@ -4,18 +4,18 @@ Material Design 3 のカラーシステムを確認できるサイトです。�
 
 https://susatthi.github.io/flutter-material-color-system/
 
-https://github.com/susatthi/flutter-material-color-system/assets/13707135/2e03e2d8-9b0a-4739-a619-8eee9e06b6dc
+https://github.com/susatthi/flutter-material-color-system/assets/13707135/5eb575d6-f092-4a09-b81e-57bcaf7d8d6b
 
 
 ライトモード|ダークモード
 --|--
-![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/dd144ec6-4e96-4a29-a8a3-9dad039a4602)|![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/20d35f43-6104-4d85-a83a-1b695a7b9e2b)
+![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/7c8c6462-ae93-48a3-9c2f-811767e4b3e3)|![](https://github.com/susatthi/flutter-material-color-system/assets/13707135/0dd326ff-8991-476c-a2bf-1290331ae3af)
 
 ## 使い方
 
 デスクトップでお使いください。スマホでも使えますがマウスホバーが効かないので使いづらいと思います。
 
-- カラーピッカーからシード色を変更できます。
+- カラーピッカーからシード色とダイナミックスキーム値を変更できます。
 - シード色を最大10個まで保存できます。
 - カラーをクリックするとHEX値をコピーします。
 - ライトテーマとダークテーマの切替ができます。
@@ -30,26 +30,28 @@ https://github.com/susatthi/flutter-material-color-system/assets/13707135/2e03e2
 
 ## カラースキームの設定方法
 
-カラースキームは次のように `colorSchemeSeed` を使って `MaterialApp` に登録するように実装しています。詳しくはコードを見てください。
+カラースキームは次のように `seedColor` と `schemeVariant` から作成しています。詳しくはコードを見てください。
 
 ```dart
 @riverpod
-class CurrentSeedColor extends _$CurrentSeedColor {
+class CurrentSeedColorNotifier extends _$CurrentSeedColorNotifier {
   @override
   Color build() => const Color(0xFF6750A4);
 }
 
 @riverpod
 ThemeData theme(ThemeRef ref, Brightness brightness) {
-  final seedColor = ref.watch(currentSeedColorProvider);
+  final seedColor = ref.watch(currentSeedColorNotifierProvider);
+  final schemeVariant = ref.watch(currentDynamicSchemeVariantNotifierProvider);
   return ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: seedColor,
-    brightness: brightness,
-    ・・・
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: seedColor,
+      brightness: brightness,
+      dynamicSchemeVariant: schemeVariant,
+    ),
   );
 }
-
 class App extends ConsumerWidget {
   const App({super.key});
 
@@ -68,10 +70,10 @@ class App extends ConsumerWidget {
 ## 環境
 
 ```
-Flutter 3.13.7 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 2f708eb839 (8 days ago) • 2023-10-09 09:58:08 -0500
-Engine • revision a794cf2681
-Tools • Dart 3.1.3 • DevTools 2.25.0
+Flutter 3.22.2 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 761747bfc5 (5 days ago) • 2024-06-05 22:15:13 +0200
+Engine • revision edd8546116
+Tools • Dart 3.4.3 • DevTools 2.34.3
 ```
 
 ## LISENCE
