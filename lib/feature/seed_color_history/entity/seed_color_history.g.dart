@@ -19,19 +19,22 @@ class SeedColorHistoryAdapter extends TypeAdapter<SeedColorHistory> {
     return SeedColorHistory(
       hex: fields[0] as String,
       name: fields[1] as String,
+      variantName: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, SeedColorHistory obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.hex)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(3)
+      ..write(obj.variantName);
   }
 
   @override

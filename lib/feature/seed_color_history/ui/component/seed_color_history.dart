@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../core/ui/component/bottom_sheet.dart';
 import '../../../../core/ui/component/material.dart';
+import '../../../color/state/current_dynamic_scheme_variant.dart';
 import '../../../color/state/current_seed_color.dart';
 import '../../entity/seed_color_history.dart';
 import '../../state/current_seed_color_history_collection.dart';
@@ -69,71 +70,24 @@ class _ListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      contentPadding: const EdgeInsets.only(
-        left: 16,
-        right: 2,
+      onTap: () {
+        ref
+            .read(currentSeedColorNotifierProvider.notifier)
+            .updateValue(history.color);
+        ref
+            .read(currentDynamicSchemeVariantNotifierProvider.notifier)
+            .updateValue(history.variant);
+        Navigator.of(context).pop();
+      },
+      leading: CircleAvatar(
+        backgroundColor: history.color,
       ),
-      leading: _ColorAvatar(
-        history: history,
-      ),
-      title: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Text(history.name),
-      ),
+      title: Text(history.name),
+      subtitle: Text(history.variant.name),
       trailing: _DeleteButton(
         history: history,
       ),
     );
-  }
-}
-
-class _ColorAvatar extends ConsumerStatefulWidget {
-  const _ColorAvatar({
-    required this.history,
-  });
-
-  final SeedColorHistory history;
-
-  @override
-  ConsumerState<_ColorAvatar> createState() => _ColorAvatarState();
-}
-
-class _ColorAvatarState extends ConsumerState<_ColorAvatar> {
-  bool isHover = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => ref
-          .read(currentSeedColorNotifierProvider.notifier)
-          .updateValue(widget.history.color),
-      onHover: (value) {
-        setState(() {
-          isHover = value;
-        });
-      },
-      child: CircleAvatar(
-        backgroundColor: isHover
-            ? widget.history.color.withOpacity(0.5)
-            : widget.history.color,
-      ),
-    );
-  }
-}
-
-class _NameTextField extends StatefulWidget {
-  const _NameTextField();
-
-  @override
-  State<_NameTextField> createState() => __NameTextFieldState();
-}
-
-class __NameTextFieldState extends State<_NameTextField> {
-  final controller = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return const TextField();
   }
 }
 
@@ -153,10 +107,8 @@ class _DeleteButton extends ConsumerWidget {
           : () => ref
               .read(deleteSeedColorHistoryUseCaseProvider.notifier)
               .invoke(history: history),
-      icon: const Icon(Icons.remove),
-      color: context.outlineVariant,
-      iconSize: 20,
-      tooltip: 'Delete color',
+      icon: const Icon(Icons.delete),
+      tooltip: 'Delete',
     );
   }
 }

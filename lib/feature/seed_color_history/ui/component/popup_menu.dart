@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 
 import '../../../../core/ui/component/layout.dart';
 import '../../../../core/ui/component/widget_ref_x.dart';
-import '../../../color/state/current_seed_color.dart';
 import '../../use_case/add_seed_color_history.dart';
 import 'seed_color_history.dart';
 
@@ -32,7 +31,7 @@ class SeedColorHistoryPopupMenuButton extends ConsumerWidget {
             child: Row(
               children: [
                 Icon(e.icon),
-                const Gap(p8),
+                const Gap(p16),
                 Text(e.label),
               ],
             ),
@@ -68,9 +67,67 @@ extension on WidgetRef {
           builder: (context) => const SeedColorHistoryBottomSheet(),
         );
       case _MenuItem.save:
-        final currentSeedColor = read(currentSeedColorNotifierProvider);
-        await read(addSeedColorHistoryUseCaseProvider.notifier)
-            .invoke(color: currentSeedColor);
+        await showDialog<void>(
+          context: context,
+          builder: (context) => const _SaveDialog(),
+        );
     }
+  }
+}
+
+class _SaveDialog extends ConsumerStatefulWidget {
+  const _SaveDialog();
+
+  @override
+  ConsumerState<_SaveDialog> createState() => _SaveDialogState();
+}
+
+class _SaveDialogState extends ConsumerState<_SaveDialog> {
+  final _textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _textController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isValid = _textController.text.isNotEmpty;
+    return AlertDialog(
+      title: const Text('Save Seed Color'),
+      content: TextField(
+        controller: _textController,
+        decoration: const InputDecoration(
+          hintText: 'Input name',
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: isValid
+              ? () async {
+                  final name = _textController.text;
+                  await ref
+                      .read(addSeedColorHistoryUseCaseProvider.notifier)
+                      .invoke(name: name);
+                  Navigator.of(context).pop();
+                }
+              : null,
+          child: const Text('Save'),
+        ),
+      ],
+    );
   }
 }

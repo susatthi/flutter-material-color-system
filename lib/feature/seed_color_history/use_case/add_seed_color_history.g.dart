@@ -7,7 +7,7 @@ part of 'add_seed_color_history.dart';
 // **************************************************************************
 
 String _$addSeedColorHistoryUseCaseHash() =>
-    r'a849f63cb2dcbcdd3e62ebd560ccc5f800dc64e2';
+    r'e47696498420c5e62789bf97a21ece734102d9eb';
 
 /// See also [AddSeedColorHistoryUseCase].
 @ProviderFor(AddSeedColorHistoryUseCase)
