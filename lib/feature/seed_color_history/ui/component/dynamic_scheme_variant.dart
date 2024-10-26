@@ -59,7 +59,7 @@ class _Chip extends ConsumerWidget {
           }
         },
         selected: selected,
-        label: Text(variant.label),
+        label: Text(variant.name),
         tooltip: variant.description,
       ),
     );
@@ -67,11 +67,6 @@ class _Chip extends ConsumerWidget {
 }
 
 extension on DynamicSchemeVariant {
-  String get label => switch (this) {
-        DynamicSchemeVariant.rainbow => '$name (3.19 compatible)',
-        _ => name,
-      };
-
   String get description => switch (this) {
         DynamicSchemeVariant.tonalSpot =>
           '''Default for Material theme colors. Builds pastel palettes with a low chroma.''',
