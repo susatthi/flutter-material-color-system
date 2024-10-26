@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../entity/seed_color_history_collection.dart';
 
-part 'current_seed_color_history_collection.g.dart';
+part 'seed_color_history_collection.g.dart';
 
 @riverpod
 Box<SeedColorHistoryCollection> seedColorHistoryCollectionBox(Ref ref) {

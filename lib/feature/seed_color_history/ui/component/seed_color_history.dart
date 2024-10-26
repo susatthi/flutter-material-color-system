@@ -7,7 +7,7 @@ import '../../../../core/ui/component/material.dart';
 import '../../../color/state/current_dynamic_scheme_variant.dart';
 import '../../../color/state/current_seed_color.dart';
 import '../../entity/seed_color_history.dart';
-import '../../state/current_seed_color_history_collection.dart';
+import '../../state/seed_color_history_collection.dart';
 import '../../use_case/delete_seed_color_history.dart';
 
 class SeedColorHistoryBottomSheet extends StatelessWidget {

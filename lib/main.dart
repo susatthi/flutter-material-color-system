@@ -9,7 +9,7 @@ import 'core/data/package_info/package_info.dart';
 import 'core/data/shared_preferences/shared_preferences.dart';
 import 'feature/seed_color_history/entity/seed_color_history.dart';
 import 'feature/seed_color_history/entity/seed_color_history_collection.dart';
-import 'feature/seed_color_history/state/current_seed_color_history_collection.dart';
+import 'feature/seed_color_history/state/seed_color_history_collection.dart';
 import 'util/provider_logger.dart';
 
 Future<void> main() async {

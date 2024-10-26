@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'current_seed_color_history_collection.dart';
+part of 'seed_color_history_collection.dart';
 
 // **************************************************************************
 // RiverpodGenerator

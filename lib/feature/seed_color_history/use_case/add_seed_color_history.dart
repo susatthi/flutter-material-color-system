@@ -6,7 +6,7 @@ import '../../color/state/current_dynamic_scheme_variant.dart';
 import '../../color/state/current_seed_color.dart';
 import '../entity/seed_color_history.dart';
 import '../entity/seed_color_history_collection.dart';
-import '../state/current_seed_color_history_collection.dart';
+import '../state/seed_color_history_collection.dart';
 
 part 'add_seed_color_history.g.dart';
 

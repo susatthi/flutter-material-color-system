@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/use_case/use_case.dart';
 import '../entity/seed_color_history.dart';
 import '../entity/seed_color_history_collection.dart';
-import '../state/current_seed_color_history_collection.dart';
+import '../state/seed_color_history_collection.dart';
 
 part 'delete_seed_color_history.g.dart';
 
