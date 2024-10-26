@@ -7,7 +7,7 @@ part of 'delete_seed_color_history.dart';
 // **************************************************************************
 
 String _$deleteSeedColorHistoryUseCaseHash() =>
-    r'df304d6a98ea36eab4bae61f316898d2866bfef2';
+    r'e454527324e20fa96bdedbaa2378fafdd01d5973';
 
 /// See also [DeleteSeedColorHistoryUseCase].
 @ProviderFor(DeleteSeedColorHistoryUseCase)

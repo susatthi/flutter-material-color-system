@@ -26,25 +26,23 @@ final seedColorHistoryCollectionBoxProvider =
 // ignore: unused_element
 typedef SeedColorHistoryCollectionBoxRef
     = AutoDisposeProviderRef<Box<SeedColorHistoryCollection>>;
-String _$currentSeedColorHistoryCollectionHash() =>
-    r'8164fdbc1a1fd61ffb3f6459177510b5fdbccab0';
+String _$seedColorHistoryCollectionNotifierHash() =>
+    r'cfd170babd7444b441a65dc38be8996a8676c745';
 
-/// See also [currentSeedColorHistoryCollection].
-@ProviderFor(currentSeedColorHistoryCollection)
-final currentSeedColorHistoryCollectionProvider =
-    AutoDisposeStreamProvider<SeedColorHistoryCollection>.internal(
-  currentSeedColorHistoryCollection,
-  name: r'currentSeedColorHistoryCollectionProvider',
+/// See also [SeedColorHistoryCollectionNotifier].
+@ProviderFor(SeedColorHistoryCollectionNotifier)
+final seedColorHistoryCollectionNotifierProvider = AutoDisposeNotifierProvider<
+    SeedColorHistoryCollectionNotifier, SeedColorHistoryCollection>.internal(
+  SeedColorHistoryCollectionNotifier.new,
+  name: r'seedColorHistoryCollectionNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$currentSeedColorHistoryCollectionHash,
+      : _$seedColorHistoryCollectionNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CurrentSeedColorHistoryCollectionRef
-    = AutoDisposeStreamProviderRef<SeedColorHistoryCollection>;
+typedef _$SeedColorHistoryCollectionNotifier
+    = AutoDisposeNotifier<SeedColorHistoryCollection>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

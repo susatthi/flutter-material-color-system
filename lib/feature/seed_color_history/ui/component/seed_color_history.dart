@@ -26,8 +26,7 @@ class SeedColorHistoryPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final collection =
-        ref.watch(currentSeedColorHistoryCollectionProvider).requireValue;
+    final collection = ref.watch(seedColorHistoryCollectionNotifierProvider);
     return Column(
       children: [
         SizedBox(

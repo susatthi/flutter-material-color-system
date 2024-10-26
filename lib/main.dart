@@ -10,6 +10,7 @@ import 'core/data/shared_preferences/shared_preferences.dart';
 import 'feature/seed_color_history/entity/seed_color_history.dart';
 import 'feature/seed_color_history/entity/seed_color_history_collection.dart';
 import 'feature/seed_color_history/state/current_seed_color_history_collection.dart';
+import 'util/provider_logger.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,9 @@ Future<void> main() async {
         packageInfoProvider.overrideWithValue(packageInfo),
         seedColorHistoryCollectionBoxProvider
             .overrideWithValue(seedColorHistoryCollectionBox),
+      ],
+      observers: [
+        ProviderLogger(),
       ],
       child: const App(),
     ),

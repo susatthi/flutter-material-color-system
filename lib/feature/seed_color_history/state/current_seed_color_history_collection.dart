@@ -12,11 +12,22 @@ Box<SeedColorHistoryCollection> seedColorHistoryCollectionBox(Ref ref) {
 }
 
 @riverpod
-Stream<SeedColorHistoryCollection> currentSeedColorHistoryCollection(Ref ref) {
-  final box = ref.watch(seedColorHistoryCollectionBoxProvider);
-  return box.watch(key: SeedColorHistoryCollection.keyName).map(
-        (event) =>
-            event.value as SeedColorHistoryCollection? ??
-            SeedColorHistoryCollection(),
-      );
+class SeedColorHistoryCollectionNotifier
+    extends _$SeedColorHistoryCollectionNotifier {
+  @override
+  SeedColorHistoryCollection build() {
+    final box = ref.watch(seedColorHistoryCollectionBoxProvider);
+    box
+        .watch(key: SeedColorHistoryCollection.keyName)
+        .map(
+          (event) => event.value as SeedColorHistoryCollection?,
+        )
+        .listen((collection) {
+      if (collection != null) {
+        state = collection;
+      }
+    });
+    return box.get(SeedColorHistoryCollection.keyName) ??
+        SeedColorHistoryCollection();
+  }
 }
