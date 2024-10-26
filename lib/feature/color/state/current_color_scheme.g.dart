@@ -7,7 +7,7 @@ part of 'current_color_scheme.dart';
 // **************************************************************************
 
 String _$currentColorSchemeHash() =>
-    r'a2fb24ae37d4125593fd60eb190afd59b858b0b0';
+    r'8f1b2caad35a650c800b7226763d306d4d95fd28';
 
 /// See also [currentColorScheme].
 @ProviderFor(currentColorScheme)
@@ -21,6 +21,8 @@ final currentColorSchemeProvider = AutoDisposeProvider<ColorScheme>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef CurrentColorSchemeRef = AutoDisposeProviderRef<ColorScheme>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

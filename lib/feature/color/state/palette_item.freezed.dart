@@ -21,7 +21,9 @@ mixin _$PaletteItem {
   String? get text => throw _privateConstructorUsedError;
   String? get subText => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaletteItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaletteItemCopyWith<PaletteItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$PaletteItemCopyWithImpl<$Res, $Val extends PaletteItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class __$$PaletteItemImplCopyWithImpl<$Res>
       _$PaletteItemImpl _value, $Res Function(_$PaletteItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,7 +176,9 @@ class _$PaletteItemImpl implements _PaletteItem {
   int get hashCode =>
       Object.hash(runtimeType, backgroundColor, foregroundColor, text, subText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaletteItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaletteItemImplCopyWith<_$PaletteItemImpl> get copyWith =>
@@ -192,8 +200,11 @@ abstract class _PaletteItem implements PaletteItem {
   String? get text;
   @override
   String? get subText;
+
+  /// Create a copy of PaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaletteItemImplCopyWith<_$PaletteItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

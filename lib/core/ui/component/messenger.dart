@@ -6,13 +6,13 @@ part 'messenger.g.dart';
 
 @riverpod
 GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey(
-  ScaffoldMessengerKeyRef ref,
+  Ref ref,
 ) {
   return GlobalKey<ScaffoldMessengerState>();
 }
 
 @riverpod
-GlobalKey<NavigatorState> navigatorKey(NavigatorKeyRef ref) {
+GlobalKey<NavigatorState> navigatorKey(Ref ref) {
   return GlobalKey<NavigatorState>();
 }
 

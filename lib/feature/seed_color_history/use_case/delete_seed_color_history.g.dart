@@ -7,7 +7,7 @@ part of 'delete_seed_color_history.dart';
 // **************************************************************************
 
 String _$deleteSeedColorHistoryUseCaseHash() =>
-    r'a51b31e69ae7fa6197388cc8c820f7622499c35e';
+    r'df304d6a98ea36eab4bae61f316898d2866bfef2';
 
 /// See also [DeleteSeedColorHistoryUseCase].
 @ProviderFor(DeleteSeedColorHistoryUseCase)
@@ -24,4 +24,4 @@ final deleteSeedColorHistoryUseCaseProvider = AutoDisposeAsyncNotifierProvider<
 
 typedef _$DeleteSeedColorHistoryUseCase = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

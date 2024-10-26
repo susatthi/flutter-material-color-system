@@ -20,7 +20,8 @@ class AddSeedColorHistoryUseCase extends _$AddSeedColorHistoryUseCase
     required String name,
   }) =>
       invokeInternal(() async {
-        final collection = ref.read(currentSeedColorHistoryCollectionProvider);
+        final collection =
+            ref.read(currentSeedColorHistoryCollectionProvider).requireValue;
         final seedColor = ref.read(currentSeedColorNotifierProvider);
         final variant = ref.read(currentDynamicSchemeVariantNotifierProvider);
         final histories = [

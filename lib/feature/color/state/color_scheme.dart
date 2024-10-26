@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:recase/recase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -91,7 +92,7 @@ enum ColorSchemeKind {
 
 @riverpod
 ColorSchemeCollection colorSchemeCollection(
-  ColorSchemeCollectionRef ref,
+  Ref ref,
 ) {
   final colorScheme = ref.watch(currentColorSchemeProvider);
   return ColorSchemeCollection(

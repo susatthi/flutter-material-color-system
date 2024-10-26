@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
 import 'package:recase/recase.dart';
@@ -68,7 +69,7 @@ enum TonalPaletteShade {
 
 @riverpod
 List<TonalPaletteCollection> tonalPaletteCollections(
-  TonalPaletteCollectionsRef ref,
+  Ref ref,
 ) {
   final seedColor = ref.watch(currentSeedColorNotifierProvider);
   final palette = CorePalette.of(seedColor.value);
@@ -123,7 +124,7 @@ extension on MaterialColor {
 
 @riverpod
 String? tonalPaletteTitle(
-  TonalPaletteTitleRef ref, {
+  Ref ref, {
   required Color color,
 }) {
   if (color == Colors.black) {

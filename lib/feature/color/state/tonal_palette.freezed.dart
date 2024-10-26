@@ -19,7 +19,9 @@ mixin _$TonalPaletteCollection {
   TonalPaletteKind get kind => throw _privateConstructorUsedError;
   List<TonalPaletteItem> get items => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TonalPaletteCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TonalPaletteCollectionCopyWith<TonalPaletteCollection> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$TonalPaletteCollectionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TonalPaletteCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +89,8 @@ class __$$TonalPaletteCollectionImplCopyWithImpl<$Res>
       $Res Function(_$TonalPaletteCollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TonalPaletteCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +146,9 @@ class _$TonalPaletteCollectionImpl extends _TonalPaletteCollection {
   int get hashCode => Object.hash(
       runtimeType, kind, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TonalPaletteCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TonalPaletteCollectionImplCopyWith<_$TonalPaletteCollectionImpl>
@@ -159,8 +167,11 @@ abstract class _TonalPaletteCollection extends TonalPaletteCollection {
   TonalPaletteKind get kind;
   @override
   List<TonalPaletteItem> get items;
+
+  /// Create a copy of TonalPaletteCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TonalPaletteCollectionImplCopyWith<_$TonalPaletteCollectionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -171,7 +182,9 @@ mixin _$TonalPaletteItem {
   TonalPaletteShade get shade => throw _privateConstructorUsedError;
   PaletteItem get item => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TonalPaletteItemCopyWith<TonalPaletteItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -197,6 +210,8 @@ class _$TonalPaletteItemCopyWithImpl<$Res, $Val extends TonalPaletteItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -220,6 +235,8 @@ class _$TonalPaletteItemCopyWithImpl<$Res, $Val extends TonalPaletteItem>
     ) as $Val);
   }
 
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaletteItemCopyWith<$Res> get item {
@@ -251,6 +268,8 @@ class __$$TonalPaletteItemImplCopyWithImpl<$Res>
       $Res Function(_$TonalPaletteItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -306,7 +325,9 @@ class _$TonalPaletteItemImpl implements _TonalPaletteItem {
   @override
   int get hashCode => Object.hash(runtimeType, kind, shade, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TonalPaletteItemImplCopyWith<_$TonalPaletteItemImpl> get copyWith =>
@@ -326,8 +347,11 @@ abstract class _TonalPaletteItem implements TonalPaletteItem {
   TonalPaletteShade get shade;
   @override
   PaletteItem get item;
+
+  /// Create a copy of TonalPaletteItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TonalPaletteItemImplCopyWith<_$TonalPaletteItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

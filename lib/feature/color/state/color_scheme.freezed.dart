@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ColorSchemeCollection {
   List<ColorSchemeItem> get items => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ColorSchemeCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ColorSchemeCollectionCopyWith<ColorSchemeCollection> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$ColorSchemeCollectionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ColorSchemeCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +82,8 @@ class __$$ColorSchemeCollectionImplCopyWithImpl<$Res>
       $Res Function(_$ColorSchemeCollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ColorSchemeCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,7 +131,9 @@ class _$ColorSchemeCollectionImpl extends _ColorSchemeCollection {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ColorSchemeCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ColorSchemeCollectionImplCopyWith<_$ColorSchemeCollectionImpl>
@@ -141,8 +149,11 @@ abstract class _ColorSchemeCollection extends ColorSchemeCollection {
 
   @override
   List<ColorSchemeItem> get items;
+
+  /// Create a copy of ColorSchemeCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ColorSchemeCollectionImplCopyWith<_$ColorSchemeCollectionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -152,7 +163,9 @@ mixin _$ColorSchemeItem {
   ColorSchemeKind get kind => throw _privateConstructorUsedError;
   PaletteItem get item => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ColorSchemeItemCopyWith<ColorSchemeItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -178,6 +191,8 @@ class _$ColorSchemeItemCopyWithImpl<$Res, $Val extends ColorSchemeItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -196,6 +211,8 @@ class _$ColorSchemeItemCopyWithImpl<$Res, $Val extends ColorSchemeItem>
     ) as $Val);
   }
 
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaletteItemCopyWith<$Res> get item {
@@ -227,6 +244,8 @@ class __$$ColorSchemeItemImplCopyWithImpl<$Res>
       _$ColorSchemeItemImpl _value, $Res Function(_$ColorSchemeItemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -273,7 +292,9 @@ class _$ColorSchemeItemImpl implements _ColorSchemeItem {
   @override
   int get hashCode => Object.hash(runtimeType, kind, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ColorSchemeItemImplCopyWith<_$ColorSchemeItemImpl> get copyWith =>
@@ -290,8 +311,11 @@ abstract class _ColorSchemeItem implements ColorSchemeItem {
   ColorSchemeKind get kind;
   @override
   PaletteItem get item;
+
+  /// Create a copy of ColorSchemeItem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ColorSchemeItemImplCopyWith<_$ColorSchemeItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

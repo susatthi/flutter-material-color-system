@@ -7,7 +7,7 @@ part of 'tonal_palette.dart';
 // **************************************************************************
 
 String _$tonalPaletteCollectionsHash() =>
-    r'3f8bd7b15e59f02219518d3f19811f6765740806';
+    r'e7b69860eb17cd52b2274752080392757dcebd16';
 
 /// See also [tonalPaletteCollections].
 @ProviderFor(tonalPaletteCollections)
@@ -22,9 +22,11 @@ final tonalPaletteCollectionsProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef TonalPaletteCollectionsRef
     = AutoDisposeProviderRef<List<TonalPaletteCollection>>;
-String _$tonalPaletteTitleHash() => r'165accb844e494197da22a9e3d4299cc681bc119';
+String _$tonalPaletteTitleHash() => r'fa672a5b4edae6081a0cad1f41bdc2bf2e9291c1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -160,6 +162,8 @@ class TonalPaletteTitleProvider extends AutoDisposeProvider<String?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TonalPaletteTitleRef on AutoDisposeProviderRef<String?> {
   /// The parameter `color` of this provider.
   Color get color;
@@ -173,4 +177,4 @@ class _TonalPaletteTitleProviderElement
   Color get color => (origin as TonalPaletteTitleProvider).color;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

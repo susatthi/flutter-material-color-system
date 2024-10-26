@@ -26,7 +26,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true
   },
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.flutterSdkPath": ".fvm/versions/3.24.4",
   "dart.debugSdkLibraries": false,
   "dart.showSkippedTests": false,
   "dart.runPubGetOnPubspecChanges": "always",

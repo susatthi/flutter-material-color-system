@@ -48,7 +48,7 @@ class _AppState extends ConsumerState<_App> {
     return ResponsiveWrapper.builder(
       Navigator(
         key: ref.watch(navigatorKeyProvider),
-        onPopPage: (route, dynamic _) => false,
+        onDidRemovePage: (page) {},
         pages: [
           MaterialPage<Widget>(
             child: widget.child!,

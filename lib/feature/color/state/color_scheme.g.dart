@@ -7,7 +7,7 @@ part of 'color_scheme.dart';
 // **************************************************************************
 
 String _$colorSchemeCollectionHash() =>
-    r'527510cd09cd064829128825afaf68b7b13fb83d';
+    r'71e98971b8f0f182d6193dc12a2e620305957b97';
 
 /// See also [colorSchemeCollection].
 @ProviderFor(colorSchemeCollection)
@@ -22,7 +22,9 @@ final colorSchemeCollectionProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ColorSchemeCollectionRef
     = AutoDisposeProviderRef<ColorSchemeCollection>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

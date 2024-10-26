@@ -19,7 +19,9 @@ mixin _$LaunchUrlUseCaseState {
   Uri get url => throw _privateConstructorUsedError;
   url_launcher.LaunchMode get mode => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LaunchUrlUseCaseState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LaunchUrlUseCaseStateCopyWith<LaunchUrlUseCaseState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$LaunchUrlUseCaseStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LaunchUrlUseCaseState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$LaunchUrlUseCaseStateImplCopyWithImpl<$Res>
       $Res Function(_$LaunchUrlUseCaseStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LaunchUrlUseCaseState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,7 +136,9 @@ class _$LaunchUrlUseCaseStateImpl implements _LaunchUrlUseCaseState {
   @override
   int get hashCode => Object.hash(runtimeType, url, mode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LaunchUrlUseCaseState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LaunchUrlUseCaseStateImplCopyWith<_$LaunchUrlUseCaseStateImpl>
@@ -148,8 +156,11 @@ abstract class _LaunchUrlUseCaseState implements LaunchUrlUseCaseState {
   Uri get url;
   @override
   url_launcher.LaunchMode get mode;
+
+  /// Create a copy of LaunchUrlUseCaseState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LaunchUrlUseCaseStateImplCopyWith<_$LaunchUrlUseCaseStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
