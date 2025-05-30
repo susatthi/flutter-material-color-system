@@ -3,7 +3,7 @@ description: Material Design 3 のカラーシステムを確認できるサイ�
 publish_to: 'none'
 version: '3.1.0'
 environment:
-  sdk: '>=3.5.4 <4.0.0'
+  sdk: '>=3.8.1 <4.0.0'
 
 dependencies:
   collection:

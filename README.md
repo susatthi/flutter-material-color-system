@@ -70,11 +70,10 @@ class App extends ConsumerWidget {
 ## 環境
 
 ```
-Flutter 3.22.2 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 761747bfc5 (5 days ago) • 2024-06-05 22:15:13 +0200
-Engine • revision edd8546116
-Tools • Dart 3.4.3 • DevTools 2.34.3
-```
+Flutter 3.32.1 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision b25305a883 (16 hours ago) • 2025-05-29 10:40:06 -0700
+Engine • revision 1425e5e9ec (2 days ago) • 2025-05-28 14:26:27 -0700
+Tools • Dart 3.8.1 • DevTools 2.45.1
 
 ## LISENCE
 
