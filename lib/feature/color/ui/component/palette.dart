@@ -135,7 +135,7 @@ class _PaletteState extends ConsumerState<Palette> {
         // スナックバーを表示する
         ref.showSnakBar(
           SnackBar(
-            content: Text('$hex Coppied!'),
+            content: Text('$hex Copied!'),
             width: snackBarWidth,
           ),
         );
