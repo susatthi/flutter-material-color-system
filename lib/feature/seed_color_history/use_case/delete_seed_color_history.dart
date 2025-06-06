@@ -19,12 +19,12 @@ class DeleteSeedColorHistoryUseCase extends _$DeleteSeedColorHistoryUseCase
       invokeInternal(() async {
         final histories =
             ref.read(seedColorHistoryCollectionNotifierProvider).histories;
-        histories.remove(history);
+        final updatedHistories = histories.toList()..remove(history);
 
         await ref.read(seedColorHistoryCollectionBoxProvider).put(
               SeedColorHistoryCollection.keyName,
               SeedColorHistoryCollection(
-                histories: histories,
+                histories: updatedHistories,
               ),
             );
       });
