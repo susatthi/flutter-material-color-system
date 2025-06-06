@@ -207,7 +207,7 @@ class _PrimaryCircleColor extends ConsumerWidget {
           await Clipboard.setData(ClipboardData(text: hex));
 
           // スナックバーを表示する
-          ref.showSnakBar(
+          ref.showSnackBar(
             SnackBar(
               content: Text('$hex Coppied!'),
               width: snackBarWidth,
