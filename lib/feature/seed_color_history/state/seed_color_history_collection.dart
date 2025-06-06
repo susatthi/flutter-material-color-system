@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -14,10 +16,11 @@ Box<SeedColorHistoryCollection> seedColorHistoryCollectionBox(Ref ref) {
 @riverpod
 class SeedColorHistoryCollectionNotifier
     extends _$SeedColorHistoryCollectionNotifier {
+  late final StreamSubscription _subscription;
   @override
   SeedColorHistoryCollection build() {
     final box = ref.watch(seedColorHistoryCollectionBoxProvider);
-    box
+    _subscription = box
         .watch(key: SeedColorHistoryCollection.keyName)
         .map(
           (event) => event.value as SeedColorHistoryCollection?,
@@ -27,6 +30,7 @@ class SeedColorHistoryCollectionNotifier
         state = collection;
       }
     });
+    ref.onDispose(_subscription.cancel);
     return box.get(SeedColorHistoryCollection.keyName) ??
         SeedColorHistoryCollection();
   }
