@@ -133,7 +133,7 @@ class _PaletteState extends ConsumerState<Palette> {
         await Clipboard.setData(ClipboardData(text: hex));
 
         // スナックバーを表示する
-        ref.showSnakBar(
+        ref.showSnackBar(
           SnackBar(
             content: Text('$hex Copied!'),
             width: snackBarWidth,

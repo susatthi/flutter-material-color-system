@@ -8,7 +8,7 @@ extension WidgetRefX on WidgetRef {
   ScaffoldMessengerState? get _currentState =>
       read(scaffoldMessengerKeyProvider).currentState;
 
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnakBar(
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? showSnackBar(
     SnackBar snackBar,
   ) {
     return _currentState?.showSnackBar(snackBar);

@@ -15,7 +15,7 @@ class SeedColorHistoryPopupMenuButton extends ConsumerWidget {
     ref.listenAsync(
       addSeedColorHistoryUseCaseProvider,
       success: (_) {
-        ref.showSnakBar(
+        ref.showSnackBar(
           const SnackBar(
             content: Text('Saved.'),
             width: snackBarWidth,
