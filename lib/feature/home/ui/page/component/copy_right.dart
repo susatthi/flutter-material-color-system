@@ -10,10 +10,15 @@ class CopyRightText extends StatefulWidget {
 }
 
 class _CopyRightTextState extends State<CopyRightText> {
-  Future<String> _getFlutterVersion() async {
-    final flutterVersion =
-        await DefaultAssetBundle.of(context).loadString('.dart_tool/version');
-    return flutterVersion;
+  Future<String?> _getFlutterVersion() async {
+    try {
+      final flutterVersion = await DefaultAssetBundle.of(context)
+          .loadString('.dart_tool/version');
+      return flutterVersion;
+    } catch (_) {
+      // The asset might not be available in packaged builds.
+      return null;
+    }
   }
 
   @override
@@ -32,8 +37,9 @@ class _CopyRightTextState extends State<CopyRightText> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (flutterVersion != null)
-                  Text('powered by Flutter $flutterVersion '),
+                Text(
+                  'powered by Flutter${flutterVersion != null ? ' $flutterVersion' : ''} ',
+                ),
                 const Text('(C) 2023 susatthi.'),
               ],
             ),
