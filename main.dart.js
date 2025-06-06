@@ -88097,7 +88097,7 @@ while(true)switch(s){case 0:p=q.a
 o=A.a5c(p.a.d.a)
 s=2
 return A.P(A.nv(new A.kv(o)),$async$$0)
-case 2:A.aCO(p.glJ(),A.aCw(null,null,null,null,null,B.P,null,A.ce(o+" Coppied!",null,null,null,null,null,null),null,B.kA,null,null,null,null,null,null,null,null,320))
+case 2:A.aCO(p.glJ(),A.aCw(null,null,null,null,null,B.P,null,A.ce(o+" Copied!",null,null,null,null,null,null),null,B.kA,null,null,null,null,null,null,null,null,320))
 return A.M(null,r)}})
 return A.N($async$$0,r)},
 $S:17}
@@ -88144,7 +88144,7 @@ var $async$$0=A.K(function(a,b){if(a===1)return A.L(b,r)
 while(true)switch(s){case 0:p=A.a5c(q.a.e)
 s=2
 return A.P(A.nv(new A.kv(p)),$async$$0)
-case 2:A.aCO(q.b,A.aCw(null,null,null,null,null,B.P,null,A.ce(p+" Coppied!",null,null,null,null,null,null),null,B.kA,null,null,null,null,null,null,null,null,320))
+case 2:A.aCO(q.b,A.aCw(null,null,null,null,null,B.P,null,A.ce(p+" Copied!",null,null,null,null,null,null),null,B.kA,null,null,null,null,null,null,null,null,320))
 return A.M(null,r)}})
 return A.N($async$$0,r)},
 $S:17}
